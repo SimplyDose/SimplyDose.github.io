@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SimplyDose — GLP-1 Tracker for Women</title>
+<meta name="description" content="Track your GLP-1 medication doses, weight progress, and side effects in one calm, private app. Join the SimplyDose waitlist for early access." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Reset & Base ---------- */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #FFFFFF;
+    color: #1A1A1A;
+    line-height: 1.6;
+    font-size: 16px;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  img, svg { display: block; max-width: 100%; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+  input, select { font-family: inherit; }
+  a { color: inherit; text-decoration: none; }
+
+  :root {
+    --bg: #FFFFFF;
+    --text-primary: #1A1A1A;
+    --text-secondary: #6B7280;
+    --text-tertiary: #9CA3AF;
+    --surface: #F5F7FA;
+    --border: #E5E7EB;
+    --border-strong: #1A1A1A;
+  }
+
+  /* ---------- Layout helpers ---------- */
+  .container {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  section { padding: 96px 0; }
+  @media (max-width: 768px) {
+    section { padding: 64px 0; }
+  }
+
+  /* ---------- Typography ---------- */
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+  h1, h2, h3 { color: var(--text-primary); letter-spacing: -0.02em; }
+  h1 {
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  h2 {
+    font-size: clamp(32px, 4.5vw, 44px);
+    font-weight: 600;
+    line-height: 1.1;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  p { color: var(--text-secondary); }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+    white-space: nowrap;
+    border: 1px solid transparent;
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn-primary {
+    background: var(--text-primary);
+    color: #FFFFFF;
+  }
+  .btn-primary:hover { background: #000000; }
+  .btn-secondary {
+    background: #FFFFFF;
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+  }
+  .btn-secondary:hover { background: var(--text-primary); color: #FFFFFF; }
+  .btn-disabled {
+    background: var(--surface);
+    color: var(--text-tertiary);
+    cursor: not-allowed;
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+  .nav.scrolled { border-bottom-color: var(--border); }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .wordmark {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    text-align: center;
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+  .hero h1 { max-width: 880px; margin: 0 auto 24px; }
+  .hero .subheadline {
+    font-size: 19px;
+    max-width: 620px;
+    margin: 0 auto 40px;
+    line-height: 1.55;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .hero-fineprint {
+    font-size: 13px;
+    color: var(--text-tertiary);
+  }
+  @media (max-width: 540px) {
+    .hero { padding-top: 56px; padding-bottom: 56px; }
+    .hero-buttons .btn { width: 100%; max-width: 320px; }
+  }
+
+  /* ---------- Social Proof ---------- */
+  .social-proof {
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .social-proof-text {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- Features ---------- */
+  .features-header { text-align: center; margin-bottom: 64px; }
+  .features-header h2 { max-width: 600px; margin: 0 auto; }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 900px) {
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .features-grid { grid-template-columns: 1fr; }
+  }
+  .feature-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .feature-card:hover {
+    border-color: var(--text-primary);
+    transform: translateY(-2px);
+  }
+  .feature-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+  }
+  .feature-icon svg { width: 28px; height: 28px; }
+  .feature-card h3 { margin-bottom: 8px; }
+  .feature-card p {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  /* ---------- How It Works ---------- */
+  .how-it-works { background: var(--bg); }
+  .how-header { text-align: center; margin-bottom: 72px; }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 800px) {
+    .steps { grid-template-columns: 1fr; gap: 24px; }
+  }
+  .step {
+    position: relative;
+    padding: 32px 24px 28px;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .step-number {
+    position: absolute;
+    top: -20px;
+    right: 12px;
+    font-size: 140px;
+    font-weight: 700;
+    color: #F0F2F5;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+  }
+  .step-content { position: relative; z-index: 1; }
+  .step h3 { margin-bottom: 10px; font-size: 19px; }
+  .step p { font-size: 14.5px; line-height: 1.55; }
+
+  /* ---------- Waitlist Form ---------- */
+  .waitlist {
+    background: var(--surface);
+  }
+  .waitlist-inner {
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .waitlist h2 { margin-bottom: 16px; }
+  .waitlist .subheadline {
+    color: var(--text-secondary);
+    font-size: 16px;
+    margin-bottom: 40px;
+    line-height: 1.55;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+  }
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-field label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    padding-left: 4px;
+  }
+  .form input,
+  .form select {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 14px 18px;
+    font-size: 15px;
+    color: var(--text-primary);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .form input::placeholder { color: var(--text-tertiary); }
+  .form input:focus,
+  .form select:focus {
+    outline: none;
+    border-color: var(--text-primary);
+    box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.06);
+  }
+  .form select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3e%3cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236B7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+    padding-right: 44px;
+  }
+  .form .btn-submit {
+    width: 100%;
+    margin-top: 8px;
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .form-fineprint {
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    text-align: center;
+  }
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 32px 24px;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  .form-success.visible { display: block; animation: fadeIn 0.4s ease; }
+  .form-success-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--text-primary);
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+  }
+  .form-success h3 { margin-bottom: 8px; }
+  .form-success p { font-size: 14.5px; line-height: 1.55; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---------- Disclaimer ---------- */
+  .disclaimer {
+    padding: 56px 24px;
+    text-align: center;
+  }
+  .disclaimer p {
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: var(--text-tertiary);
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+  }
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--text-tertiary);
+  }
+  .footer-inner > :nth-child(2) { text-align: center; }
+  .footer-inner > :nth-child(3) { text-align: right; }
+  .footer-inner a:hover { color: var(--text-primary); }
+  @media (max-width: 640px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .footer-inner > :nth-child(2),
+    .footer-inner > :nth-child(3) { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="wordmark">SimplyDose</a>
+    <button class="btn btn-disabled" disabled aria-label="App Store download coming soon">
+      Download on App Store · Coming Soon
+    </button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">GLP-1 Tracker for Women</div>
+    <h1>Your GLP-1 journey,<br>finally organized.</h1>
+    <p class="subheadline">
+      Track doses, monitor your progress, and understand your body — without
+      the stress, judgment, or complicated medical jargon.
+    </p>
+    <div class="hero-buttons">
+      <a href="#waitlist" class="btn btn-primary">Join the Waitlist</a>
+      <a href="#features" class="btn btn-secondary">Learn More ↓</a>
+    </div>
+    <div class="hero-fineprint">Free to download. No spam. Be first when we launch.</div>
+  </div>
+</header>
+
+<!-- ============ SOCIAL PROOF ============ -->
+<div class="social-proof">
+  <div class="container">
+    <div class="social-proof-text">
+      Built for Ozempic · Wegovy · Mounjaro · Zepbound · Saxenda · Rybelsus
+    </div>
+  </div>
+</div>
+
+<!-- ============ FEATURES ============ -->
+<section id="features">
+  <div class="container">
+    <div class="features-header">
+      <div class="eyebrow">Everything You Need</div>
+      <h2>Built around your GLP-1 journey</h2>
+    </div>
+    <div class="features-grid">
+
+      <!-- Card 1: Clock -->
+      <article class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 7v5l3 2"/>
+          </svg>
+        </div>
+        <h3>Dose Countdown</h3>
+        <p>Never wonder if you took your injection. Track every dose with reminders and a live countdown to your next one.</p>
+      </article>
+
+      <!-- Card 2: Chart line -->
+      <article class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 20h18"/>
+            <path d="M5 16l4-5 4 3 6-8"/>
+            <circle cx="9" cy="11" r="1.2" fill="currentColor"/>
+            <circle cx="13" cy="14" r="1.2" fill="currentColor"/>
+            <circle cx="19" cy="6" r="1.2" fill="currentColor"/>
+          </svg>
+        </div>
+        <h3>Weight Progress</h3>
+        <p>Watch your journey unfold with beautiful charts. See milestones, track trends, and celebrate every step forward.</p>
+      </article>
+
+      <!-- Card 3: Syringe -->
+      <article class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2l4 4"/>
+            <path d="M17 3l4 4-3 3-4-4z"/>
+            <path d="M14 6l-9 9v4h4l9-9"/>
+            <path d="M8 16l-2-2"/>
+          </svg>
+        </div>
+        <h3>Injection Site Rotation</h3>
+        <p>A body map guides your rotation to reduce tissue buildup and keep injections comfortable over time.</p>
+      </article>
+
+      <!-- Card 4: Waveform -->
+      <article class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12h3l2-7 4 14 3-10 2 5 2-2h4"/>
+          </svg>
+        </div>
+        <h3>Side Effect Patterns</h3>
+        <p>Log symptoms after each dose and watch your personal patterns emerge. Know what to expect and when.</p>
+      </article>
+
+      <!-- Card 5: Lightbulb -->
+      <article class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18h6"/>
+            <path d="M10 21h4"/>
+            <path d="M12 3a6 6 0 0 0-4 10.5c.8.7 1.5 1.5 1.5 2.5v1h5v-1c0-1 .7-1.8 1.5-2.5A6 6 0 0 0 12 3z"/>
+          </svg>
+        </div>
+        <h3>Weekly Insights</h3>
+        <p>SimplyDose analyzes your own data to surface personal patterns — like which days tend to be harder after your dose.</p>
+      </article>
+
+      <!-- Card 6: Clipboard -->
+      <article class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="4" width="12" height="17" rx="2"/>
+            <rect x="9" y="2" width="6" height="4" rx="1"/>
+            <path d="M9 11h6"/>
+            <path d="M9 15h6"/>
+            <path d="M9 18h3"/>
+          </svg>
+        </div>
+        <h3>Doctor Summary</h3>
+        <p>Generate a clean summary of your doses, weight, and symptoms to share at your next healthcare visit.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="how-it-works">
+  <div class="container">
+    <div class="how-header">
+      <div class="eyebrow">How It Works</div>
+      <h2>Simple by design</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Set up your profile</h3>
+          <p>Tell us your medication, dose, and injection schedule. Takes less than 3 minutes.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Log as you go</h3>
+          <p>Tap + to log a dose, weight, or side effects. SimplyDose remembers everything.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>See your patterns</h3>
+          <p>Weekly insights and beautiful charts show you what's working and what to watch.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WAITLIST ============ -->
+<section class="waitlist" id="waitlist">
+  <div class="container">
+    <div class="waitlist-inner">
+      <h2>Be first to download</h2>
+      <p class="subheadline">
+        SimplyDose is launching soon on the App Store. Join the waitlist and get early access.
+      </p>
+
+      <form class="form" id="waitlist-form" novalidate>
+        <div class="form-field">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" placeholder="Jane" required autocomplete="given-name" />
+        </div>
+        <div class="form-field">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="jane@example.com" required autocomplete="email" />
+        </div>
+        <div class="form-field">
+          <label for="medication">Which medication are you on?</label>
+          <select id="medication" name="medication" required>
+            <option value="" disabled selected>Select medication</option>
+            <option value="Ozempic">Ozempic</option>
+            <option value="Wegovy">Wegovy</option>
+            <option value="Mounjaro">Mounjaro</option>
+            <option value="Zepbound">Zepbound</option>
+            <option value="Saxenda">Saxenda</option>
+            <option value="Rybelsus">Rybelsus</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-submit">Join the Waitlist</button>
+      </form>
+
+      <div class="form-success" id="form-success" role="status" aria-live="polite">
+        <div class="form-success-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12l5 5L20 7"/>
+          </svg>
+        </div>
+        <h3>You're on the list!</h3>
+        <p>We'll email you when SimplyDose launches.</p>
+      </div>
+
+      <div class="form-fineprint">
+        🔒 Your information is private. We will never sell your data or spam you.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DISCLAIMER ============ -->
+<div class="disclaimer">
+  <div class="container">
+    <p>
+      SimplyDose is a personal tracking tool only and is not a medical device.
+      It does not provide medical advice, diagnosis, or treatment recommendations.
+      Always follow your prescriber's guidance.
+    </p>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container footer-inner">
+    <div>SimplyDose © 2026</div>
+    <div>Made for women on GLP-1s</div>
+    <div><a href="https://simplydose.github.io/privacy.html" target="_blank" rel="noopener">Privacy Policy</a></div>
+  </div>
+</footer>
+
+<script>
+  // Nav border on scroll
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 4) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Waitlist form — fake success state
+  const form = document.getElementById('waitlist-form');
+  const success = document.getElementById('form-success');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Basic validation
+    const firstName = form.firstName.value.trim();
+    const email = form.email.value.trim();
+    const medication = form.medication.value;
+    if (!firstName || !email || !medication) {
+      // Highlight empty fields softly
+      [form.firstName, form.email, form.medication].forEach(f => {
+        if (!f.value || f.value === '') {
+          f.style.borderColor = '#1A1A1A';
+          setTimeout(() => { f.style.borderColor = ''; }, 1600);
+        }
+      });
+      return;
+    }
+    // Hide form, show success
+    form.style.display = 'none';
+    success.classList.add('visible');
+    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+</script>
+
+</body>
+</html>
