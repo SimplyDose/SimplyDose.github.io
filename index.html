@@ -292,6 +292,32 @@
   .btn-waitlist:hover svg {
     transform: translate(2px, -2px);
   }
+  /* ---------- Support ---------- */
+  .support {
+    background: var(--surface);
+    padding: 40px 24px;
+    text-align: center;
+  }
+  .support-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .support-email {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    transition: color 0.15s ease;
+  }
+  .support-email:hover { color: var(--text-primary); }
+  .support-response {
+    font-size: 13px;
+    color: var(--text-tertiary);
+  }
+
   /* ---------- Disclaimer ---------- */
   .disclaimer {
     padding: 56px 24px;
@@ -321,13 +347,23 @@
   .footer-inner > :nth-child(2) { text-align: center; }
   .footer-inner > :nth-child(3) { text-align: right; }
   .footer-inner a:hover { color: var(--text-primary); }
-  @media (max-width: 640px) {
+  .footer-links {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .footer-sep { color: var(--border); }
+  @media (max-width: 860px) {
     .footer-inner {
       grid-template-columns: 1fr;
       text-align: center;
+      gap: 12px;
     }
     .footer-inner > :nth-child(2),
     .footer-inner > :nth-child(3) { text-align: center; }
+    .footer-links { justify-content: center; }
   }
 </style>
 </head>
@@ -532,12 +568,27 @@
   </div>
 </div>
 
+<!-- ============ SUPPORT ============ -->
+<section class="support" aria-label="Support contact">
+  <div class="support-title">Questions or support?</div>
+  <a href="mailto:simplydoseapp@gmail.com" class="support-email">
+    Email us at simplydoseapp@gmail.com
+  </a>
+  <div class="support-response">We typically respond within 24 hours.</div>
+</section>
+
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="container footer-inner">
     <div>SimplyDose © 2026</div>
     <div>Made for women on GLP-1s</div>
-    <div><a href="https://simplydose.github.io/privacy.html" target="_blank" rel="noopener">Privacy Policy</a></div>
+    <div class="footer-links">
+      <a href="https://simplydose.github.io/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+      <span class="footer-sep" aria-hidden="true">·</span>
+      <a href="https://simplydose.github.io/terms.html" target="_blank" rel="noopener">Terms of Service</a>
+      <span class="footer-sep" aria-hidden="true">·</span>
+      <span>Support: <a href="mailto:simplydoseapp@gmail.com">simplydoseapp@gmail.com</a></span>
+    </div>
   </div>
 </footer>
 
