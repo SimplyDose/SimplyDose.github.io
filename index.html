@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SimplyDose — GLP-1 Tracker for Women</title>
-<meta name="description" content="Track your GLP-1 medication doses, weight progress, and side effects in one calm, private app. Join the SimplyDose waitlist for early access." />
+<title>SimplyDose — GLP-1 Tracker for iPhone</title>
+<meta name="description" content="Track your GLP-1 medication doses, weight progress, and side effects in one calm, private app. Now available on the App Store." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -103,13 +103,13 @@
     border-color: var(--text-primary);
   }
   .btn-secondary:hover { background: var(--text-primary); color: #FFFFFF; }
-  .btn-disabled {
-    background: var(--surface);
-    color: var(--text-tertiary);
-    cursor: not-allowed;
+  .btn-nav {
+    background: var(--text-primary);
+    color: #FFFFFF;
     font-size: 14px;
     padding: 10px 20px;
   }
+  .btn-nav:hover { background: #000000; }
 
   /* ---------- Nav ---------- */
   .nav {
@@ -254,44 +254,52 @@
   .step h3 { margin-bottom: 10px; font-size: 19px; }
   .step p { font-size: 14.5px; line-height: 1.55; }
 
-  /* ---------- Waitlist Form ---------- */
-  .waitlist {
+  /* ---------- Download ---------- */
+  .download {
     background: var(--surface);
   }
-  .waitlist-inner {
+  .download-inner {
     max-width: 520px;
     margin: 0 auto;
     text-align: center;
   }
-  .waitlist h2 { margin-bottom: 16px; }
-  .waitlist .subheadline {
+  .download h2 { margin-bottom: 16px; }
+  .download .subheadline {
     color: var(--text-secondary);
     font-size: 16px;
     margin-bottom: 40px;
     line-height: 1.55;
   }
-  .form-fineprint {
-    margin-top: 24px;
-    font-size: 13px;
-    color: var(--text-tertiary);
-    text-align: center;
-  }
-  .waitlist-cta {
+  .download-cta {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
   }
-  .btn-waitlist {
+  .btn-download {
     padding: 16px 32px;
     font-size: 15px;
     font-weight: 500;
     min-width: 240px;
   }
-  .btn-waitlist svg {
-    transition: transform 0.2s ease;
+  .download-fineprint {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    text-align: center;
   }
-  .btn-waitlist:hover svg {
-    transform: translate(2px, -2px);
+  .waitlist-link {
+    display: block;
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--text-secondary);
   }
+  .waitlist-link a {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
   /* ---------- Support ---------- */
   .support {
     background: var(--surface);
@@ -373,9 +381,9 @@
 <nav class="nav" id="nav">
   <div class="container nav-inner">
     <a href="#" class="wordmark">SimplyDose</a>
-    <button class="btn btn-disabled" disabled aria-label="App Store download coming soon">
-      Download on App Store · Coming Soon
-    </button>
+    <a href="https://apps.apple.com/us/app/id6767441916" target="_blank" rel="noopener" class="btn btn-nav">
+      Download on App Store
+    </a>
   </div>
 </nav>
 
@@ -389,10 +397,10 @@
       the stress, judgment, or complicated medical jargon.
     </p>
     <div class="hero-buttons">
-      <a href="#waitlist" class="btn btn-primary">Join the Waitlist</a>
+      <a href="https://apps.apple.com/us/app/id6767441916" target="_blank" rel="noopener" class="btn btn-primary">Download on App Store</a>
       <a href="#features" class="btn btn-secondary">Learn More ↓</a>
     </div>
-    <div class="hero-fineprint">Free to download. No spam. Be first when we launch.</div>
+    <div class="hero-fineprint">Free to download. Built for iPhone.</div>
   </div>
 </header>
 
@@ -531,27 +539,27 @@
   </div>
 </section>
 
-<!-- ============ WAITLIST ============ -->
-<section class="waitlist" id="waitlist">
+<!-- ============ DOWNLOAD ============ -->
+<section class="download" id="download">
   <div class="container">
-    <div class="waitlist-inner">
-      <h2>Be first to download</h2>
+    <div class="download-inner">
+      <h2>Download SimplyDose</h2>
       <p class="subheadline">
-        SimplyDose is launching soon on the App Store. Join the waitlist and get early access.
+        Available now on the App Store. Free to download.
       </p>
 
-      <div class="waitlist-cta">
-        <a href="https://tally.so/r/b5KRRe" target="_blank" rel="noopener" class="btn btn-primary btn-waitlist">
-          Join the Waitlist
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M7 17L17 7"/>
-            <path d="M8 7h9v9"/>
-          </svg>
+      <div class="download-cta">
+        <a href="https://apps.apple.com/us/app/id6767441916" target="_blank" rel="noopener" class="btn btn-primary btn-download">
+          Download on App Store
         </a>
       </div>
 
-      <div class="form-fineprint">
-        🔒 Your information is private. We will never sell your data or spam you.
+      <div class="download-fineprint">
+        🔒 Your information is private. We will never sell your data.
+      </div>
+
+      <div class="waitlist-link">
+        Want to hear about new features? <a href="https://tally.so/r/b5KRRe" target="_blank" rel="noopener">Join our newsletter</a>.
       </div>
     </div>
   </div>
@@ -571,8 +579,8 @@
 <!-- ============ SUPPORT ============ -->
 <section class="support" aria-label="Support contact">
   <div class="support-title">Questions or support?</div>
-  <a href="mailto:simplydoseapp@gmail.com" class="support-email">
-    Email us at simplydoseapp@gmail.com
+  <a href="mailto:support@simplydose.app" class="support-email">
+    Email us at support@simplydose.app
   </a>
   <div class="support-response">We typically respond within 24 hours.</div>
 </section>
@@ -580,14 +588,14 @@
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="container footer-inner">
-    <div>SimplyDose © 2026</div>
+    <div>SimplyDose LLC © 2026</div>
     <div>Made for women on GLP-1s</div>
     <div class="footer-links">
       <a href="https://simplydose.github.io/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
       <span class="footer-sep" aria-hidden="true">·</span>
       <a href="https://simplydose.github.io/terms.html" target="_blank" rel="noopener">Terms of Service</a>
       <span class="footer-sep" aria-hidden="true">·</span>
-      <span>Support: <a href="mailto:simplydoseapp@gmail.com">simplydoseapp@gmail.com</a></span>
+      <span>Support: <a href="mailto:support@simplydose.app">support@simplydose.app</a></span>
     </div>
   </div>
 </footer>
@@ -601,8 +609,6 @@
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-
-  // Waitlist CTA is a direct link to Tally — no JS needed.
 </script>
 
 </body>
