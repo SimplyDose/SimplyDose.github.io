@@ -1,615 +1,438 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SimplyDose — GLP-1 Tracker for iPhone</title>
-<meta name="description" content="Track your GLP-1 medication doses, weight progress, and side effects in one calm, private app. Now available on the App Store." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SimplyDose — The gentle way to track your GLP-1 journey</title>
+<meta name="description" content="Track your doses, weight and how you feel — in seconds. SimplyDose is the calm, private companion for your GLP-1 journey. Free to download."/>
+<link rel="icon" href="/favicon.ico" sizes="32x32"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
-  /* ---------- Reset & Base ---------- */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #FFFFFF;
-    color: #1A1A1A;
-    line-height: 1.6;
-    font-size: 16px;
-    font-feature-settings: "ss01", "cv11";
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  :root{
+    --cream:#FAF4EF;      /* page background */
+    --blush:#F3E7E0;      /* soft surface */
+    --blush2:#EEDCD3;     /* deeper surface */
+    --rose:#C0808A;       /* dusty rose accent */
+    --rose-deep:#A5636E;  /* deeper rose */
+    --berry:#6E3D48;      /* primary CTA / deep accent */
+    --plum:#3B2D33;       /* warm dark */
+    --ink:#33292C;        /* warm near-black text */
+    --t2:#87757A;         /* muted mauve-gray */
+    --t3:#AE9EA2;         /* light mauve-gray */
+    --divider:#E7D8D1;
+    --white:#FFFFFF;
+    --maxw:1080px;
   }
-  img, svg { display: block; max-width: 100%; }
-  button { font-family: inherit; cursor: pointer; border: none; background: none; }
-  input, select { font-family: inherit; }
-  a { color: inherit; text-decoration: none; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',-apple-system,system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  a{color:var(--ink);text-decoration:none;}
+  a:hover{opacity:0.7;}
+  img{max-width:100%;display:block;}
 
-  :root {
-    --bg: #FFFFFF;
-    --text-primary: #1A1A1A;
-    --text-secondary: #6B7280;
-    --text-tertiary: #9CA3AF;
-    --surface: #F5F7FA;
-    --border: #E5E7EB;
-    --border-strong: #1A1A1A;
-  }
-
-  /* ---------- Layout helpers ---------- */
-  .container {
-    width: 100%;
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-  section { padding: 96px 0; }
-  @media (max-width: 768px) {
-    section { padding: 64px 0; }
-  }
-
-  /* ---------- Typography ---------- */
-  .eyebrow {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-secondary);
-    margin-bottom: 20px;
-  }
-  h1, h2, h3 { color: var(--text-primary); letter-spacing: -0.02em; }
-  h1 {
-    font-size: clamp(40px, 6vw, 64px);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-  }
-  h2 {
-    font-size: clamp(32px, 4.5vw, 44px);
-    font-weight: 600;
-    line-height: 1.1;
-  }
-  h3 {
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 1.3;
-  }
-  p { color: var(--text-secondary); }
+  .serif{font-family:'Cormorant Garamond',Georgia,serif;}
 
   /* ---------- Buttons ---------- */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 14px 28px;
-    border-radius: 999px;
-    font-size: 15px;
-    font-weight: 500;
-    transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
-    white-space: nowrap;
-    border: 1px solid transparent;
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    font-family:'Inter',sans-serif;font-size:15px;font-weight:600;letter-spacing:-0.1px;
+    padding:14px 26px;border-radius:999px;border:none;cursor:pointer;
+    background:var(--berry);color:#fff;transition:transform .15s ease, box-shadow .15s ease;
+    white-space:nowrap;
   }
-  .btn:active { transform: scale(0.98); }
-  .btn-primary {
-    background: var(--text-primary);
-    color: #FFFFFF;
-  }
-  .btn-primary:hover { background: #000000; }
-  .btn-secondary {
-    background: #FFFFFF;
-    color: var(--text-primary);
-    border-color: var(--text-primary);
-  }
-  .btn-secondary:hover { background: var(--text-primary); color: #FFFFFF; }
-  .btn-nav {
-    background: var(--text-primary);
-    color: #FFFFFF;
-    font-size: 14px;
-    padding: 10px 20px;
-  }
-  .btn-nav:hover { background: #000000; }
+  .btn:hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(110,61,72,0.28);opacity:1;}
+  .btn:active{transform:translateY(0);}
+  .btn--sm{padding:10px 20px;font-size:14px;}
 
-  /* ---------- Nav ---------- */
-  .nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: saturate(180%) blur(14px);
-    -webkit-backdrop-filter: saturate(180%) blur(14px);
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s ease;
+  .apple-badge{
+    display:inline-flex;align-items:center;gap:11px;
+    background:var(--berry);color:#fff;border-radius:16px;
+    padding:12px 22px 12px 20px;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease;
   }
-  .nav.scrolled { border-bottom-color: var(--border); }
-  .nav-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
+  .apple-badge:hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(110,61,72,0.28);opacity:1;}
+  .apple-badge__text{display:flex;flex-direction:column;line-height:1.15;}
+  .apple-badge__text small{font-size:10px;font-weight:500;opacity:0.8;letter-spacing:0.2px;}
+  .apple-badge__text span{font-size:18px;font-weight:600;letter-spacing:-0.3px;}
+
+  /* ---------- Layout ---------- */
+  section{padding:0 24px;}
+  .wrap{max-width:var(--maxw);margin:0 auto;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:1.6px;
+    text-transform:uppercase;color:var(--rose-deep);margin-bottom:20px;
   }
-  .wordmark {
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    color: var(--text-primary);
+  .eyebrow::before,.eyebrow::after{content:"";width:22px;height:1px;background:var(--rose);opacity:0.5;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,244,239,0.82);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--divider);
   }
+  .header__row{
+    max-width:var(--maxw);margin:0 auto;height:66px;
+    display:flex;align-items:center;justify-content:space-between;padding:0 24px;
+  }
+  .wordmark{display:flex;align-items:center;gap:10px;font-weight:600;font-size:23px;letter-spacing:-0.3px;}
+  .wordmark.serif{font-weight:600;}
+  .mark{
+    width:30px;height:30px;border-radius:9px;background:#111;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    overflow:hidden;
+  }
+  .mark img{width:100%;height:100%;object-fit:cover;display:block;}
 
   /* ---------- Hero ---------- */
-  .hero {
-    text-align: center;
-    padding-top: 96px;
-    padding-bottom: 96px;
+  .hero{padding-top:66px;padding-bottom:8px;text-align:center;}
+  .hero h1{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:clamp(44px,9vw,78px);font-weight:600;letter-spacing:-0.5px;
+    line-height:1.02;max-width:820px;margin:0 auto 22px;text-wrap:balance;
   }
-  .hero h1 { max-width: 880px; margin: 0 auto 24px; }
-  .hero .subheadline {
-    font-size: 19px;
-    max-width: 620px;
-    margin: 0 auto 40px;
-    line-height: 1.55;
+  .hero h1 em{font-style:italic;color:var(--rose-deep);}
+  .hero p.sub{
+    font-size:clamp(16px,2.3vw,19px);color:var(--t2);font-weight:450;
+    max-width:520px;margin:0 auto 32px;text-wrap:pretty;line-height:1.6;
   }
-  .hero-buttons {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
+  .cta-row{display:flex;flex-direction:column;align-items:center;gap:15px;}
+  .cta-note{font-size:13px;color:var(--t3);font-weight:500;display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;}
+  .dot{width:3px;height:3px;border-radius:2px;background:var(--rose);opacity:0.6;}
+
+  /* ---------- Phone mockup ---------- */
+  .phones{
+    display:flex;justify-content:center;align-items:flex-end;gap:0;
+    margin-top:52px;position:relative;
   }
-  .hero-fineprint {
-    font-size: 13px;
-    color: var(--text-tertiary);
+  .phone{
+    width:272px;flex-shrink:0;border-radius:44px;background:#26191E;
+    padding:9px;box-shadow:0 40px 80px -24px rgba(59,45,51,0.45),0 10px 30px rgba(110,61,72,0.12);
+    position:relative;
   }
-  @media (max-width: 540px) {
-    .hero { padding-top: 56px; padding-bottom: 56px; }
-    .hero-buttons .btn { width: 100%; max-width: 320px; }
+  .phone--side{width:236px;}
+  .phone--left{margin-right:-46px;transform:translateY(22px) rotate(-4deg) scale(.86);z-index:1;}
+  .phone--right{margin-left:-46px;transform:translateY(22px) rotate(4deg) scale(.86);z-index:1;}
+  .phone--center{z-index:3;}
+  .phone__screen{
+    background:#fff;border-radius:36px;overflow:hidden;position:relative;
+    height:566px;
+  }
+  .phone__screen img.shot{
+    width:100%;height:100%;object-fit:cover;object-position:top;display:block;
   }
 
-  /* ---------- Social Proof ---------- */
-  .social-proof {
-    padding: 24px 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .social-proof-text {
-    text-align: center;
-    font-size: 13px;
-    color: var(--text-tertiary);
-    letter-spacing: 0.02em;
-  }
+
+
+  /* ---------- Supported-meds band (honest) ---------- */
+  .meds{padding:52px 24px;text-align:center;margin-top:52px;background:var(--blush);}
+  .meds__label{font-size:12px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--rose-deep);margin-bottom:20px;}
+  .meds__list{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 34px;max-width:760px;margin:0 auto;}
+  .meds__list span{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(22px,4vw,30px);font-weight:600;color:var(--ink);letter-spacing:-0.2px;}
 
   /* ---------- Features ---------- */
-  .features-header { text-align: center; margin-bottom: 64px; }
-  .features-header h2 { max-width: 600px; margin: 0 auto; }
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  @media (max-width: 900px) {
-    .features-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 600px) {
-    .features-grid { grid-template-columns: 1fr; }
-  }
-  .feature-card {
-    background: #FFFFFF;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px;
-    transition: border-color 0.2s ease, transform 0.2s ease;
-  }
-  .feature-card:hover {
-    border-color: var(--text-primary);
-    transform: translateY(-2px);
-  }
-  .feature-icon {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    color: var(--text-primary);
-  }
-  .feature-icon svg { width: 28px; height: 28px; }
-  .feature-card h3 { margin-bottom: 8px; }
-  .feature-card p {
-    font-size: 14.5px;
-    line-height: 1.55;
-    color: var(--text-secondary);
-  }
+  .features{padding-top:92px;padding-bottom:12px;}
+  .sec-head{text-align:center;max-width:620px;margin:0 auto 56px;}
+  .sec-head h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(34px,6vw,52px);font-weight:600;letter-spacing:-0.4px;line-height:1.05;margin-bottom:16px;text-wrap:balance;}
+  .sec-head h2 em{font-style:italic;color:var(--rose-deep);}
+  .sec-head p{font-size:17px;color:var(--t2);text-wrap:pretty;line-height:1.6;}
+  .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:var(--maxw);margin:0 auto;}
+  .fcard{background:var(--white);border:1px solid var(--divider);border-radius:24px;padding:34px 28px;}
+  .fcard__ic{width:56px;height:56px;border-radius:17px;background:var(--blush);display:flex;align-items:center;justify-content:center;margin-bottom:22px;}
+  .fcard h3{font-size:20px;font-weight:700;letter-spacing:-0.3px;margin-bottom:9px;}
+  .fcard p{font-size:14.5px;color:var(--t2);line-height:1.6;}
 
-  /* ---------- How It Works ---------- */
-  .how-it-works { background: var(--bg); }
-  .how-header { text-align: center; margin-bottom: 72px; }
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-  }
-  @media (max-width: 800px) {
-    .steps { grid-template-columns: 1fr; gap: 24px; }
-  }
-  .step {
-    position: relative;
-    padding: 32px 24px 28px;
-    border-radius: 16px;
-    overflow: hidden;
-  }
-  .step-number {
-    position: absolute;
-    top: -20px;
-    right: 12px;
-    font-size: 140px;
-    font-weight: 700;
-    color: #F0F2F5;
-    line-height: 1;
-    letter-spacing: -0.05em;
-    z-index: 0;
-    pointer-events: none;
-    user-select: none;
-  }
-  .step-content { position: relative; z-index: 1; }
-  .step h3 { margin-bottom: 10px; font-size: 19px; }
-  .step p { font-size: 14.5px; line-height: 1.55; }
+  /* ---------- How it works ---------- */
+  .how{padding-top:96px;}
+  .steps{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+  .step{display:flex;gap:22px;align-items:flex-start;background:var(--white);border:1px solid var(--divider);border-radius:22px;padding:26px 28px;}
+  .step__n{width:44px;height:44px;border-radius:22px;background:var(--blush);color:var(--rose-deep);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;font-size:22px;flex-shrink:0;}
+  .step h3{font-size:19px;font-weight:700;letter-spacing:-0.3px;margin-bottom:5px;}
+  .step p{font-size:14.5px;color:var(--t2);line-height:1.6;}
 
-  /* ---------- Download ---------- */
-  .download {
-    background: var(--surface);
-  }
-  .download-inner {
-    max-width: 520px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .download h2 { margin-bottom: 16px; }
-  .download .subheadline {
-    color: var(--text-secondary);
-    font-size: 16px;
-    margin-bottom: 40px;
-    line-height: 1.55;
-  }
-  .download-cta {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-  .btn-download {
-    padding: 16px 32px;
-    font-size: 15px;
-    font-weight: 500;
-    min-width: 240px;
-  }
-  .download-fineprint {
-    font-size: 13px;
-    color: var(--text-tertiary);
-    text-align: center;
-  }
-  .waitlist-link {
-    display: block;
-    margin-top: 24px;
-    font-size: 13px;
-    color: var(--text-secondary);
-  }
-  .waitlist-link a {
-    color: var(--text-primary);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
+  /* ---------- Promise band (brand voice, honest) ---------- */
+  .promise{padding-top:96px;}
+  .promise__card{max-width:820px;margin:0 auto;background:var(--berry);color:#fff;border-radius:32px;padding:64px 48px;text-align:center;}
+  .promise__eyebrow{font-size:12px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:22px;}
+  .promise__t{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(26px,4.4vw,38px);font-weight:500;letter-spacing:-0.2px;line-height:1.28;text-wrap:balance;}
+  .promise__t em{font-style:italic;color:#E2B9BF;}
 
-  /* ---------- Support ---------- */
-  .support {
-    background: var(--surface);
-    padding: 40px 24px;
-    text-align: center;
+  /* ---------- Final CTA ---------- */
+  .final{padding-top:96px;padding-bottom:40px;text-align:center;}
+  .final__card{
+    max-width:var(--maxw);margin:0 auto;background:var(--blush);
+    border-radius:34px;padding:72px 32px;
   }
-  .support-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 8px;
-  }
-  .support-email {
-    display: inline-block;
-    font-size: 15px;
-    font-weight: 400;
-    color: var(--text-secondary);
-    margin-bottom: 8px;
-    transition: color 0.15s ease;
-  }
-  .support-email:hover { color: var(--text-primary); }
-  .support-response {
-    font-size: 13px;
-    color: var(--text-tertiary);
-  }
-
-  /* ---------- Disclaimer ---------- */
-  .disclaimer {
-    padding: 56px 24px;
-    text-align: center;
-  }
-  .disclaimer p {
-    max-width: 680px;
-    margin: 0 auto;
-    font-size: 12.5px;
-    line-height: 1.65;
-    color: var(--text-tertiary);
-  }
+  .final h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(38px,6.5vw,60px);font-weight:600;letter-spacing:-0.4px;line-height:1.02;margin-bottom:18px;max-width:600px;margin-left:auto;margin-right:auto;text-wrap:balance;}
+  .final h2 em{font-style:italic;color:var(--rose-deep);}
+  .final p{font-size:17px;color:var(--t2);margin-bottom:34px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.6;}
 
   /* ---------- Footer ---------- */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 0;
+  footer{padding:48px 24px 64px;border-top:1px solid var(--divider);margin-top:24px;}
+  .footer__row{max-width:var(--maxw);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .footer__links{display:flex;gap:24px;font-size:13.5px;color:var(--t2);font-weight:500;flex-wrap:wrap;}
+  .footer__legal{max-width:var(--maxw);margin:28px auto 0;font-size:11.5px;color:var(--t3);line-height:1.7;}
+
+  .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);}
+  .js .reveal.in{opacity:1;transform:none;}
+
+  /* ---------- Mobile sticky download bar ---------- */
+  .mcta{
+    position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
+    background:rgba(250,244,239,0.92);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-top:1px solid var(--divider);
+    transform:translateY(105%);transition:transform .3s cubic-bezier(.2,.7,.3,1);
   }
-  .footer-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    gap: 16px;
-    font-size: 13px;
-    color: var(--text-tertiary);
+  .mcta.show{transform:none;}
+  .mcta .btn{width:100%;padding:15px 26px;font-size:16px;}
+
+  @media (max-width:860px){
+    .fgrid{grid-template-columns:1fr;max-width:440px;}
+    .phone--left,.phone--right{display:none;}
   }
-  .footer-inner > :nth-child(2) { text-align: center; }
-  .footer-inner > :nth-child(3) { text-align: right; }
-  .footer-inner a:hover { color: var(--text-primary); }
-  .footer-links {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: flex-end;
-    align-items: center;
+  @media (max-width:640px){
+    .mcta{display:block;}
+    footer{padding-bottom:130px;}
   }
-  .footer-sep { color: var(--border); }
-  @media (max-width: 860px) {
-    .footer-inner {
-      grid-template-columns: 1fr;
-      text-align: center;
-      gap: 12px;
-    }
-    .footer-inner > :nth-child(2),
-    .footer-inner > :nth-child(3) { text-align: center; }
-    .footer-links { justify-content: center; }
+  @media (max-width:520px){
+    section{padding-left:20px;padding-right:20px;}
+    .hero{padding-top:42px;}
+    .hero p.sub{margin-bottom:26px;}
+    .phones{margin-top:40px;}
+    .phone{width:min(76vw,300px);border-radius:40px;}
+    .phone__screen{height:calc(min(76vw,300px) * 2.08);border-radius:32px;}
+    .meds{margin-top:40px;padding:40px 20px;}
+    .meds__list{gap:10px 24px;}
+    .features,.how,.promise,.final{padding-top:64px;}
+    .sec-head{margin-bottom:36px;}
+    .fcard{padding:26px 22px;}
+    .step{padding:20px;gap:16px;}
+    .step__n{width:38px;height:38px;border-radius:19px;font-size:19px;}
+    .final__card{padding:52px 24px;}
+    .promise__card{padding:48px 26px;}
+    .footer__row{flex-direction:column;align-items:flex-start;}
+    .footer__legal{margin-top:22px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .js .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
   }
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('js');</script>
 
-<!-- ============ NAV ============ -->
-<nav class="nav" id="nav">
-  <div class="container nav-inner">
-    <a href="#" class="wordmark">SimplyDose</a>
-    <a href="https://apps.apple.com/us/app/id6767441916" target="_blank" rel="noopener" class="btn btn-nav">
-      Download on App Store
-    </a>
-  </div>
-</nav>
-
-<!-- ============ HERO ============ -->
-<header class="hero">
-  <div class="container">
-    <div class="eyebrow">GLP-1 Tracker for Women</div>
-    <h1>Your GLP-1 journey,<br>finally organized.</h1>
-    <p class="subheadline">
-      Track doses, monitor your progress, and understand your body — without
-      the stress, judgment, or complicated medical jargon.
-    </p>
-    <div class="hero-buttons">
-      <a href="https://apps.apple.com/us/app/id6767441916" target="_blank" rel="noopener" class="btn btn-primary">Download on App Store</a>
-      <a href="#features" class="btn btn-secondary">Learn More ↓</a>
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="header__row">
+    <div class="wordmark serif">
+      <div class="mark">
+        <img src="assets/app-icon.png" alt="SimplyDose app icon"/>
+      </div>
+      SimplyDose
     </div>
-    <div class="hero-fineprint">Free to download. Built for iPhone.</div>
+    <a class="btn btn--sm" href="https://apps.apple.com/app/id6767441916" data-appstore>Download Free</a>
   </div>
 </header>
 
-<!-- ============ SOCIAL PROOF ============ -->
-<div class="social-proof">
-  <div class="container">
-    <div class="social-proof-text">
-      Built for Ozempic · Wegovy · Mounjaro · Zepbound · Saxenda · Rybelsus
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow reveal">Your GLP-1 companion</span>
+    <h1 class="reveal">The <em>gentle</em> way to track your journey.</h1>
+    <p class="sub reveal">Log your doses, your weight, and how you're feeling — in just a few taps. SimplyDose keeps everything calm, private, and beautifully simple, so you can focus on you.</p>
+    <div class="cta-row reveal">
+      <a class="apple-badge" href="https://apps.apple.com/app/id6767441916" data-appstore aria-label="Download on the App Store">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.05 12.54c-.02-2.1 1.71-3.11 1.79-3.16-0.98-1.43-2.5-1.62-3.03-1.64-1.29-.13-2.52.76-3.17.76-.65 0-1.66-.74-2.73-.72-1.4.02-2.7.82-3.42 2.07-1.46 2.54-.37 6.29 1.05 8.35.69 1.01 1.51 2.14 2.59 2.1 1.04-.04 1.43-.67 2.69-.67 1.25 0 1.61.67 2.71.65 1.12-.02 1.83-1.02 2.51-2.03.79-1.16 1.12-2.29 1.14-2.35-.03-.01-2.18-.84-2.2-3.29zM15.0 6.21c.57-.69.96-1.65.85-2.61-.82.03-1.82.55-2.41 1.24-.53.61-.99 1.59-.87 2.52.92.07 1.86-.46 2.43-1.15z"/></svg>
+        <div class="apple-badge__text"><small>Download on the</small><span>App Store</span></div>
+      </a>
+      <div class="cta-note">
+        <span>Free to download</span><span class="dot"></span>
+        <span>No account needed to start</span><span class="dot"></span>
+        <span>Private by design</span>
+      </div>
     </div>
+
+    <!-- Phone mockups — real app screenshots -->
+    <div class="phones reveal">
+      <div class="phone phone--side phone--left">
+        <div class="phone__screen">
+          <img class="shot" src="assets/progress1.png" alt="SimplyDose Progress screen showing weight trend chart"/>
+        </div>
+      </div>
+
+      <div class="phone phone--center">
+        <div class="phone__screen">
+          <img class="shot" src="assets/home1.png" alt="SimplyDose Home screen with next-dose countdown"/>
+        </div>
+      </div>
+
+      <div class="phone phone--side phone--right">
+        <div class="phone__screen">
+          <img class="shot" src="assets/logdose.png" alt="SimplyDose Log Dose screen"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUPPORTED MEDS (honest) ============ -->
+<div class="meds">
+  <div class="meds__label reveal">Made for your medication</div>
+  <div class="meds__list reveal">
+    <span>Ozempic®</span>
+    <span>Wegovy®</span>
+    <span>Mounjaro®</span>
+    <span>Zepbound®</span>
+    <span>Saxenda®</span>
   </div>
 </div>
 
 <!-- ============ FEATURES ============ -->
-<section id="features">
-  <div class="container">
-    <div class="features-header">
-      <div class="eyebrow">Everything You Need</div>
-      <h2>Built around your GLP-1 journey</h2>
+<section class="features">
+  <div class="sec-head reveal">
+    <h2>Everything you need, <em>nothing</em> you don't.</h2>
+    <p>Thoughtfully made for the realities of your journey — the shots, the scale, the way you feel — without the clutter.</p>
+  </div>
+  <div class="fgrid">
+    <div class="fcard reveal">
+      <div class="fcard__ic"><svg width="27" height="27" viewBox="0 0 24 24" fill="none"><path d="M16 3l5 5M14 5l5 5M11 8l5 5M7 12l5 5-2 2-5-5 2-2zM5 18l-2 2" stroke="#A5636E" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h3>Never miss a dose</h3>
+      <p>A calm countdown shows exactly when your next dose is due. Gentle reminders and a rotating injection-site tracker keep you right on schedule.</p>
     </div>
-    <div class="features-grid">
-
-      <!-- Card 1: Clock -->
-      <article class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="9"/>
-            <path d="M12 7v5l3 2"/>
-          </svg>
-        </div>
-        <h3>Dose Countdown</h3>
-        <p>Never wonder if you took your injection. Track every dose with reminders and a live countdown to your next one.</p>
-      </article>
-
-      <!-- Card 2: Chart line -->
-      <article class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 20h18"/>
-            <path d="M5 16l4-5 4 3 6-8"/>
-            <circle cx="9" cy="11" r="1.2" fill="currentColor"/>
-            <circle cx="13" cy="14" r="1.2" fill="currentColor"/>
-            <circle cx="19" cy="6" r="1.2" fill="currentColor"/>
-          </svg>
-        </div>
-        <h3>Weight Progress</h3>
-        <p>Watch your journey unfold with beautiful charts. See milestones, track trends, and celebrate every step forward.</p>
-      </article>
-
-      <!-- Card 3: Syringe -->
-      <article class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 2l4 4"/>
-            <path d="M17 3l4 4-3 3-4-4z"/>
-            <path d="M14 6l-9 9v4h4l9-9"/>
-            <path d="M8 16l-2-2"/>
-          </svg>
-        </div>
-        <h3>Injection Site Rotation</h3>
-        <p>A body map guides your rotation to reduce tissue buildup and keep injections comfortable over time.</p>
-      </article>
-
-      <!-- Card 4: Waveform -->
-      <article class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 12h3l2-7 4 14 3-10 2 5 2-2h4"/>
-          </svg>
-        </div>
-        <h3>Side Effect Patterns</h3>
-        <p>Log symptoms after each dose and watch your personal patterns emerge. Know what to expect and when.</p>
-      </article>
-
-      <!-- Card 5: Lightbulb -->
-      <article class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 18h6"/>
-            <path d="M10 21h4"/>
-            <path d="M12 3a6 6 0 0 0-4 10.5c.8.7 1.5 1.5 1.5 2.5v1h5v-1c0-1 .7-1.8 1.5-2.5A6 6 0 0 0 12 3z"/>
-          </svg>
-        </div>
-        <h3>Weekly Insights</h3>
-        <p>SimplyDose analyzes your own data to surface personal patterns — like which days tend to be harder after your dose.</p>
-      </article>
-
-      <!-- Card 6: Clipboard -->
-      <article class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="6" y="4" width="12" height="17" rx="2"/>
-            <rect x="9" y="2" width="6" height="4" rx="1"/>
-            <path d="M9 11h6"/>
-            <path d="M9 15h6"/>
-            <path d="M9 18h3"/>
-          </svg>
-        </div>
-        <h3>Doctor Summary</h3>
-        <p>Generate a clean summary of your doses, weight, and symptoms to share at your next healthcare visit.</p>
-      </article>
-
+    <div class="fcard reveal">
+      <div class="fcard__ic"><svg width="27" height="27" viewBox="0 0 24 24" fill="none"><path d="M4 19h16M6 16l3.5-5 3.5 3 4-7" stroke="#A5636E" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h3>See it working</h3>
+      <p>Log your weight in a tap and watch the trend unfold. A gentle medication-level chart shows how much is still active between doses.</p>
+    </div>
+    <div class="fcard reveal">
+      <div class="fcard__ic"><svg width="27" height="27" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="#A5636E" stroke-width="1.7"/><circle cx="9" cy="10.5" r="1" fill="#A5636E"/><circle cx="15" cy="10.5" r="1" fill="#A5636E"/><path d="M9 15c1 .8 2 1.2 3 1.2s2-.4 3-1.2" stroke="#A5636E" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <h3>Understand how you feel</h3>
+      <p>Note nausea, fatigue, heartburn and more on simple scales. Notice your patterns over time and walk into every appointment prepared.</p>
     </div>
   </div>
 </section>
 
 <!-- ============ HOW IT WORKS ============ -->
-<section class="how-it-works">
-  <div class="container">
-    <div class="how-header">
-      <div class="eyebrow">How It Works</div>
-      <h2>Simple by design</h2>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-number">1</div>
-        <div class="step-content">
-          <h3>Set up your profile</h3>
-          <p>Tell us your medication, dose, and injection schedule. Takes less than 3 minutes.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-number">2</div>
-        <div class="step-content">
-          <h3>Log as you go</h3>
-          <p>Tap + to log a dose, weight, or side effects. SimplyDose remembers everything.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-number">3</div>
-        <div class="step-content">
-          <h3>See your patterns</h3>
-          <p>Weekly insights and beautiful charts show you what's working and what to watch.</p>
-        </div>
-      </div>
-    </div>
+<section class="how">
+  <div class="sec-head reveal">
+    <h2>Set up in <em>under a minute</em></h2>
+    <p>No spreadsheets. No complicated setup. Just open it, tell us about your plan, and begin.</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal"><div class="step__n">1</div><div><h3>Tell us your medication</h3><p>Choose your GLP-1, your dose, and how often you take it. SimplyDose builds your schedule for you, instantly.</p></div></div>
+    <div class="step reveal"><div class="step__n">2</div><div><h3>Log in seconds</h3><p>Tap once to record a dose, your weight, or how you're feeling today. That's the whole ritual.</p></div></div>
+    <div class="step reveal"><div class="step__n">3</div><div><h3>Watch your progress</h3><p>Every little entry becomes a clear, gentle picture of your journey — so you always know it's working.</p></div></div>
   </div>
 </section>
 
-<!-- ============ DOWNLOAD ============ -->
-<section class="download" id="download">
-  <div class="container">
-    <div class="download-inner">
-      <h2>Download SimplyDose</h2>
-      <p class="subheadline">
-        Available now on the App Store. Free to download.
-      </p>
-
-      <div class="download-cta">
-        <a href="https://apps.apple.com/us/app/id6767441916" target="_blank" rel="noopener" class="btn btn-primary btn-download">
-          Download on App Store
-        </a>
-      </div>
-
-      <div class="download-fineprint">
-        🔒 Your information is private. We will never sell your data.
-      </div>
-
-      <div class="waitlist-link">
-        Want to hear about new features? <a href="https://tally.so/r/b5KRRe" target="_blank" rel="noopener">Join our newsletter</a>.
-      </div>
-    </div>
+<!-- ============ PROMISE (brand voice, honest) ============ -->
+<section class="promise">
+  <div class="promise__card reveal">
+    <div class="promise__eyebrow">Our promise to you</div>
+    <div class="promise__t">We built SimplyDose to feel like a <em>calm, quiet friend</em> — never a lecture. Your data stays private and yours alone, and there's not an ad in sight. Just a soft, steady place to look after yourself.</div>
   </div>
 </section>
 
-<!-- ============ DISCLAIMER ============ -->
-<div class="disclaimer">
-  <div class="container">
-    <p>
-      SimplyDose is a personal tracking tool only and is not a medical device.
-      It does not provide medical advice, diagnosis, or treatment recommendations.
-      Always follow your prescriber's guidance.
-    </p>
+<!-- ============ FINAL CTA ============ -->
+<section class="final">
+  <div class="final__card reveal">
+    <h2>Start today. It only takes a <em>minute</em>.</h2>
+    <p>Free to download, gentle to use, and made to fit right into your day.</p>
+    <div class="cta-row">
+      <a class="apple-badge" href="https://apps.apple.com/app/id6767441916" data-appstore aria-label="Download on the App Store">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.05 12.54c-.02-2.1 1.71-3.11 1.79-3.16-0.98-1.43-2.5-1.62-3.03-1.64-1.29-.13-2.52.76-3.17.76-.65 0-1.66-.74-2.73-.72-1.4.02-2.7.82-3.42 2.07-1.46 2.54-.37 6.29 1.05 8.35.69 1.01 1.51 2.14 2.59 2.1 1.04-.04 1.43-.67 2.69-.67 1.25 0 1.61.67 2.71.65 1.12-.02 1.83-1.02 2.51-2.03.79-1.16 1.12-2.29 1.14-2.35-.03-.01-2.18-.84-2.2-3.29zM15.0 6.21c.57-.69.96-1.65.85-2.61-.82.03-1.82.55-2.41 1.24-.53.61-.99 1.59-.87 2.52.92.07 1.86-.46 2.43-1.15z"/></svg>
+        <div class="apple-badge__text"><small>Download on the</small><span>App Store</span></div>
+      </a>
+      <div class="cta-note"><span>iPhone · iOS 16+</span><span class="dot"></span><span>Android coming soon</span></div>
+    </div>
   </div>
-</div>
-
-<!-- ============ SUPPORT ============ -->
-<section class="support" aria-label="Support contact">
-  <div class="support-title">Questions or support?</div>
-  <a href="mailto:support@simplydose.app" class="support-email">
-    Email us at support@simplydose.app
-  </a>
-  <div class="support-response">We typically respond within 24 hours.</div>
 </section>
 
 <!-- ============ FOOTER ============ -->
 <footer>
-  <div class="container footer-inner">
-    <div>SimplyDose LLC © 2026</div>
-    <div>Made for women on GLP-1s</div>
-    <div class="footer-links">
-      <a href="https://simplydose.github.io/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
-      <span class="footer-sep" aria-hidden="true">·</span>
-      <a href="https://simplydose.github.io/terms.html" target="_blank" rel="noopener">Terms of Service</a>
-      <span class="footer-sep" aria-hidden="true">·</span>
-      <span>Support: <a href="mailto:support@simplydose.app">support@simplydose.app</a></span>
+  <div class="footer__row">
+    <div class="wordmark serif" style="font-size:20px">
+      <div class="mark" style="width:27px;height:27px">
+        <img src="assets/app-icon.png" alt="SimplyDose app icon"/>
+      </div>
+      SimplyDose
     </div>
+    <div class="footer__links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="mailto:support@simplydose.app">Support</a>
+      <a href="https://apps.apple.com/app/id6767441916" data-appstore>Download</a>
+    </div>
+  </div>
+  <div class="footer__legal">
+    SimplyDose is a personal tracking tool and does not provide medical advice, diagnosis, or treatment. Always consult your healthcare provider about your medication. Ozempic®, Wegovy®, Mounjaro®, Zepbound® and Saxenda® are trademarks of their respective owners and are not affiliated with or endorsing SimplyDose. © 2026 SimplyDose.
   </div>
 </footer>
 
-<script>
-  // Nav border on scroll
-  const nav = document.getElementById('nav');
-  const onScroll = () => {
-    if (window.scrollY > 4) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-</script>
+<!-- Mobile sticky download bar -->
+<div class="mcta" id="mcta">
+  <a class="btn" href="https://apps.apple.com/app/id6767441916" data-appstore>Download Free — App Store</a>
+</div>
 
+<script>
+(function(){
+  // ---- Scroll reveal (IO + scroll-event fallback) ----
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  reveals.forEach(function(el,i){ el.style.transitionDelay = (Math.min(i,6)*40)+'ms'; });
+  function revealCheck(){
+    reveals = reveals.filter(function(el){
+      if (el.classList.contains('in')) return false;
+      if (el.getBoundingClientRect().top < window.innerHeight - 30) {
+        el.classList.add('in');
+        return false;
+      }
+      return true;
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:0.12});
+    reveals.forEach(function(el){ io.observe(el); });
+  }
+  window.addEventListener('scroll', revealCheck, {passive:true});
+  window.addEventListener('resize', revealCheck, {passive:true});
+  revealCheck();
+  window.addEventListener('load', function(){
+    setTimeout(revealCheck, 300);
+  });
+
+  // ---- Mobile sticky CTA: show after hero, hide when final CTA is on screen ----
+  var mcta = document.getElementById('mcta');
+  var finalCard = document.querySelector('.final__card');
+  if (mcta) {
+    var update = function(){
+      var past = (window.scrollY || 0) > 560;
+      var finalVisible = false;
+      if (finalCard) {
+        var r = finalCard.getBoundingClientRect();
+        finalVisible = r.top < window.innerHeight * 0.85 && r.bottom > 0;
+      }
+      mcta.classList.toggle('show', past && !finalVisible);
+    };
+    window.addEventListener('scroll', update, {passive:true});
+    window.addEventListener('resize', update, {passive:true});
+    update();
+  }
+})();
+</script>
 </body>
 </html>
