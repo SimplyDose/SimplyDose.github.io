@@ -419,6 +419,7 @@
         finalVisible = r.top < window.innerHeight * 0.85 && r.bottom > 0;
       }
       var visible = past && !finalVisible;
+      if (!visible && mcta.contains(document.activeElement)) document.activeElement.blur();
       mcta.classList.toggle('show', visible);
       mcta.inert = !visible;
       mcta.setAttribute('aria-hidden', visible ? 'false' : 'true');
