@@ -214,14 +214,20 @@
     .footer__row{flex-direction:column;align-items:flex-start;}
     .footer__legal{margin-top:22px;}
   }
+  @media (min-width:360px) and (max-width:375px){
+    .header__row .btn{padding-left:14px;padding-right:14px;}
+  }
   @media (max-width:359px){
     .wordmark{font-size:20px;gap:8px;}
     .mark{width:28px;height:28px;}
-    .header__row .btn{padding:10px 14px;font-size:13px;}
+    .header__row .btn{padding:10px 11px;font-size:13px;}
   }
   @media (prefers-reduced-motion:reduce){
     .js .reveal{opacity:1;transform:none;transition:none;}
     html{scroll-behavior:auto;}
+    .mcta{display:none;transform:none;transition:none;}
+    .btn,.apple-badge{transition:none;}
+    .btn:hover,.btn:active,.apple-badge:hover{transform:none;box-shadow:none;}
   }
 </style>
 </head>
@@ -365,7 +371,7 @@
 </footer>
 
 <!-- Mobile sticky download bar -->
-<div class="mcta" id="mcta">
+<div class="mcta" id="mcta" inert aria-hidden="true">
   <a class="btn" href="https://apps.apple.com/app/id6767441916" data-appstore>View on the App Store</a>
 </div>
 
@@ -408,7 +414,10 @@
         var r = finalCard.getBoundingClientRect();
         finalVisible = r.top < window.innerHeight * 0.85 && r.bottom > 0;
       }
-      mcta.classList.toggle('show', past && !finalVisible);
+      var visible = past && !finalVisible;
+      mcta.classList.toggle('show', visible);
+      mcta.inert = !visible;
+      mcta.setAttribute('aria-hidden', visible ? 'false' : 'true');
     };
     window.addEventListener('scroll', update, {passive:true});
     window.addEventListener('resize', update, {passive:true});

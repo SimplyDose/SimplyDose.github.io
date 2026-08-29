@@ -10,6 +10,7 @@ body { font-family: -apple-system, sans-serif; max-width: 700px;
 h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
 h2 { font-size: 20px; font-weight: 700; margin-top: 36px; margin-bottom: 8px; }
 h3 { font-size: 17px; font-weight: 600; margin-top: 24px; }
+.section-title { font-size: 28px; margin-top: 0; margin-bottom: 4px; }
 p { color: #444; margin: 12px 0; }
 ul { color: #444; padding-left: 24px; }
 li { margin: 6px 0; }
@@ -17,6 +18,7 @@ table { width: 100%; border-collapse: collapse; margin: 16px 0; }
 th, td { border: 1px solid #E5E7EB; padding: 10px 14px; text-align: left;
          font-size: 15px; color: #444; }
 th { background: #F9FAFB; font-weight: 600; color: #1A1A1A; }
+.table-scroll { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .subtitle { color: #6B7280; font-size: 15px; margin-bottom: 32px; }
 .back { margin-bottom: 24px; }
 .back a { color: #1A1A1A; font-size: 14px; }
@@ -103,7 +105,8 @@ strong { color: #1A1A1A; }
 
 <p>We keep analytics event data for up to <strong>12 months</strong>, after which it is deleted. It is removed sooner if you opt out or delete your account. All analytics data is encrypted in transit.</p>
 
-<h2>Where &amp; How We Store Your Data</h2>
+<h2 id="data-storage-heading">Where &amp; How We Store Your Data</h2>
+<div class="table-scroll" role="region" aria-labelledby="data-storage-heading" tabindex="0">
 <table>
 <tr><th>Data Type</th><th>Storage</th><th>Notes</th></tr>
 <tr><td>Account information</td><td>Supabase</td><td>Used for authentication and to associate your data with your account.</td></tr>
@@ -112,6 +115,7 @@ strong { color: #1A1A1A; }
 <tr><td>Subscription status</td><td>RevenueCat (United States)</td><td>Subscription state, product identifier, purchase and renewal dates, and an anonymized receipt identifier. No payment card details and no health data.</td></tr>
 <tr><td>Crash and performance information</td><td>Apple App Store Connect</td><td>Provided by Apple to help us identify and fix bugs.</td></tr>
 </table>
+</div>
 
 <h2>How Long We Keep Your Data</h2>
 <table>
@@ -165,7 +169,7 @@ strong { color: #1A1A1A; }
 
 <hr style="margin: 48px 0; border: none; border-top: 1px solid #E5E7EB;">
 
-<h1>SimplyDose Health Data Privacy Section</h1>
+<h2 class="section-title">SimplyDose Health Data Privacy Section</h2>
 <p class="subtitle"><em>Last Updated: June 28, 2026</em></p>
 <p>This section supplements our main Privacy Policy and explains how we handle sensitive health information.</p>
 
