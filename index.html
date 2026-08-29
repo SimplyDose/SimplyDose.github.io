@@ -17,12 +17,12 @@
     --blush:#F3E7E0;      /* soft surface */
     --blush2:#EEDCD3;     /* deeper surface */
     --rose:#C0808A;       /* dusty rose accent */
-    --rose-deep:#A5636E;  /* deeper rose */
+    --rose-deep:#8F4F5B;  /* deeper rose */
     --berry:#6E3D48;      /* primary CTA / deep accent */
     --plum:#3B2D33;       /* warm dark */
     --ink:#33292C;        /* warm near-black text */
-    --t2:#87757A;         /* muted mauve-gray */
-    --t3:#AE9EA2;         /* light mauve-gray */
+    --t2:#6B5A60;         /* muted mauve-gray */
+    --t3:#6B5A60;         /* light mauve-gray */
     --divider:#E7D8D1;
     --white:#FFFFFF;
     --maxw:1080px;
@@ -118,10 +118,10 @@
   .dot{width:3px;height:3px;border-radius:2px;background:var(--rose);opacity:0.6;}
 
   /* ---------- Hero phone render ---------- */
-  .hero-phone{margin:10px auto 6px;max-width:560px;}
-  .hero-phone img{
-    width:100%;max-height:56vh;object-fit:contain;display:block;margin:0 auto;
-  }
+  .hero-phone{margin:10px auto 6px;}
+  .hero-phone__crop{height:min(56vh,620px);aspect-ratio:5/8;overflow:hidden;margin:0 auto;position:relative;}
+  .hero-phone img{position:absolute;height:162.25%;width:auto;max-width:none;left:-42%;top:-25%;}
+  .hero-phone figcaption{font-size:13px;color:var(--t2);font-weight:500;margin-top:8px;}
 
   /* ---------- Supported-meds band (honest) ---------- */
   .meds{padding:52px 24px;text-align:center;background:var(--blush);}
@@ -196,9 +196,10 @@
   }
   @media (max-width:520px){
     section{padding-left:20px;padding-right:20px;}
+    .header__row{padding-left:16px;padding-right:16px;}
     .hero{padding-top:32px;padding-bottom:34px;}
     .hero-phone{margin-top:6px;}
-    .hero-phone img{max-height:52vh;}
+    .hero-phone__crop{height:min(52vh,620px);}
     .cta-btns{width:100%;}
     .cta-btns .btn{flex:1;min-width:0;padding:15px 18px;}
     .meds{padding:40px 20px;}
@@ -212,6 +213,11 @@
     .promise__card{padding:48px 26px;}
     .footer__row{flex-direction:column;align-items:flex-start;}
     .footer__legal{margin-top:22px;}
+  }
+  @media (max-width:359px){
+    .wordmark{font-size:20px;gap:8px;}
+    .mark{width:28px;height:28px;}
+    .header__row .btn{padding:10px 14px;font-size:13px;}
   }
   @media (prefers-reduced-motion:reduce){
     .js .reveal{opacity:1;transform:none;transition:none;}
@@ -242,9 +248,12 @@
     <p class="sub reveal">Record doses, weight, and side effects with SimplyDose Premium. Eligible new subscribers can try it free for 14 days.</p>
 
     <!-- Hero phone render -->
-    <div class="hero-phone reveal">
-      <img src="assets/hero-phone.png" alt="SimplyDose app on iPhone with Semaglutide and Tirzepatide vials" fetchpriority="high"/>
-    </div>
+    <figure class="hero-phone reveal">
+      <div class="hero-phone__crop">
+        <img src="assets/hero-phone.png" alt="SimplyDose example home screen with sample data" fetchpriority="high"/>
+      </div>
+      <figcaption>Example screen with sample data</figcaption>
+    </figure>
 
     <!-- CTAs directly below the phone -->
     <div class="cta-row reveal">
@@ -282,13 +291,13 @@
   <div class="fgrid">
     <div class="fcard reveal">
       <div class="fcard__ic"><svg width="27" height="27" viewBox="0 0 24 24" fill="none"><path d="M16 3l5 5M14 5l5 5M11 8l5 5M7 12l5 5-2 2-5-5 2-2zM5 18l-2 2" stroke="#A5636E" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <h3>Never miss a dose</h3>
-      <p>A calm countdown shows exactly when your next dose is due. Gentle reminders and a rotating injection-site tracker keep you right on schedule.</p>
+      <h3>Plan and log doses</h3>
+      <p>View a countdown based on your recorded schedule, set dose reminders, and track injection sites.</p>
     </div>
     <div class="fcard reveal">
       <div class="fcard__ic"><svg width="27" height="27" viewBox="0 0 24 24" fill="none"><path d="M4 19h16M6 16l3.5-5 3.5 3 4-7" stroke="#A5636E" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <h3>See it working</h3>
-      <p>Log your weight in a tap and watch the trend unfold. A gentle medication-level chart shows how much is still active between doses.</p>
+      <h3>Review recorded trends</h3>
+      <p>Log weight and view your entries over time. The medication-level chart is an estimate based on recorded dose timing, not a measure of medication effectiveness.</p>
     </div>
     <div class="fcard reveal">
       <div class="fcard__ic"><svg width="27" height="27" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="#A5636E" stroke-width="1.7"/><circle cx="9" cy="10.5" r="1" fill="#A5636E"/><circle cx="15" cy="10.5" r="1" fill="#A5636E"/><path d="M9 15c1 .8 2 1.2 3 1.2s2-.4 3-1.2" stroke="#A5636E" stroke-width="1.5" stroke-linecap="round"/></svg></div>
@@ -301,13 +310,13 @@
 <!-- ============ HOW IT WORKS ============ -->
 <section class="how">
   <div class="sec-head reveal">
-    <h2>Set up in <em>under a minute</em></h2>
+    <h2>Set up your <em>routine</em></h2>
     <p>No spreadsheets. No complicated setup. Just open it, tell us about your plan, and begin.</p>
   </div>
   <div class="steps">
-    <div class="step reveal"><div class="step__n">1</div><div><h3>Tell us your medication</h3><p>Choose your GLP-1, your dose, and how often you take it. SimplyDose builds your schedule for you, instantly.</p></div></div>
-    <div class="step reveal"><div class="step__n">2</div><div><h3>Log in seconds</h3><p>Tap once to record a dose, your weight, or how you're feeling today. That's the whole ritual.</p></div></div>
-    <div class="step reveal"><div class="step__n">3</div><div><h3>Watch your progress</h3><p>Every little entry becomes a clear, gentle picture of your journey — so you always know it's working.</p></div></div>
+    <div class="step reveal"><div class="step__n">1</div><div><h3>Tell us your medication</h3><p>Choose your GLP-1, your dose, and how often you take it. SimplyDose uses those details to display your schedule.</p></div></div>
+    <div class="step reveal"><div class="step__n">2</div><div><h3>Record your routine</h3><p>Use the logging screens to record a dose, weight, or side effects.</p></div></div>
+    <div class="step reveal"><div class="step__n">3</div><div><h3>Review your records</h3><p>Entries appear in progress views to help you review recorded trends and notes.</p></div></div>
   </div>
 </section>
 
@@ -315,21 +324,21 @@
 <section class="promise">
   <div class="promise__card reveal">
     <div class="promise__eyebrow">Our promise to you</div>
-    <div class="promise__t">We built SimplyDose to feel like a <em>calm, quiet friend</em> — never a lecture. Your data stays private and yours alone, and there's not an ad in sight. Just a soft, steady place to look after yourself.</div>
+    <div class="promise__t">SimplyDose lets you record doses, weight, and side effects in one <em>calm place</em>. Review the Privacy Policy for details about how data is handled.</div>
   </div>
 </section>
 
 <!-- ============ FINAL CTA ============ -->
 <section class="final">
   <div class="final__card reveal">
-    <h2>Start today. It only takes a <em>minute</em>.</h2>
+    <h2>See SimplyDose on the <em>App Store</em>.</h2>
     <p>Use of SimplyDose after onboarding requires an active SimplyDose Premium subscription.</p>
     <div class="cta-row">
       <a class="apple-badge" href="https://apps.apple.com/app/id6767441916" data-appstore aria-label="View on the App Store">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.05 12.54c-.02-2.1 1.71-3.11 1.79-3.16-0.98-1.43-2.5-1.62-3.03-1.64-1.29-.13-2.52.76-3.17.76-.65 0-1.66-.74-2.73-.72-1.4.02-2.7.82-3.42 2.07-1.46 2.54-.37 6.29 1.05 8.35.69 1.01 1.51 2.14 2.59 2.1 1.04-.04 1.43-.67 2.69-.67 1.25 0 1.61.67 2.71.65 1.12-.02 1.83-1.02 2.51-2.03.79-1.16 1.12-2.29 1.14-2.35-.03-.01-2.18-.84-2.2-3.29zM15.0 6.21c.57-.69.96-1.65.85-2.61-.82.03-1.82.55-2.41 1.24-.53.61-.99 1.59-.87 2.52.92.07 1.86-.46 2.43-1.15z"/></svg>
         <div class="apple-badge__text"><small>View on the</small><span>App Store</span></div>
       </a>
-      <div class="cta-note"><span>Account required</span><span class="dot"></span><span>iPhone · iOS 17+</span><span class="dot"></span><span>Android coming soon</span></div>
+      <div class="cta-note"><span>Account required</span><span class="dot"></span><span>iPhone · iOS 17+</span></div>
     </div>
   </div>
 </section>
