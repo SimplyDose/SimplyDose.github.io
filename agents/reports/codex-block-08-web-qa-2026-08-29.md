@@ -2,7 +2,7 @@
 
 - **Branch:** `codex/block-08-web-qa`
 - **Approved base:** `69451b4634c48c09b324f6dd06f490dbd3daa584`
-- **Implementation commits:** `bb396b9`, `fc99105`, `269da70`, `e8f2d5e`
+- **Implementation commits:** `bb396b9`, `fc99105`, `269da70`, `e8f2d5e`, `23d7c5a`
 - **Local technical result:** PASS
 - **Publication result:** OWNER-GATED
 - **Published, pushed, or deployed:** No
@@ -23,10 +23,10 @@ The landing page now:
 - Removes the unsupported Android delivery promise.
 - Uses CSS to show only the real app screen from the existing hero image, with visible and accessible sample-data labeling.
 - Uses normal-text colors that meet at least 4.5:1 contrast on every applicable background.
-- Reflows without page-level horizontal overflow from 320 pixels upward.
-- Keeps the wordmark and App Store button separated at the 359/360 boundary and down to a 305-pixel effective browser content width.
+- Reflows without page-level horizontal overflow from 320 pixels upward, including when Google Fonts is unavailable and the declared fallback fonts render.
+- Keeps the wordmark and App Store button separated across every integer width from 320 through 520, including a simulated 15-pixel scrollbar gutter.
 - Keeps the hidden mobile sticky CTA out of keyboard and accessibility navigation.
-- Moves focus out of the sticky CTA before applying hidden, inert, and aria-hidden state.
+- Moves focus from the sticky CTA to the equivalent visible App Store CTA before applying hidden, inert, and aria-hidden state.
 - Fully removes decorative/reveal motion when the user prefers reduced motion.
 
 The Privacy page received only technical metadata, responsive table containment, focus semantics, and a corrected H1/H2 hierarchy. The Terms page received only the page-language declaration. No legal wording or legal date was changed.
@@ -35,19 +35,20 @@ The Privacy page received only technical metadata, responsive table containment,
 
 ## Final full QA result
 
-The final full rerun tested commit `e8f2d5e` at:
+The final full rerun tested commit `23d7c5a` at:
 
 `1440x900`, `1024x768`, `861x800`, `860x800`, `641x800`, `640x800`, `521x800`, `520x800`, `430x932`, `390x844`, `375x667`, `360x640`, `359x640`, and `320x568`.
 
 All required Chromium/Playwright gates passed:
 
 - Zero page-level horizontal overflow.
-- Positive wordmark-to-CTA gaps at the required narrow widths: 23.02 px at 375, 8.02 px at 360, 25.81 px at 359, and 10.81 px at 320.
+- A blocked-Google-Fonts sweep passed all 201 integer widths from 320 through 520. The minimum wordmark-to-CTA gap was 9.953125 px at width 321, with zero clipping or overflow.
 - Zero visible decorative-vial pixels at every viewport, from 62,629 matching pixels in the protected source image.
 - Exactly five App Store CTA destinations, all `https://apps.apple.com/app/id6767441916`.
 - Correct image dimensions, non-empty alt text, one H1 per page, ordered headings, page language, accessible link names, keyboard order, and visible focus.
 - Correct sticky CTA initial, shown, focused, and final-hidden states at both sides of the 641/640 breakpoint and every required mobile sentinel.
-- Sixty-one fresh shown-focus-to-hidden sequences with zero console warnings or errors. The prior intermittent aria-hidden warning did not recur.
+- Sixty-four fresh shown-focus-to-hidden sequences with zero console warnings or errors. Focus transferred to the final CTA when it was visible and to the sticky header CTA when scrolling upward, with no scroll jump. The prior intermittent aria-hidden warning did not recur.
+- The 12-pixel promise eyebrow measured 4.714:1 contrast, passing the 4.5:1 requirement.
 - Reduced-motion behavior removes reveal, sticky, button, and badge transitions and hover transforms.
 - 200 percent and 400 percent reflow equivalents pass without page overflow.
 - Privacy's wide table stays inside a named, focusable, locally scrollable region at 320 pixels.
@@ -79,7 +80,7 @@ This is a tool-state residual permitted by the approved plan, not a Chromium PAS
 
 - `git diff --check`: PASS.
 - Source branch status after final QA: clean.
-- Reader-visible website copy is unchanged by the two final technical fixes.
+- Reader-visible website copy is unchanged by the final technical fixes.
 - `privacy.html`, `terms.html`, and the hero asset remained unchanged during the final focus fix.
 - iOS build: not required because this branch contains static website HTML only.
 - No substantive privacy or Terms edit, website publication, App Store edit, ad activation, purchase, or production mutation was performed.
