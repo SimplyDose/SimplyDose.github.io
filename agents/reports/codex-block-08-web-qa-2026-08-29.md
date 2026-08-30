@@ -66,7 +66,7 @@ The complete QA transcript is retained in:
 
 ## Narrow Safari residual
 
-Safari desktop and native App Store handoff were verified on earlier website commits without activating Get, Redownload, or a purchase. During the final `e8f2d5e` rerun, Computer Use twice reported that the Mac was locked and could not unlock it automatically. Therefore no current-commit Safari responsive, zoom, sticky, legal-table, Reduce Motion, or App Store handoff result is claimed.
+Safari desktop and native App Store handoff were verified on earlier website commits without activating Get, Redownload, or a purchase. During the final `23d7c5a` rerun, one Computer Use attempt reported that the Mac was locked and could not unlock it automatically. Therefore no current-commit Safari responsive, zoom, sticky, legal-table, Reduce Motion, or App Store handoff result is claimed.
 
 This is a tool-state residual permitted by the approved plan, not a Chromium PASS extrapolated to Safari. Repeat the bounded Safari checks after the Mac is unlocked and before publication.
 
