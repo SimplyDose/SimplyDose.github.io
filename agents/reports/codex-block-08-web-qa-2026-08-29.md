@@ -5,7 +5,8 @@
 - **Implementation commits:** `bb396b9`, `fc99105`, `269da70`, `e8f2d5e`, `23d7c5a`
 - **Local technical result:** PASS
 - **Publication result:** OWNER-GATED
-- **Published, pushed, or deployed:** No
+- **Candidate branch pushed:** No
+- **Published or deployed:** No
 - **Production or authenticated dashboard mutations:** None
 
 ## What changed
@@ -64,11 +65,17 @@ The complete QA transcript is retained in:
 
 `/Users/joshuamunger/Projects/SimplyDose/.codex-worktrees/block-07-integrated/.superpowers/sdd/block-08-creative-web-qa-2026-08-29/task-5-report.md`
 
-## Narrow Safari residual
+## Current Safari gate
 
-Safari desktop and native App Store handoff were verified on earlier website commits without activating Get, Redownload, or a purchase. During the final `23d7c5a` rerun, one Computer Use attempt reported that the Mac was locked and could not unlock it automatically. Therefore no current-commit Safari responsive, zoom, sticky, legal-table, Reduce Motion, or App Store handoff result is claimed.
+On 2026-09-07, a clean local worktree at `9783950` received a bounded Safari 26.6 run on macOS 26.6. The retained screenshots support the visible desktop viewport, narrow viewport, and focus-ring state only. In the same manual session, the local Privacy and Terms pages loaded; those two observations do not have retained screenshots. The commit identity comes from the contemporaneous Git check, not from pixels in the images.
 
-This is a tool-state residual permitted by the approved plan, not a Chromium PASS extrapolated to Safari. Repeat the bounded Safari checks after the Mac is unlocked and before publication.
+Retained evidence:
+
+- `/private/tmp/simplydose-safari-gate/desktop.png` — SHA-256 `183faa4be84938651fe887280d5a2cfd157837911382cd24ba71ce87a572fad2`
+- `/private/tmp/simplydose-safari-gate/narrow.png` — SHA-256 `92e85ca3c456c9db88b9eb4ffb0dd863cd1e73049b051a778d38ba8341d683d8`
+- `/private/tmp/simplydose-safari-gate/focus-option-tab.png` — SHA-256 `9dab5d2e88937558fab9808aa99cbeccc98d8482ebce6b08ae316e7b982c7bae`
+
+This bounded Safari check supplements, rather than repeats, the exhaustive Chromium matrix above. It does not prove full-page clipping, keyboard input provenance, Reduce Motion, zoom, App Store handoff, or dashboard state. The candidate was not pushed, published, or deployed, and the legal/privacy/publication gates below remain unchanged.
 
 ## Publication owner gates
 
