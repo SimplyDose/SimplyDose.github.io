@@ -5,6 +5,7 @@
 - Base candidate: `b340674` (`website: prepare conversion-first product hub`)
 - Review remediation: `e147704` (`website: address public surfaces review`)
 - Legal-page font rollback: `87a00a1` (`website: retain legal page system fonts`)
+- Remote-font removal: `af21c2c` (`website: remove remote font requests`)
 
 ## Remediation
 
@@ -19,16 +20,22 @@
   unchanged and they use their existing system-font presentation.
 - Removed all Google Fonts requests from the five marketing pages. They now use the local system-font
   stack, eliminating that third-party font-vendor request without changing page content.
+- Fresh review found that three compact-page headers had no space between the wordmark and App Store
+  CTA at 320 px. They now reuse the sibling page's 16 px navigation gap without changing copy or links.
 
 ## Verification
 
 - At a CDP-emulated 320 by 568 viewport, all seven HTML pages had one H1 and `scrollWidth ==
-  clientWidth == 320`; no element extended beyond the viewport.
+  clientWidth`; no element extended beyond the viewport.
 - The index has no `assets/hero-phone.png` element, and both ordinary discovery links resolve in the
   browser DOM. The exact account-deletion route is present on `privacy-controls.html`.
 - Browser console warnings/errors: none. `git diff --check`: PASS.
 - The five marketing pages contain no `fonts.googleapis.com` or `fonts.gstatic.com` references and
   pass local HTTP checks at desktop, 390 px, and 320 px with visible keyboard focus and no console errors.
+- The affected compact-page headers retain a measured 16 px wordmark-to-CTA gap at 320 px.
+- Fresh 320 px screenshots were captured for all three affected pages. The full desktop, 390 px,
+  and 320 px matrix, HTTP responses, sitemap entries, keyboard focus, and network checks passed with
+  zero failed requests or remote font requests.
 
 ## Remaining gates
 
