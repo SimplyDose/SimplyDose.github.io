@@ -6,11 +6,14 @@
 - Review remediation: `e147704` (`website: address public surfaces review`)
 - Legal-page font rollback: `87a00a1` (`website: retain legal page system fonts`)
 - Remote-font removal: `af21c2c` (`website: remove remote font requests`)
+- Compact-header fix: `4a59e1d` (`website: preserve compact header spacing`)
+- Website correctness/accessibility checkpoint: `17ccab6` (`website: correct summary copy and table semantics`)
 
 ## Remediation
 
-- Removed the legacy hero figure entirely. No product screenshot or source image is presented until a
-  reviewed product commit and conductor fixture can produce real synthetic-data proof.
+- Removed the legacy hero figure entirely. A reviewed final App Store capture set is now supplied on
+  `docs/conversion-first-store-assets` at `f045e5b`, but it is not integrated into this website candidate;
+  the website still presents no product screenshot or source image.
 - Replaced the index shell's `min()` width with a `max-width` plus `calc()` width. The 320 px browser
   gate now compares `documentElement.scrollWidth` to `documentElement.clientWidth`.
 - Added ordinary links from the history card to `tracking-template.html` and from the appointment card
@@ -22,6 +25,8 @@
   stack, eliminating that third-party font-vendor request without changing page content.
 - Fresh review found that three compact-page headers had no space between the wordmark and App Store
   CTA at 320 px. They now reuse the sibling page's 16 px navigation gap without changing copy or links.
+- Corrected Visit Summary copy to match its 30-, 60-, and 90-day period selector, and replaced the
+  printable template's faux table with a native semantic table without changing its visual geometry.
 
 ## Verification
 
@@ -36,11 +41,14 @@
 - Fresh 320 px screenshots were captured for all three affected pages. The full desktop, 390 px,
   and 320 px matrix, HTTP responses, sitemap entries, keyboard focus, and network checks passed with
   zero failed requests or remote font requests.
+- At website source checkpoint `17ccab6`, focused HTML, internal-link, accessibility-role, responsive,
+  print, and Playwright checks passed for `visit-summary.html` and `tracking-template.html`.
 
 ## Remaining gates
 
-Final App Store captures remain blocked on the reviewed Tasks 2 and 3 product commit and the
-conductor-owned synthetic fixture. Fresh independent review, substantive legal review of the hosted
-Privacy wording, App Store Connect edits, and publication remain owner-controlled. In particular,
-`privacy.html` still says SimplyDose has no marketing website beyond the Privacy Policy page; that
-scope is false for this marketing-site candidate and remains an owner/legal publication blocker.
+The reviewed final App Store capture set is supplied on a separate branch but is not integrated into
+this website candidate. Any website-image integration requires its own reviewed change. Fresh independent
+review, substantive legal review of the hosted Privacy wording, App Store Connect edits, and publication
+remain owner-controlled. In particular, `privacy.html` still says SimplyDose has no marketing website
+beyond the Privacy Policy page; that scope is false for this marketing-site candidate and remains an
+owner/legal publication blocker.
