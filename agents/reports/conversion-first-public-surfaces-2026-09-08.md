@@ -52,3 +52,15 @@ review, substantive legal review of the hosted Privacy wording, App Store Connec
 remain owner-controlled. In particular, `privacy.html` still says SimplyDose has no marketing website
 beyond the Privacy Policy page; that scope is false for this marketing-site candidate and remains an
 owner/legal publication blocker.
+
+The hosted Privacy wording also retains three unresolved PostHog evidence mismatches:
+
+- It calls usage events tied to an internal account ID anonymous even though the app identifies PostHog
+  with the stable Supabase user UUID (`privacy.html:97-98,114,142`).
+- Its broad no-health-information language conflicts with the disclosed and implemented health-feature
+  usage events, including dose- and weight-log action facts (`privacy.html:93,97,185,192`).
+- Its 12-month retention and earlier-removal promise after opt-out or account deletion is not supported
+  by verified provider-side retention controls or a provider-side deletion request (`privacy.html:106,125`).
+
+Resolving those statements requires Joshua's privacy/legal decision and live provider verification.
+This report does not approve replacement legal wording or authorize publication.

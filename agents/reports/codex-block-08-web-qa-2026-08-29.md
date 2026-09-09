@@ -63,11 +63,13 @@ All required Chromium/Playwright gates passed:
 - Zero failed requests, console warnings, console errors, page errors, or 4xx/5xx responses.
 - Read-only server stopped cleanly and a post-stop probe confirmed it was no longer serving.
 
-Screenshots and full measurements from that historical QA run are referenced repository-relatively at:
+Screenshots and full measurements from that historical QA run are external, local-only evidence in the
+separate SimplyDose-iOS `block-07-integrated` worktree. They are not stored in this website repository
+or branch. Relative to the root of that local worktree, they are at:
 
 `.superpowers/sdd/block-08-creative-web-qa-2026-08-29/task-5-screenshots/`
 
-The complete QA transcript is retained in:
+The complete QA transcript is retained in that same external, local-only worktree at:
 
 `.superpowers/sdd/block-08-creative-web-qa-2026-08-29/task-5-report.md`
 
@@ -86,7 +88,14 @@ This bounded Safari check supplements, rather than repeats, the exhaustive Chrom
 ## Publication owner gates
 
 1. `privacy.html` says SimplyDose has no marketing website beyond the Privacy Policy page, while this branch is a marketing-site candidate. Joshua must approve legally reviewed wording and dates before publication.
-2. The public App Store description, offer wording, subscription display names, and App Privacy label must be reconciled using `agents/reports/codex-block-08-creative-2026-08-29.md` before driving paid traffic.
+2. `privacy.html` retains three unresolved PostHog evidence mismatches: it calls UUID-linked usage events
+   anonymous (`:97-98,114,142`); its broad no-health-information language conflicts with disclosed and
+   implemented health-feature usage events such as dose- and weight-log action facts (`:93,97,185,192`);
+   and its retention/removal promise after opt-out or account deletion lacks verified provider-side
+   retention controls or a provider-side deletion request (`:106,125`). Joshua must resolve these through
+   privacy/legal review and live provider verification. This report does not approve replacement legal
+   wording.
+3. The public App Store description, offer wording, subscription display names, and App Privacy label must be reconciled using `agents/reports/codex-block-08-creative-2026-08-29.md` before driving paid traffic.
 
 The prior external-font gate is resolved at `af21c2c`: all website pages now use local system fonts and
 contain no Google Fonts requests.
