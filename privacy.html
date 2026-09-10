@@ -101,9 +101,10 @@ strong { color: #1A1A1A; }
 
 <p>We use this information only to operate and improve SimplyDose. We do <strong>not</strong> use it for advertising, we do <strong>not</strong> track you across other apps or websites, and we do <strong>not</strong> sell it. PostHog acts as our service provider and processes this data on our behalf. You can read PostHog's own privacy policy at <a href="https://posthog.com/privacy">posthog.com/privacy</a>.</p>
 
-<p><strong>You are in control.</strong> Analytics is on by default, but you can turn it off at any time inside the app: open the <strong>Profile</strong> tab and tap <strong>Privacy Settings</strong>, then switch off "Share anonymous analytics." When analytics is turned off, the app stops sending usage events right away.</p>
+<p><strong>You are in control.</strong> Analytics is on by default, but you can turn it off at any time inside the app: open the <strong>Profile</strong> tab and tap <strong>Privacy Settings</strong>, then switch off "Share anonymous analytics."</p>
+<p>Turning off analytics stops new analytics events and removes unsent analytics events queued on this device. Requests already being sent and events already received by PostHog cannot be recalled or deleted by this toggle.</p>
 
-<p>We keep analytics event data for up to <strong>12 months</strong>, after which it is deleted. It is removed sooner if you opt out or delete your account. All analytics data is encrypted in transit.</p>
+<p>We keep analytics event data for up to <strong>12 months</strong>, after which it is deleted. It is removed sooner if you delete your account. All analytics data is encrypted in transit.</p>
 
 <h2 id="data-storage-heading">Where &amp; How We Store Your Data</h2>
 <div class="table-scroll" role="region" aria-labelledby="data-storage-heading" tabindex="0">
@@ -122,7 +123,7 @@ strong { color: #1A1A1A; }
 <tr><th>Data Type</th><th>Retention</th></tr>
 <tr><td>Account information</td><td>Kept while your account is active. Deleted when you delete your account.</td></tr>
 <tr><td>Health entries</td><td>Kept until you delete them in the app or delete your account.</td></tr>
-<tr><td>Analytics and usage events</td><td>Kept up to 12 months, then deleted. Removed sooner if you opt out or delete your account.</td></tr>
+<tr><td>Analytics and usage events</td><td>Kept up to 12 months, then deleted. Removed sooner if you delete your account.</td></tr>
 <tr><td>Subscription information</td><td>Kept while your subscription is active. Transaction records may be retained longer where required for legal, tax, or accounting purposes.</td></tr>
 <tr><td>Crash and performance information</td><td>Retained according to Apple's standard policies.</td></tr>
 <tr><td>Support communications</td><td>Kept as long as reasonably necessary.</td></tr>
