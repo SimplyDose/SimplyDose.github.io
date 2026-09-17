@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SimplyDose Privacy Policy</title>
 <style>
-body { font-family: -apple-system, sans-serif; max-width: 700px;
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 760px;
        margin: 40px auto; padding: 0 20px; color: #1A1A1A; line-height: 1.6; }
 h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
 h2 { font-size: 20px; font-weight: 700; margin-top: 36px; margin-bottom: 8px; }
@@ -11,188 +14,153 @@ h3 { font-size: 17px; font-weight: 600; margin-top: 24px; }
 p { color: #444; margin: 12px 0; }
 ul { color: #444; padding-left: 24px; }
 li { margin: 6px 0; }
-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+table { width: 100%; border-collapse: collapse; margin: 0; }
 th, td { border: 1px solid #E5E7EB; padding: 10px 14px; text-align: left;
-         font-size: 15px; color: #444; }
+         vertical-align: top; font-size: 15px; color: #444; }
 th { background: #F9FAFB; font-weight: 600; color: #1A1A1A; }
+a { color: #1A1A1A; }
+a:focus-visible, .table-scroll:focus-visible { outline: 2px solid #1A1A1A; outline-offset: 3px; }
 .subtitle { color: #6B7280; font-size: 15px; margin-bottom: 32px; }
 .back { margin-bottom: 24px; }
-.back a { color: #1A1A1A; font-size: 14px; }
+.back a { font-size: 14px; }
+.table-scroll { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 16px 0; }
 strong { color: #1A1A1A; }
+@media (max-width: 520px) {
+  body { margin: 24px auto; padding: 0 16px; }
+  h1 { font-size: 25px; }
+  th, td { padding: 9px 10px; font-size: 14px; }
+}
 </style>
 </head>
 <body>
 
-<div class="back"><a href="/">← SimplyDose</a></div>
+<div class="back"><a href="/">&larr; SimplyDose</a></div>
 
 <h1>SimplyDose Privacy Policy</h1>
-<p class="subtitle"><strong>Effective Date:</strong> May 23, 2026 &nbsp;|&nbsp; <strong>Last Updated:</strong> June 28, 2026</p>
+<p class="subtitle"><strong>Effective Date:</strong> September 17, 2026 &nbsp;|&nbsp; <strong>Last Updated:</strong> September 17, 2026</p>
 
 <h2>Introduction</h2>
-<p>We created SimplyDose to help people taking GLP-1 medications stay organized, track their progress, and feel more in control of their health journey.</p>
-<p>Using SimplyDose involves entrusting us with certain information (and, in some cases, a small number of carefully selected service providers that help us run the app). We treat that responsibility with care.</p>
-<p>This Privacy Policy explains:</p>
-<ul>
-<li>What information we collect</li>
-<li>How we use it</li>
-<li>Who we share it with</li>
-<li>Your rights and choices</li>
-<li>How to contact us</li>
-</ul>
-<p>We have also included a dedicated Health Data section below with additional details about how we handle sensitive health information.</p>
+<p>SimplyDose LLC ("SimplyDose," "we," or "us") provides an iOS app that helps people organize records related to their GLP-1 routine. This Privacy Policy explains what information SimplyDose processes, why we process it, the service providers involved, and the controls available to you.</p>
+<p>SimplyDose is a tracking and organization tool. It is not a medical device and does not provide medical advice, diagnosis, or treatment.</p>
 
 <h2>Where This Policy Applies</h2>
-<p>This Privacy Policy applies to the SimplyDose iOS application. SimplyDose is currently available only as an iOS app on the United States Apple App Store. We do not currently offer an Android app, and we do not operate a marketing website beyond the page where this Privacy Policy is hosted.</p>
+<p>This policy applies to the SimplyDose iOS app and SimplyDose-operated website pages that link to it, including product, support, privacy-control, and legal pages.</p>
+<div class="table-scroll" role="region" aria-label="SimplyDose platforms" tabindex="0">
 <table>
-<tr><th>Platform</th><th>How it works</th></tr>
-<tr><td>iOS App</td><td>Requires creating an account using a magic link sent to your email address (managed by Supabase). Your health entries and account data are stored in our Supabase database, associated with your account.</td></tr>
+<tr><th>Surface</th><th>How it works</th></tr>
+<tr><td>iOS app</td><td>An account is required. Email authentication is handled by Supabase and can use an emailed sign-in link or a 6-digit one-time code. Account and tracking records are associated with an internal account ID.</td></tr>
+<tr><td>Website</td><td>Public product, support, privacy-control, and legal pages can be viewed without a SimplyDose account. If you email support, we receive the information you include in that message.</td></tr>
 </table>
+</div>
 
-<h2>Key Terms (Plain English)</h2>
+<h2>Information We Process</h2>
+<h3>Account and Profile Information</h3>
 <ul>
-<li><strong>Health data:</strong> Information about your health that you enter into the app (for example, GLP-1 injections, side effects, weight, and any notes you write).</li>
-<li><strong>Account information:</strong> The email address you use to sign in with a magic link, plus an internal user ID our system creates for your account.</li>
-<li><strong>Service providers:</strong> Trusted companies we work with to help operate the app. These providers handle data only on our behalf and under contract.</li>
+<li>Email address and internal account ID</li>
+<li>Name and profile details you choose to provide</li>
+<li>Authentication, consent, and account-state records needed to operate your account</li>
+</ul>
+<p>Supabase provides account authentication and database services. Resend delivers authentication emails and may process the destination email address, message content, and delivery or abuse-prevention records needed to send those messages.</p>
+
+<h3>Health and Tracking Information</h3>
+<p>If you use SimplyDose's tracking features, we process the information you choose to enter or save, including:</p>
+<ul>
+<li>GLP-1 dose records, including date, time, amount, medication, injection site, pain level, and notes</li>
+<li>Side effects, symptom severity, wellness check-ins, and free-text notes</li>
+<li>Weight records, goals, appointments, supplies, and reminder preferences</li>
+<li>Body weight imported from Apple Health when you request that feature and then save the imported value</li>
+</ul>
+<p>These records are associated with your account and stored in Supabase so SimplyDose can provide the tracking, history, reminder, and summary features you request.</p>
+<p>SimplyDose also stores limited information locally on your device, including preferences, consent and onboarding state, cached insights, widget snapshots derived from your records, and Visit Summary PDFs you generate. Generated Visit Summary PDFs remain on the device until you delete them, they are removed under the app's retention limit, or you sign out, clear tracking history, or delete the account. When you choose to share a summary or image through iOS, the recipient or service you select receives that file under its own privacy practices.</p>
+
+<h3>Apple Health Weight Import</h3>
+<p>Apple Health access is optional and limited to read access for body weight. SimplyDose does not request write access to Apple Health.</p>
+<p>SimplyDose reads the latest available body-weight sample when you choose Sync from Apple Health. When you first enable Apple Health sync, the app may also check whether a sample is available so it can explain if access is denied or no sample exists; that check does not save the value. A weight is sent to your SimplyDose account in Supabase only if you save the prefilled progress entry.</p>
+<p><strong>SimplyDose does not use Apple Health-derived weight for advertising, marketing, or analytics.</strong> The weight value is used only to provide the tracking functionality you requested. We do not send the weight value to PostHog or RevenueCat. If analytics is enabled, a fixed product event can indicate that the Apple Health import action succeeded, but that event does not include the weight value or sample date.</p>
+<p>You can change SimplyDose's Apple Health access in iOS Settings under Privacy &amp; Security &gt; Health. Removing Apple Health access stops future reads. It does not delete weight records you previously chose to save to your SimplyDose account.</p>
+
+<h3>Subscription and Purchase Information</h3>
+<p>Apple processes App Store payments. SimplyDose does not receive or store your payment-card details. RevenueCat provides subscription management and processes an internal account identifier, Apple's identifier for vendor (IDFV), and subscription information such as product, transaction, entitlement, renewal, and expiration state. SimplyDose uses this information to determine access to Premium features.</p>
+<p>SimplyDose does not send health-entry values or free-text health notes to RevenueCat.</p>
+
+<h3>Product Analytics</h3>
+<p>Analytics is off by default. After accepting the Terms and Privacy Policy, you can choose whether to enable it. When analytics is enabled, SimplyDose uses PostHog to understand product use, diagnose categorized errors, and improve app features. PostHog assigns an SDK-generated pseudonymous identifier to these events and does not receive your SimplyDose account ID.</p>
+<p>SimplyDose-authored analytics events include fixed facts such as a screen opening, an onboarding step completing, a purchase flow result, a categorized error, or a record action succeeding. Some events can reveal that a health-related feature was used, such as saving a weight record or successfully importing a weight from Apple Health. The events do not include the weight, dose, medication, symptom, side-effect, note, email-address, or name values entered by the user.</p>
+<p>When analytics is enabled, the PostHog SDK also processes product and technical context, including app lifecycle, app version, operating system, device model or type, a pseudonymous device-level identifier, and network information used to deliver the event. SimplyDose disables PostHog person profiles, surveys, rage clicks, session replay, automatic element interaction capture, and feature-flag preloading. SimplyDose does not use the pseudonymous identifier for advertising or tracking across other companies' apps or websites. PostHog may derive general geographic information from network data according to the active PostHog project configuration.</p>
+<p>SimplyDose does not use analytics events or health information for advertising or marketing, does not use them to track you across other companies' apps or websites, and does not sell them.</p>
+<p>You can change your choice in the app by opening Profile &gt; Privacy Settings and using the "Share product analytics" toggle. Turning off analytics stops new analytics events and removes unsent analytics events queued on this device. Requests already being sent and events already received by PostHog cannot be recalled or deleted by this toggle. You can contact <a href="mailto:support@simplydose.app">support@simplydose.app</a> about a privacy request.</p>
+
+<h3>Technical and Support Information</h3>
+<p>SimplyDose and its service providers may process app version, device and operating-system information, authentication and security logs, and other limited technical information needed to operate and protect the service. Apple may make opt-in crash and performance reports available to developers under Apple's policies.</p>
+<p>If you contact support, we process the contact information, message content, attachments, and follow-up records you provide. Please do not send information that is not needed to answer your request.</p>
+
+<h2>How Information Is Used</h2>
+<ul>
+<li>Authenticate users and maintain accounts</li>
+<li>Provide tracking, history, reminder, Apple Health import, summary, and subscription features</li>
+<li>Provide customer support and respond to privacy requests</li>
+<li>Maintain security, prevent abuse, diagnose categorized errors, and keep the service reliable</li>
+<li>Understand product use when analytics is enabled</li>
+<li>Meet applicable legal, tax, accounting, and regulatory obligations</li>
 </ul>
 
-<h2>What We Collect (and Why)</h2>
-<h3>Account Information</h3>
-<ul>
-<li>Email address (used for magic-link sign-in)</li>
-<li>An internal user ID associated with your account</li>
-</ul>
-<p><strong>Why?</strong> So you can sign in, save your data, and access your information across sessions.</p>
-
-<h3>Health Data (Optional)</h3>
-<p>If you choose to track your health in SimplyDose, we process the information you enter, such as:</p>
-<ul>
-<li>GLP-1 injection records (date, site, dose, time)</li>
-<li>Side effects and wellness notes</li>
-<li>Weight and daily check-ins</li>
-<li>Any other tracking information you choose to log</li>
-</ul>
-<p><strong>Why?</strong> To provide SimplyDose's core features and help you stay organized.</p>
-
-<h3>Free-Text Notes</h3>
-<p>Some areas of the app let you type free-text notes. Because you control what you type, please avoid entering information that personally identifies you or others in these fields.</p>
-
-<h2>Legal Bases for Processing</h2>
-<p>SimplyDose is offered only in the United States. We process your information to provide the app you signed up for, to keep it secure and reliable, to comply with applicable laws, and to respond to lawful requests from regulators, courts, or law enforcement when required.</p>
-
-<h2>Device &amp; Technical Information</h2>
-<p>We (and our service providers) may automatically collect limited technical information such as device type, operating system version, app version, crash reports, and basic diagnostics — used to keep the app reliable and working properly.</p>
-
-<h2>Subscriptions and Payment Information</h2>
-<p>If you subscribe to SimplyDose Premium, the payment itself is processed entirely by <strong>Apple</strong> &mdash; we never see or store your payment card details. To know whether your account has an active subscription, we use <strong>RevenueCat</strong>, a subscription-management service, which processes your subscription status, the product you purchased, purchase and renewal dates, and an anonymized receipt identifier tied to your internal account&nbsp;ID. This information is used only to unlock Premium features and is never combined with your health data.</p>
-
-<h2>Analytics and Usage Data</h2>
-<p>SimplyDose uses <strong>PostHog</strong>, a third-party product-analytics service, to understand how people use the app so we can fix problems and improve features. We built our analytics to be privacy-protective: <strong>we never send your health information to PostHog.</strong> Your weight, doses, medication names, side effects, symptom names, check-ins, and free-text notes are never included in analytics.</p>
-
-<p>What PostHog <em>does</em> receive:</p>
-<ul>
-<li><strong>Anonymous usage events</strong> — for example, that a screen was viewed, that you started or finished onboarding, that a dose or weight entry was saved (the <em>fact</em> that you logged something, never the value), or that an error occurred. When you log side effects, we may record <em>how many</em> you logged, but never which ones.</li>
-<li><strong>An internal account ID</strong> — the same random user ID that identifies your account. We do <strong>not</strong> send your email address, name, or any other directly identifying information to PostHog.</li>
-<li><strong>Basic device and app information</strong> — such as device type, operating system version, app version, language and region, and approximate location (for example, your country or region, estimated from your IP address). This is standard information that helps us understand where and how the app is used.</li>
-</ul>
-
-<p>We use this information only to operate and improve SimplyDose. We do <strong>not</strong> use it for advertising, we do <strong>not</strong> track you across other apps or websites, and we do <strong>not</strong> sell it. PostHog acts as our service provider and processes this data on our behalf. You can read PostHog's own privacy policy at <a href="https://posthog.com/privacy">posthog.com/privacy</a>.</p>
-
-<p><strong>You are in control.</strong> Analytics is on by default, but you can turn it off at any time inside the app: open the <strong>Profile</strong> tab and tap <strong>Privacy Settings</strong>, then switch off "Share anonymous analytics." When analytics is turned off, the app stops sending usage events right away.</p>
-
-<p>We keep analytics event data for up to <strong>12 months</strong>, after which it is deleted. It is removed sooner if you opt out or delete your account. All analytics data is encrypted in transit.</p>
-
-<h2>Where &amp; How We Store Your Data</h2>
+<h2>Service Providers and Data Flow</h2>
+<div class="table-scroll" role="region" aria-label="Service providers and data flow" tabindex="0">
 <table>
-<tr><th>Data Type</th><th>Storage</th><th>Notes</th></tr>
-<tr><td>Account information</td><td>Supabase</td><td>Used for authentication and to associate your data with your account.</td></tr>
-<tr><td>Health entries</td><td>Supabase</td><td>Stored securely in our database, associated with your account.</td></tr>
-<tr><td>Analytics and usage events</td><td>PostHog (United States region)</td><td>Anonymous usage events tied to an internal account ID. No health data. You can opt out in the app at any time.</td></tr>
-<tr><td>Subscription status</td><td>RevenueCat (United States)</td><td>Subscription state, product identifier, purchase and renewal dates, and an anonymized receipt identifier. No payment card details and no health data.</td></tr>
-<tr><td>Crash and performance information</td><td>Apple App Store Connect</td><td>Provided by Apple to help us identify and fix bugs.</td></tr>
+<tr><th>Provider</th><th>Purpose and information</th></tr>
+<tr><td>Supabase</td><td>Authentication and database hosting for account, profile, consent, and user-saved tracking information.</td></tr>
+<tr><td>Resend</td><td>Delivery of authentication emails, including the destination email address and delivery-related records.</td></tr>
+<tr><td>PostHog</td><td>Pseudonymous product analytics and fixed error categories when analytics is enabled. SimplyDose does not send the SimplyDose account ID, health-entry values, or free-text health notes.</td></tr>
+<tr><td>RevenueCat</td><td>Subscription and entitlement management using an internal account identifier, Apple's identifier for vendor, and purchase or subscription state. Health-entry values and free-text health notes are not sent.</td></tr>
+<tr><td>Apple</td><td>App distribution and payments, optional crash and performance reporting, subscription management, and the optional Apple Health body-weight source on your device.</td></tr>
 </table>
+</div>
+<p>These providers may retain operational, security, delivery, backup, transaction, tax, accounting, or legally required records under their own applicable policies and settings.</p>
 
-<h2>How Long We Keep Your Data</h2>
+<h2>Retention and Deletion</h2>
+<p>We retain information only as long as reasonably necessary for the purposes described in this policy. Different categories and service providers can have different retention periods.</p>
+<div class="table-scroll" role="region" aria-label="Retention summary" tabindex="0">
 <table>
-<tr><th>Data Type</th><th>Retention</th></tr>
-<tr><td>Account information</td><td>Kept while your account is active. Deleted when you delete your account.</td></tr>
-<tr><td>Health entries</td><td>Kept until you delete them in the app or delete your account.</td></tr>
-<tr><td>Analytics and usage events</td><td>Kept up to 12 months, then deleted. Removed sooner if you opt out or delete your account.</td></tr>
-<tr><td>Subscription information</td><td>Kept while your subscription is active. Transaction records may be retained longer where required for legal, tax, or accounting purposes.</td></tr>
-<tr><td>Crash and performance information</td><td>Retained according to Apple's standard policies.</td></tr>
-<tr><td>Support communications</td><td>Kept as long as reasonably necessary.</td></tr>
+<tr><th>Category</th><th>Retention and control</th></tr>
+<tr><td>SimplyDose account and saved tracking records</td><td>Kept while the account or record is active. You can delete supported individual records, clear tracking history while keeping the account and profile, or request full account deletion in the app.</td></tr>
+<tr><td>On-device files and widget data</td><td>Kept as described above and cleared through the applicable in-app controls, sign-out, or account deletion.</td></tr>
+<tr><td>Analytics events</td><td>When analytics is enabled, events are retained according to the active PostHog project settings and applicable provider records. Turning analytics off stops future events but does not remove events already sent.</td></tr>
+<tr><td>Subscription and transaction records</td><td>Retained by Apple, RevenueCat, and SimplyDose as needed to provide subscription access and meet applicable transaction, tax, accounting, security, or legal requirements.</td></tr>
+<tr><td>Authentication email and security records</td><td>Retained by Supabase, Resend, and SimplyDose as needed for email delivery, authentication, abuse prevention, security, and applicable legal requirements.</td></tr>
+<tr><td>Support communications</td><td>Kept as long as reasonably necessary to handle the request and maintain appropriate business or legal records.</td></tr>
 </table>
+</div>
+<p>When the app confirms full account deletion, it removes the account and SimplyDose-controlled health and tracking records from the primary Supabase database and then signs the user out. Account deletion does not automatically delete records independently retained by Apple, RevenueCat, PostHog, Supabase backups or logs, Resend, or SimplyDose for the reasons described above. Contact support if you want help with a privacy request involving those records.</p>
+
+<h2>Your Choices</h2>
+<ul>
+<li><strong>Analytics:</strong> Analytics is off by default. Open Profile &gt; Privacy Settings to turn optional product analytics on or off.</li>
+<li><strong>Apple Health:</strong> Change Apple Health access in iOS Settings. Manual weight entry remains available.</li>
+<li><strong>Tracking history:</strong> Open Profile &gt; Manage My Data &gt; Clear Tracking History. This removes tracking history, appointments, supplies, custom symptoms, and consent records, but keeps your account and profile.</li>
+<li><strong>Account deletion:</strong> Open Profile &gt; Manage My Data &gt; Delete Account. The app signs you out only after the server confirms deletion.</li>
+<li><strong>Subscription:</strong> Manage or cancel in Apple's Subscriptions settings. Deleting the app or your SimplyDose account does not cancel an Apple subscription.</li>
+<li><strong>Support:</strong> Email <a href="mailto:support@simplydose.app">support@simplydose.app</a>.</li>
+</ul>
 
 <h2>Your Privacy Rights</h2>
-<p>Depending on where you live, you may have the right to access, export, correct, delete, restrict, or object to certain uses of your data. You can manage many choices directly in the app's Settings, including turning analytics off under Privacy Settings. You can also email us at <a href="mailto:support@simplydose.app">support@simplydose.app</a>.</p>
-
-<h3>California Residents</h3>
-<p>If you are a California resident, you may have additional rights under the CCPA/CPRA, including the right to know what personal information we collect, the right to delete it, the right to correct it, and the right to opt out of the sale or sharing of personal information. SimplyDose does not sell your personal information and does not share it for cross-context behavioral advertising.</p>
-
-<h2>Who We Share Data With (and Why)</h2>
-<p>We share data only with service providers that help us run SimplyDose.</p>
-<table>
-<tr><th>Vendor</th><th>Purpose</th></tr>
-<tr><td>Supabase</td><td>Database and authentication for account information and health entries</td></tr>
-<tr><td>PostHog</td><td>Privacy-protective product analytics (anonymous usage events; no health data). You can opt out in the app.</td></tr>
-<tr><td>RevenueCat</td><td>Subscription management &mdash; verifies your SimplyDose Premium subscription status (no payment card details, no health data)</td></tr>
-<tr><td>Apple (App Store / App Store Connect)</td><td>App distribution, crash and performance reporting</td></tr>
-</table>
-<p><strong>We do not sell your data.</strong> We do not share your health data for targeted advertising.</p>
+<p>Depending on where you live, you may have rights regarding personal information, including access, correction, deletion, or objection to certain processing. To submit a request, email <a href="mailto:support@simplydose.app">support@simplydose.app</a>. We may need to verify that the request relates to your account.</p>
+<p>SimplyDose does not sell personal information or share it for cross-context behavioral advertising.</p>
 
 <h2>Security</h2>
-<p>We use reasonable administrative, technical, and organizational safeguards designed to protect your information, including access controls and encryption in transit. No method of transmission or storage is 100% secure, but we work hard to protect your information.</p>
-
-<h2>Data Controller</h2>
-<p>SimplyDose LLC (Missouri) is the entity responsible for your information under this Privacy Policy. For privacy requests or questions, contact: <a href="mailto:support@simplydose.app">support@simplydose.app</a></p>
+<p>We use reasonable administrative, technical, and organizational safeguards designed to protect information, including access controls and encryption in transit. No method of transmission or storage can be guaranteed to be completely secure.</p>
 
 <h2>Children's Privacy</h2>
-<p>SimplyDose is not intended for anyone under the age of 18. We do not knowingly collect data from anyone under 18. If we learn that we have collected information from someone under 18, we will delete it.</p>
+<p>SimplyDose is intended for adults age 18 and older. If we learn that information was collected from a person under 18, contact us so we can review and address it.</p>
 
-<h2>Important: SimplyDose Is Not a Medical Device</h2>
-<p>SimplyDose is a tracking and organization tool. It is not a medical device, it does not provide medical advice, diagnosis, or treatment, and it is not intended to be used as a substitute for professional medical advice. Always talk to your healthcare provider about your medications, dosing, and any health concerns. Do not rely on SimplyDose to make medical decisions.</p>
-<p>In an emergency, call 911 or your local emergency services. Do not use the app to communicate medical emergencies.</p>
-
-<h2>Exporting or Deleting Your Data</h2>
-<p>You can delete your account and associated health entries directly from the app's Settings screen. You can also email us at <a href="mailto:support@simplydose.app">support@simplydose.app</a> if you need help.</p>
+<h2>Medical Disclaimer</h2>
+<p>SimplyDose is a tracking and organization tool. It is not a medical device and does not provide medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional about medication, dosing, side effects, and health concerns. In an emergency, call 911 or your local emergency service.</p>
 
 <h2>Changes to This Policy</h2>
-<p>We may update this Privacy Policy from time to time. The latest version will be posted at simplydose.github.io/privacy. If changes are material, we will provide additional notice where required.</p>
+<p>We may update this policy. The current version and its last-updated date will be posted at <a href="https://simplydose.app/privacy.html">https://simplydose.app/privacy.html</a>. When the app requires acceptance of a materially revised policy, an authenticated user must review and accept the changed documents before continuing.</p>
 
 <h2>Contact Us</h2>
-<p>Email us anytime at <a href="mailto:support@simplydose.app">support@simplydose.app</a></p>
-
-<hr style="margin: 48px 0; border: none; border-top: 1px solid #E5E7EB;">
-
-<h1>SimplyDose Health Data Privacy Section</h1>
-<p class="subtitle"><em>Last Updated: June 28, 2026</em></p>
-<p>This section supplements our main Privacy Policy and explains how we handle sensitive health information.</p>
-
-<h2>What Counts as Health Data in SimplyDose</h2>
-<ul>
-<li>GLP-1 injections (date, site, time, dosage)</li>
-<li>Side effects and well-being notes</li>
-<li>Weight and daily check-ins</li>
-<li>Any related wellness or tracking information you choose to store</li>
-</ul>
-
-<h2>Health Data Storage</h2>
-<p>We store health data securely in Supabase, separately structured from any non-sensitive analytics or technical information. Your health entries are stored in our Supabase database and tied to your account and an internal user ID. <strong>We never send your health data to our analytics provider (PostHog).</strong></p>
-
-<h2>Sources of Health Data</h2>
-<p>Most health data comes directly from you, when you enter information in the app.</p>
-<p>In addition, if you give permission, SimplyDose can <strong>read your body weight from Apple Health</strong> to automatically fill in your weight when you log your progress. This access is <strong>read-only</strong> &mdash; SimplyDose <strong>never writes to or changes any data in Apple Health</strong>. The weight you log is stored in your private SimplyDose account (in our Supabase database), not back in Apple Health. Apple Health access is optional, and you can turn it off at any time in the iOS <strong>Settings</strong> app (Privacy &amp; Security &rarr; Health &rarr; SimplyDose) or from within SimplyDose.</p>
-
-<h2>Why We Use Health Data</h2>
-<p>We use health data to provide SimplyDose's core functionality, help you track your progress, improve app reliability and security, and comply with legal obligations. We do <strong>not</strong> use health data for targeted advertising. We do <strong>not</strong> sell health data. We do <strong>not</strong> include health data in analytics.</p>
-
-<h2>How We Share Health Data</h2>
-<p>We share health data only in limited circumstances: with service providers necessary to operate the app, for support if you contact us, for legal requirements, and in corporate transactions with notice where required. We do not share health data for targeted advertising, and we do not send it to our analytics provider.</p>
-
-<h2>Your Rights Regarding Health Data</h2>
-<p>You have the right to access, export, delete, and withdraw consent for your health data. Most actions can be done directly in the app's Settings. Contact: <a href="mailto:support@simplydose.app">support@simplydose.app</a></p>
-
-<h2>Important Reminder</h2>
-<p>SimplyDose is a tracking tool, not a medical device. It does not provide medical advice, diagnosis, or treatment. Always consult your healthcare provider about medications, dosing, side effects, and any health concerns.</p>
+<p>SimplyDose LLC<br/>
+Email: <a href="mailto:support@simplydose.app">support@simplydose.app</a></p>
 
 </body>
 </html>
