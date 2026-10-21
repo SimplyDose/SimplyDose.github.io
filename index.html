@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SimplyDose | Keep your GLP-1 records together</title>
 <meta name="description" content="Record GLP-1 dose dates, amounts and sites, weight and side effects. Prepare a Visit Summary from what you log. Tracking requires SimplyDose Premium."/>
+<link rel="canonical" href="https://simplydose.app/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://simplydose.app/"/>
+<meta property="og:title" content="SimplyDose | Keep your GLP-1 records together"/>
+<meta property="og:description" content="Record GLP-1 dose dates, amounts and sites, weight and side effects. Prepare a Visit Summary from what you log. Tracking requires SimplyDose Premium."/>
+<meta property="og:image" content="https://simplydose.app/assets/app-icon.png"/>
+<meta name="twitter:card" content="summary"/>
 <link rel="icon" href="/favicon.ico" sizes="32x32"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
@@ -91,7 +98,7 @@
   /* Hero iPhone, drawn in CSS around the unedited screenshot with the same proportions as
      the App Store images: 3.3% bezel, 15% outer radius, thin rim, Dynamic Island. The
      simulator capture has no island of its own, so the one drawn here is the only one. */
-  .iphone{--w:280px;position:relative;width:var(--w);padding:calc(var(--w) * .033);border-radius:calc(var(--w) * .15);background:#17171A;box-shadow:0 2px 6px rgb(0 0 0 / .12),0 40px 80px -30px rgb(0 0 0 / .45);}
+  .iphone{--w:334px;position:relative;width:var(--w);padding:calc(var(--w) * .033);border-radius:calc(var(--w) * .15);background:#17171A;box-shadow:0 2px 6px rgb(0 0 0 / .12),0 40px 80px -30px rgb(0 0 0 / .45);}
   .iphone::after{content:"";position:absolute;inset:calc(var(--w) * .007);border-radius:calc(var(--w) * .143);border:calc(var(--w) * .0045) solid #4A4A4E;pointer-events:none;}
   .iphone img{width:100%;border-radius:calc(var(--w) * .117);}
   .iphone__island{position:absolute;left:50%;top:calc(var(--w) * .057);width:calc(var(--w) * .262);height:calc(var(--w) * .078);border-radius:999px;background:#000;transform:translateX(-50%);}
@@ -136,16 +143,17 @@
 
   /* FAQ: native disclosures, no form or tracking */
   /* Each question in its own card with a circled chevron (reference FAQ). */
-  .faq-list{display:grid;gap:12px;max-width:820px;margin-inline:auto;}
-  .faq details{transition:border-color .15s ease;}
-  @media (hover:hover){.faq details:hover{border-color:color-mix(in srgb,var(--ink) 30%,transparent);}}
+  /* One panel with hairline dividers, rather than a stack of separate cards. */
+  .faq-list{max-width:820px;margin-inline:auto;overflow:hidden;}
+  .faq details + details{border-top:1px solid var(--hair);}
+  @media (hover:hover){.faq summary:hover{background:color-mix(in srgb,var(--ink) 3%,transparent);}}
   /* Padding lives on the summary so its focus ring follows the card's shape. */
-  .faq summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;border-radius:20px;min-height:48px;font-size:18px;line-height:26px;font-weight:600;cursor:pointer;list-style:none;}
+  .faq summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;min-height:48px;font-size:18px;line-height:26px;font-weight:600;cursor:pointer;list-style:none;}
   .faq summary::-webkit-details-marker{display:none;}
   .faq__icon{flex:none;position:relative;width:28px;height:28px;border:1.5px solid var(--ink);border-radius:50%;}
   .faq__icon::after{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);transform:translate(-50%,-70%) rotate(45deg);transition:transform .2s ease;}
   .faq details[open] .faq__icon::after{transform:translate(-50%,-30%) rotate(-135deg);}
-  .faq summary:focus-visible{outline-offset:-3px;border-radius:20px;}
+  .faq summary:focus-visible{outline-offset:-3px;border-radius:14px;}
   .faq details p{padding:0 24px 24px;color:var(--muted);max-width:40em;}
 
   /* Promise */
@@ -165,7 +173,7 @@
   footer{border-top:1px solid var(--hair);padding:48px 0 64px;}
   .footer__row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
   .footer__links{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:16px;}
-  .footer__links a{color:var(--muted);text-decoration:none;}
+  .footer__links a{display:inline-block;padding:10px 0;color:var(--muted);text-decoration:none;}
   .footer__links a:hover{color:var(--ink);text-decoration:underline;}
   .footer__legal{margin-top:28px;font-size:16px;line-height:24px;color:var(--muted);max-width:36em;}
 
@@ -214,7 +222,7 @@
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
-    .mcta,.mcta.show,.btn,.faq details,.faq__icon::after{transition:none;}
+    .mcta,.mcta.show,.btn,.faq__icon::after{transition:none;}
   }
 </style>
 </head>
@@ -286,7 +294,6 @@
 <section class="section" id="features" aria-labelledby="features-heading">
   <div class="shell">
     <div class="section__head section__head--center">
-      <p class="eyebrow">Features</p>
       <h2 id="features-heading">Your records, ready to look back on.</h2>
       <p class="lead">Keep the details you log in one place, from a recorded dose to your next appointment.</p>
     </div>
@@ -340,24 +347,23 @@
 <section class="section faq" id="faq" aria-labelledby="faq-heading">
   <div class="shell">
     <div class="section__head section__head--center">
-      <p class="eyebrow">Any questions?</p>
       <h2 id="faq-heading">Before you get started.</h2>
       <p class="lead">Clear answers about tracking access and your first record.</p>
     </div>
-    <div class="faq-list">
-      <details class="card">
+    <div class="faq-list card">
+      <details>
         <summary>Is SimplyDose free to use?<span class="faq__icon" aria-hidden="true"></span></summary>
         <p>SimplyDose is free to download. An account and active SimplyDose Premium subscription are required for tracking features. Eligible new subscribers can try it free for 14 days. Apple confirms eligibility and localized pricing before purchase.</p>
       </details>
-      <details class="card">
+      <details>
         <summary>What do I do after downloading?<span class="faq__icon" aria-hidden="true"></span></summary>
         <p>Complete setup and sign in, then review the subscription terms Apple shows you. With Premium active, start by recording a dose, your weight or a side effect.</p>
       </details>
-      <details class="card">
+      <details>
         <summary>Can I use my records for an appointment?<span class="faq__icon" aria-hidden="true"></span></summary>
         <p>Yes. Visit Summary brings together records you logged so you can review them for an appointment. SimplyDose is a personal tracking tool and does not provide medical advice, diagnosis or treatment.</p>
       </details>
-      <details class="card">
+      <details>
         <summary>Where do I manage my subscription?<span class="faq__icon" aria-hidden="true"></span></summary>
         <p>Manage or cancel your subscription in Apple's Subscriptions settings. Subscriptions auto-renew until canceled. Your purchase terms and localized price are shown by Apple before you subscribe.</p>
       </details>

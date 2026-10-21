@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Page not found | SimplyDose</title>
+<meta name="robots" content="noindex"/>
+<link rel="icon" href="/favicon.ico" sizes="32x32"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  /* Same tokens as the homepage. Paths are absolute because GitHub Pages serves this at any missing URL. */
+  :root{--font-display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--font-body:"Inter",-apple-system,"Helvetica Neue",Arial,sans-serif;--ground:#F5F5F2;--ink:#141414;--muted:color-mix(in srgb,var(--ink) 70%,var(--ground));--hair:color-mix(in srgb,var(--ink) 12%,transparent);}
+  *,*::before,*::after{box-sizing:border-box;}
+  body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:var(--ground);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  :focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:4px;}
+  .shell{width:min(1180px,100% - 40px);margin-inline:auto;}
+  header{height:64px;border-bottom:1px solid var(--hair);}
+  header .shell{height:100%;display:flex;align-items:center;}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--font-display);font-weight:500;font-size:21px;line-height:1.3;letter-spacing:-0.02em;}
+  .brand img{width:30px;height:30px;border-radius:8px;}
+  main{flex:1;display:grid;align-content:center;padding:96px 0;}
+  main .shell{display:grid;gap:20px;justify-items:start;max-width:640px;}
+  h1{margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(40px,5vw,56px);line-height:1.05;letter-spacing:-0.03em;}
+  p{margin:0;font-size:20px;line-height:31px;color:var(--muted);}
+  .btn{display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:999px;background:var(--ink);color:var(--ground);font:600 16px/1.3 var(--font-body);text-decoration:none;margin-top:8px;}
+  .btn:hover{background:color-mix(in srgb,var(--ink) 86%,var(--ground));}
+  footer{border-top:1px solid var(--hair);padding:24px 0 40px;}
+  footer .shell{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 28px;font-size:16px;color:var(--muted);}
+  footer nav{display:flex;flex-wrap:wrap;gap:0 28px;}
+  footer nav a{display:inline-block;padding:10px 0;color:var(--muted);text-decoration:none;}
+  footer nav a:hover{color:var(--ink);text-decoration:underline;}
+  footer small{font-size:16px;padding:10px 0;}
+</style>
+</head>
+<body>
+<header>
+  <div class="shell">
+    <a class="brand" href="/" aria-label="SimplyDose home">
+      <img src="/assets/app-icon.png" alt="" width="30" height="30"/>
+      <span>SimplyDose</span>
+    </a>
+  </div>
+</header>
+<main>
+  <div class="shell">
+    <h1>Page not found.</h1>
+    <p>This page doesn't exist or has moved.</p>
+    <a class="btn" href="/">Go to the SimplyDose home page</a>
+  </div>
+</main>
+<footer>
+  <div class="shell">
+    <nav aria-label="Footer">
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="mailto:support@simplydose.app">Support</a>
+    </nav>
+    <small>© 2026 SimplyDose.</small>
+  </div>
+</footer>
+</body>
+</html>
