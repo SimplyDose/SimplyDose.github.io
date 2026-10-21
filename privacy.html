@@ -30,7 +30,7 @@
   /* Contents: plain anchor links to the existing section headings. */
   .toc { border: 1px solid var(--hair); border-radius: 16px; background: #FFFFFF; padding: 20px 24px; margin: 0 0 16px; }
   .toc__title { margin: 0 0 8px; font-size: 16px; font-weight: 600; color: var(--ink); }
-  .toc ol { margin: 0; padding-left: 24px; color: var(--muted); }
+  .toc ul { margin: 0; padding-left: 22px; color: var(--muted); }
   .toc li { margin: 0; padding: 2px 0; font-size: 16px; }
   /* Inline padding keeps wrapped titles aligned with their number while giving a 24px+ target. */
   .toc a { padding: 3px 0; color: var(--text); }
@@ -42,6 +42,9 @@
   /* Set-apart notices keep their emphasis: ink left bar on a neutral tint. */
   .important { background: var(--tint); border-left: 4px solid var(--ink); padding: 16px 20px; margin: 24px 0; border-radius: 4px; }
   .notice { font-size: 16px; color: var(--ink); line-height: 1.65; }
+  @media (max-width: 360px) {
+    th, td { padding: 10px; }
+  }
   @media (max-width: 640px) {
     body { padding: 24px 20px 72px; font-size: 16px; }
     h1 { font-size: 32px; }
@@ -58,7 +61,7 @@
 <p class="subtitle"><strong>Effective Date:</strong> September 17, 2026 &nbsp;|&nbsp; <strong>Last Updated:</strong> September 17, 2026</p>
 <nav class="toc" aria-labelledby="toc-title">
 <p class="toc__title" id="toc-title">Contents</p>
-<ol>
+<ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#where-this-policy-applies">Where This Policy Applies</a></li>
 <li><a href="#information-we-process">Information We Process</a></li>
@@ -72,7 +75,7 @@
 <li><a href="#medical-disclaimer">Medical Disclaimer</a></li>
 <li><a href="#changes-to-this-policy">Changes to This Policy</a></li>
 <li><a href="#contact-us">Contact Us</a></li>
-</ol>
+</ul>
 </nav>
 
 
