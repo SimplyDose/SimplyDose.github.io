@@ -104,13 +104,14 @@
 
   /* Sections */
   .section{padding:var(--section) 0;}
-  .section__head{display:grid;gap:14px;margin-bottom:48px;max-width:720px;}
+  /* Label, heading and lead spaced like the reference (about 2x body text between them). */
+  .section__head{display:grid;gap:22px;margin-bottom:48px;max-width:720px;}
   .section__head--center{justify-items:center;text-align:center;margin-inline:auto;}
   /* Feature cards: image on top, title and text inside the card (reference "Product features"). */
   .features__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;}
-  .feature{display:grid;align-content:start;gap:10px;margin:0;padding:12px 12px 28px;}
+  /* One shared 20px inner edge for the image and the text. */
+  .feature{display:grid;align-content:start;gap:10px;margin:0;padding:20px 20px 28px;}
   .feature .tile{margin-bottom:12px;}
-  .feature h3,.feature p{padding:0 8px;}
   .feature p{color:var(--muted);}
 
   /* Signature: one dark stage, like the App Store set */
@@ -202,7 +203,6 @@
     .promise__card{padding:32px 24px;}
     .faq summary{padding:18px 20px;}
     .faq details p{padding:0 20px 20px;}
-    .steps li{padding:20px 22px;}
     .final__panel{padding:56px 24px;}
     .final__panel .btn{width:100%;}
     .mcta{display:block;}
