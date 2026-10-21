@@ -10,10 +10,10 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
   /* Same tokens as the homepage. Paths are absolute because GitHub Pages serves this at any missing URL. */
-  :root{--font-display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--font-body:"Inter",-apple-system,"Helvetica Neue",Arial,sans-serif;--ground:#F5F5F2;--ink:#141414;--muted:color-mix(in srgb,var(--ink) 70%,var(--ground));--hair:color-mix(in srgb,var(--ink) 12%,transparent);}
+  :root{--font-display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;--font-body:"Inter",-apple-system,"Helvetica Neue",Arial,sans-serif;--ground:#F5F5F2;--ink:#141414;--muted:color-mix(in srgb,var(--ink) 70%,var(--ground));--hair:color-mix(in srgb,var(--ink) 12%,transparent);}
   *,*::before,*::after{box-sizing:border-box;}
   body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:var(--ground);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;}
   a{color:inherit;}
@@ -21,12 +21,12 @@
   .shell{width:min(1180px,100% - 40px);margin-inline:auto;}
   header{height:64px;border-bottom:1px solid var(--hair);}
   header .shell{height:100%;display:flex;align-items:center;}
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--font-display);font-weight:500;font-size:21px;line-height:1.3;letter-spacing:-0.02em;}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--font-display);font-weight:500;font-size:20px;line-height:1.3;letter-spacing:-0.02em;}
   .brand img{width:30px;height:30px;border-radius:8px;}
   main{flex:1;display:grid;align-content:center;padding:96px 0;}
   main .shell{display:grid;}
   .notfound{display:grid;gap:20px;justify-items:start;max-width:640px;}
-  h1{margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(40px,5vw,56px);line-height:1.05;letter-spacing:-0.03em;}
+  h1{margin:0;font-family:var(--font-display);font-weight:500;font-size:clamp(40px,5vw,56px);line-height:1.05;letter-spacing:-0.035em;}
   p{margin:0;font-size:20px;line-height:31px;color:var(--muted);}
   .btn{display:inline-flex;align-items:center;min-height:48px;padding:12px 26px;border-radius:999px;background:var(--ink);color:var(--ground);font:600 16px/1.3 var(--font-body);text-decoration:none;margin-top:8px;}
   .btn:hover{background:color-mix(in srgb,var(--ink) 86%,var(--ground));}
