@@ -205,6 +205,10 @@
     .mcta{display:block;}
     footer{padding-bottom:130px;}
   }
+  /* At the narrowest widths the final button keeps its label on one line. */
+  @media (max-width:360px){
+    .final__panel .btn__arrow{display:none;}
+  }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
     .mcta,.mcta.show,.btn,.faq summary::after{transition:none;}
