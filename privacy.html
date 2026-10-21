@@ -26,13 +26,14 @@
   strong { color: var(--ink); }
   .back { margin-bottom: 40px; }
   .back a { display: inline-block; padding: 10px 0; font-size: 16px; font-weight: 600; text-decoration: none; }
-  .subtitle { color: var(--muted); font-size: 16px; margin-bottom: 32px; }
+  .subtitle { color: var(--muted); font-size: 16px; margin-bottom: 32px; text-wrap: balance; }
   /* Contents: plain anchor links to the existing section headings. */
   .toc { border: 1px solid var(--hair); border-radius: 16px; background: #FFFFFF; padding: 20px 24px; margin: 0 0 16px; }
   .toc__title { margin: 0 0 8px; font-size: 16px; font-weight: 600; color: var(--ink); }
-  .toc ol { margin: 0; padding-left: 22px; columns: 2; column-gap: 32px; color: var(--muted); }
-  .toc li { margin: 0; break-inside: avoid; font-size: 16px; }
-  .toc a { display: inline-block; padding: 4px 0; color: var(--text); }
+  .toc ol { margin: 0; padding-left: 24px; color: var(--muted); }
+  .toc li { margin: 0; padding: 2px 0; font-size: 16px; }
+  /* Inline padding keeps wrapped titles aligned with their number while giving a 24px+ target. */
+  .toc a { padding: 3px 0; color: var(--text); }
   .toc a:hover { color: var(--ink); }
   table { width: 100%; border-collapse: collapse; margin: 0; background: #FFFFFF; }
   th, td { border: 1px solid var(--hair); padding: 12px 14px; text-align: left; vertical-align: top; font-size: 16px; line-height: 1.55; color: var(--text); }
@@ -45,7 +46,6 @@
     body { padding: 24px 20px 72px; font-size: 16px; }
     h1 { font-size: 32px; }
     h2 { font-size: 20px; margin-top: 40px; }
-    .toc ol { columns: 1; }
   }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
