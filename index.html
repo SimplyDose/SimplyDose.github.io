@@ -107,7 +107,7 @@
   .section__head{display:grid;gap:14px;margin-bottom:48px;max-width:720px;}
   .section__head--center{justify-items:center;text-align:center;margin-inline:auto;}
   /* Feature cards: image on top, title and text inside the card (reference "Product features"). */
-  .features__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start;}
+  .features__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;}
   .feature{display:grid;align-content:start;gap:10px;margin:0;padding:12px 12px 28px;}
   .feature .tile{margin-bottom:12px;}
   .feature h3,.feature p{padding:0 8px;}
@@ -136,20 +136,23 @@
   /* FAQ: native disclosures, no form or tracking */
   /* Each question in its own card with a circled chevron (reference FAQ). */
   .faq-list{display:grid;gap:12px;max-width:820px;margin-inline:auto;}
-  .faq details{padding:0 24px;}
-  .faq summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;min-height:48px;font-size:18px;line-height:26px;font-weight:600;cursor:pointer;list-style:none;}
+  .faq details{transition:border-color .15s ease;}
+  @media (hover:hover){.faq details:hover{border-color:color-mix(in srgb,var(--ink) 30%,transparent);}}
+  /* Padding lives on the summary so its focus ring follows the card's shape. */
+  .faq summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;border-radius:20px;min-height:48px;font-size:18px;line-height:26px;font-weight:600;cursor:pointer;list-style:none;}
   .faq summary::-webkit-details-marker{display:none;}
   .faq__icon{flex:none;position:relative;width:28px;height:28px;border:1.5px solid var(--ink);border-radius:50%;}
   .faq__icon::after{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);transform:translate(-50%,-70%) rotate(45deg);transition:transform .2s ease;}
   .faq details[open] .faq__icon::after{transform:translate(-50%,-30%) rotate(-135deg);}
-  .faq details p{padding:0 0 24px;color:var(--muted);max-width:40em;}
+  .faq summary:focus-visible{outline-offset:-3px;border-radius:20px;}
+  .faq details p{padding:0 24px 24px;color:var(--muted);max-width:40em;}
 
   /* Promise */
   /* Our own promise sits where the reference shows proof cards; no ratings or names. */
   .promise .shell{display:grid;justify-items:center;text-align:center;}
   .promise__label{margin-bottom:24px;}
   .promise__card{max-width:820px;padding:48px 56px;}
-  .promise__text{font-family:var(--font-display);font-weight:400;font-size:clamp(22px,2.2vw,26px);line-height:1.45;letter-spacing:-0.01em;}
+  .promise__text{text-align:left;font-family:var(--font-display);font-weight:400;font-size:clamp(22px,2.2vw,26px);line-height:1.45;letter-spacing:-0.01em;}
 
   /* Final CTA */
   .final{padding:0 0 var(--section);}
@@ -197,7 +200,8 @@
     .lead{font-size:18px;line-height:28px;}
     .hero__actions{justify-items:stretch;}
     .promise__card{padding:32px 24px;}
-    .faq details{padding:0 18px;}
+    .faq summary{padding:18px 20px;}
+    .faq details p{padding:0 20px 20px;}
     .steps li{padding:20px 22px;}
     .final__panel{padding:56px 24px;}
     .final__panel .btn{width:100%;}
@@ -210,7 +214,7 @@
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
-    .mcta,.mcta.show,.btn,.faq summary::after{transition:none;}
+    .mcta,.mcta.show,.btn,.faq details,.faq__icon::after{transition:none;}
   }
 </style>
 </head>
