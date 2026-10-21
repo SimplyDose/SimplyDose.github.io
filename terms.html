@@ -39,8 +39,10 @@
   th, td { border: 1px solid var(--hair); padding: 12px 14px; text-align: left; vertical-align: top; font-size: 16px; line-height: 1.55; color: var(--text); }
   th { background: var(--tint); font-weight: 600; color: var(--ink); }
   .table-scroll { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 16px 0; }
-  /* Set-apart notices keep their published presentation unchanged (emphasis is an owner/legal decision). */
-  .important { background: #FFF9F0; border-left: 4px solid #1A1A1A; padding: 16px 20px; margin: 20px 0; border-radius: 4px; }
+  /* Set-apart notices: ink left bar on a neutral tint; the closing acknowledgment at body size in ink.
+     Presentation approved by Joshua on 2026-10-21 (owner-legal-presentation-decision.json); wording unchanged. */
+  .important { background: var(--tint); border-left: 4px solid var(--ink); padding: 16px 20px; margin: 24px 0; border-radius: 4px; }
+  .notice { font-size: 16px; color: var(--ink); line-height: 1.65; }
   @media (max-width: 640px) {
     body { padding: 24px 20px 72px; font-size: 16px; }
     h1 { font-size: 32px; }
@@ -202,9 +204,9 @@
 <p>SimplyDose LLC<br>
 Email: <a href="mailto:support@simplydose.app">support@simplydose.app</a></p>
 
-<hr style="margin: 48px 0; border: none; border-top: 1px solid #E5E7EB;">
+<hr style="margin: 48px 0; border: none; border-top: 1px solid var(--hair);">
 
-<p style="font-size: 13px; color: #6B7280; text-align: center;">BY DOWNLOADING, INSTALLING, ACCESSING, OR USING THE APPLICATION, YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND AGREED TO BE BOUND BY THESE TERMS, THE PRIVACY POLICY, AND ALL DISCLAIMERS CONTAINED HEREIN, INCLUDING THE MEDICAL DISCLAIMER, ASSUMPTION OF RISK, LIMITATION OF LIABILITY, INDEMNIFICATION, CLASS ACTION WAIVER, AND BINDING ARBITRATION CLAUSE.</p>
+<p class="notice">BY DOWNLOADING, INSTALLING, ACCESSING, OR USING THE APPLICATION, YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND AGREED TO BE BOUND BY THESE TERMS, THE PRIVACY POLICY, AND ALL DISCLAIMERS CONTAINED HEREIN, INCLUDING THE MEDICAL DISCLAIMER, ASSUMPTION OF RISK, LIMITATION OF LIABILITY, INDEMNIFICATION, CLASS ACTION WAIVER, AND BINDING ARBITRATION CLAUSE.</p>
 
 </body>
 </html>
