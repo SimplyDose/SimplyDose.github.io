@@ -5,31 +5,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SimplyDose Privacy Policy</title>
 <style>
-* { box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 760px;
-       margin: 40px auto; padding: 0 20px; color: #1A1A1A; line-height: 1.6; }
-h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
-h2 { font-size: 20px; font-weight: 700; margin-top: 36px; margin-bottom: 8px; }
-h3 { font-size: 17px; font-weight: 600; margin-top: 24px; }
-p { color: #444; margin: 12px 0; }
-ul { color: #444; padding-left: 24px; }
-li { margin: 6px 0; }
-table { width: 100%; border-collapse: collapse; margin: 0; }
-th, td { border: 1px solid #E5E7EB; padding: 10px 14px; text-align: left;
-         vertical-align: top; font-size: 15px; color: #444; }
-th { background: #F9FAFB; font-weight: 600; color: #1A1A1A; }
-a { color: #1A1A1A; }
-a:focus-visible, .table-scroll:focus-visible { outline: 2px solid #1A1A1A; outline-offset: 3px; }
-.subtitle { color: #6B7280; font-size: 15px; margin-bottom: 32px; }
-.back { margin-bottom: 24px; }
-.back a { font-size: 14px; }
-.table-scroll { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 16px 0; }
-strong { color: #1A1A1A; }
-@media (max-width: 520px) {
-  body { margin: 24px auto; padding: 0 16px; }
-  h1 { font-size: 25px; }
-  th, td { padding: 9px 10px; font-size: 14px; }
-}
+  /* Presentation only: site tokens, readable measure, 16px minimum. Legal wording is unchanged.
+     System fonts keep this page free of third-party font requests. */
+  :root { --ground: #F5F5F2; --ink: #141414; --text: color-mix(in srgb, #141414 80%, #F5F5F2); --muted: color-mix(in srgb, #141414 70%, #F5F5F2); --hair: color-mix(in srgb, #141414 12%, transparent); --tint: color-mix(in srgb, #141414 5%, #F5F5F2); }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; max-width: calc(31em + 40px);
+         margin: 0 auto; padding: 40px 20px 96px; background: var(--ground); color: var(--ink); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  h1 { font-size: 40px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 12px; text-wrap: balance; }
+  h2 { font-size: 22px; line-height: 1.3; font-weight: 650; letter-spacing: -0.01em; margin: 48px 0 10px; scroll-margin-top: 24px; text-wrap: balance; }
+  h3 { font-size: 18px; line-height: 1.4; font-weight: 600; margin: 28px 0 8px; }
+  p, ul { color: var(--text); }
+  p { margin: 12px 0; }
+  p, li, td, th { text-wrap: pretty; }
+  h1, h3 { text-wrap: balance; }
+  ul { padding-left: 24px; }
+  li { margin: 6px 0; }
+  a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+  a:focus-visible, .table-scroll:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+  strong { color: var(--ink); }
+  .back { margin-bottom: 40px; }
+  .back a { display: inline-block; padding: 10px 0; font-size: 16px; font-weight: 600; text-decoration: none; }
+  .subtitle { color: var(--muted); font-size: 16px; margin-bottom: 32px; text-wrap: balance; }
+  /* Contents: plain anchor links to the existing section headings. */
+  .toc { border: 1px solid var(--hair); border-radius: 16px; background: #FFFFFF; padding: 20px 24px; margin: 0 0 16px; }
+  .toc__title { margin: 0 0 8px; font-size: 16px; font-weight: 600; color: var(--ink); }
+  .toc ul { margin: 0; padding-left: 22px; color: var(--muted); }
+  .toc li { margin: 0; padding: 2px 0; font-size: 16px; }
+  /* Inline padding keeps wrapped titles aligned with their number while giving a 24px+ target. */
+  .toc a { padding: 3px 0; color: var(--text); }
+  .toc a:hover { color: var(--ink); }
+  table { width: 100%; border-collapse: collapse; margin: 0; background: #FFFFFF; }
+  th, td { border: 1px solid var(--hair); padding: 12px 14px; text-align: left; vertical-align: top; font-size: 16px; line-height: 1.55; color: var(--text); }
+  th { background: var(--tint); font-weight: 600; color: var(--ink); }
+  .table-scroll { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 16px 0; }
+  /* Set-apart notices keep their emphasis: ink left bar on a neutral tint. */
+  .important { background: var(--tint); border-left: 4px solid var(--ink); padding: 16px 20px; margin: 24px 0; border-radius: 4px; }
+  .notice { font-size: 16px; color: var(--ink); line-height: 1.65; }
+  @media (max-width: 360px) {
+    th, td { padding: 10px; }
+  }
+  @media (max-width: 640px) {
+    body { padding: 24px 20px 72px; font-size: 16px; }
+    h1 { font-size: 32px; }
+    h2 { font-size: 20px; margin-top: 40px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
@@ -38,12 +59,31 @@ strong { color: #1A1A1A; }
 
 <h1>SimplyDose Privacy Policy</h1>
 <p class="subtitle"><strong>Effective Date:</strong> September 17, 2026 &nbsp;|&nbsp; <strong>Last Updated:</strong> September 17, 2026</p>
+<nav class="toc" aria-labelledby="toc-title">
+<p class="toc__title" id="toc-title">Contents</p>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#where-this-policy-applies">Where This Policy Applies</a></li>
+<li><a href="#information-we-process">Information We Process</a></li>
+<li><a href="#how-information-is-used">How Information Is Used</a></li>
+<li><a href="#service-providers-and-data-flow">Service Providers and Data Flow</a></li>
+<li><a href="#retention-and-deletion">Retention and Deletion</a></li>
+<li><a href="#your-choices">Your Choices</a></li>
+<li><a href="#your-privacy-rights">Your Privacy Rights</a></li>
+<li><a href="#security">Security</a></li>
+<li><a href="#childrens-privacy">Children's Privacy</a></li>
+<li><a href="#medical-disclaimer">Medical Disclaimer</a></li>
+<li><a href="#changes-to-this-policy">Changes to This Policy</a></li>
+<li><a href="#contact-us">Contact Us</a></li>
+</ul>
+</nav>
 
-<h2>Introduction</h2>
+
+<h2 id="introduction">Introduction</h2>
 <p>SimplyDose LLC ("SimplyDose," "we," or "us") provides an iOS app that helps people organize records related to their GLP-1 routine. This Privacy Policy explains what information SimplyDose processes, why we process it, the service providers involved, and the controls available to you.</p>
 <p>SimplyDose is a tracking and organization tool. It is not a medical device and does not provide medical advice, diagnosis, or treatment.</p>
 
-<h2>Where This Policy Applies</h2>
+<h2 id="where-this-policy-applies">Where This Policy Applies</h2>
 <p>This policy applies to the SimplyDose iOS app and SimplyDose-operated website pages that link to it, including product, support, privacy-control, and legal pages.</p>
 <div class="table-scroll" role="region" aria-label="SimplyDose platforms" tabindex="0">
 <table>
@@ -53,7 +93,7 @@ strong { color: #1A1A1A; }
 </table>
 </div>
 
-<h2>Information We Process</h2>
+<h2 id="information-we-process">Information We Process</h2>
 <h3>Account and Profile Information</h3>
 <ul>
 <li>Email address and internal account ID</li>
@@ -94,7 +134,7 @@ strong { color: #1A1A1A; }
 <p>SimplyDose and its service providers may process app version, device and operating-system information, authentication and security logs, and other limited technical information needed to operate and protect the service. Apple may make opt-in crash and performance reports available to developers under Apple's policies.</p>
 <p>If you contact support, we process the contact information, message content, attachments, and follow-up records you provide. Please do not send information that is not needed to answer your request.</p>
 
-<h2>How Information Is Used</h2>
+<h2 id="how-information-is-used">How Information Is Used</h2>
 <ul>
 <li>Authenticate users and maintain accounts</li>
 <li>Provide tracking, history, reminder, Apple Health import, summary, and subscription features</li>
@@ -104,7 +144,7 @@ strong { color: #1A1A1A; }
 <li>Meet applicable legal, tax, accounting, and regulatory obligations</li>
 </ul>
 
-<h2>Service Providers and Data Flow</h2>
+<h2 id="service-providers-and-data-flow">Service Providers and Data Flow</h2>
 <div class="table-scroll" role="region" aria-label="Service providers and data flow" tabindex="0">
 <table>
 <tr><th>Provider</th><th>Purpose and information</th></tr>
@@ -117,7 +157,7 @@ strong { color: #1A1A1A; }
 </div>
 <p>These providers may retain operational, security, delivery, backup, transaction, tax, accounting, or legally required records under their own applicable policies and settings.</p>
 
-<h2>Retention and Deletion</h2>
+<h2 id="retention-and-deletion">Retention and Deletion</h2>
 <p>We retain information only as long as reasonably necessary for the purposes described in this policy. Different categories and service providers can have different retention periods.</p>
 <div class="table-scroll" role="region" aria-label="Retention summary" tabindex="0">
 <table>
@@ -132,7 +172,7 @@ strong { color: #1A1A1A; }
 </div>
 <p>When the app confirms full account deletion, it removes the account and SimplyDose-controlled health and tracking records from the primary Supabase database and then signs the user out. Account deletion does not automatically delete records independently retained by Apple, RevenueCat, PostHog, Supabase backups or logs, Resend, or SimplyDose for the reasons described above. Contact support if you want help with a privacy request involving those records.</p>
 
-<h2>Your Choices</h2>
+<h2 id="your-choices">Your Choices</h2>
 <ul>
 <li><strong>Analytics:</strong> Analytics is off by default. Open Profile &gt; Privacy Settings to turn optional product analytics on or off.</li>
 <li><strong>Apple Health:</strong> Change Apple Health access in iOS Settings. Manual weight entry remains available.</li>
@@ -142,23 +182,23 @@ strong { color: #1A1A1A; }
 <li><strong>Support:</strong> Email <a href="mailto:support@simplydose.app">support@simplydose.app</a>.</li>
 </ul>
 
-<h2>Your Privacy Rights</h2>
+<h2 id="your-privacy-rights">Your Privacy Rights</h2>
 <p>Depending on where you live, you may have rights regarding personal information, including access, correction, deletion, or objection to certain processing. To submit a request, email <a href="mailto:support@simplydose.app">support@simplydose.app</a>. We may need to verify that the request relates to your account.</p>
 <p>SimplyDose does not sell personal information or share it for cross-context behavioral advertising.</p>
 
-<h2>Security</h2>
+<h2 id="security">Security</h2>
 <p>We use reasonable administrative, technical, and organizational safeguards designed to protect information, including access controls and encryption in transit. No method of transmission or storage can be guaranteed to be completely secure.</p>
 
-<h2>Children's Privacy</h2>
+<h2 id="childrens-privacy">Children's Privacy</h2>
 <p>SimplyDose is intended for adults age 18 and older. If we learn that information was collected from a person under 18, contact us so we can review and address it.</p>
 
-<h2>Medical Disclaimer</h2>
+<h2 id="medical-disclaimer">Medical Disclaimer</h2>
 <p>SimplyDose is a tracking and organization tool. It is not a medical device and does not provide medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional about medication, dosing, side effects, and health concerns. In an emergency, call 911 or your local emergency service.</p>
 
-<h2>Changes to This Policy</h2>
+<h2 id="changes-to-this-policy">Changes to This Policy</h2>
 <p>We may update this policy. The current version and its last-updated date will be posted at <a href="https://simplydose.app/privacy.html">https://simplydose.app/privacy.html</a>. When the app requires acceptance of a materially revised policy, an authenticated user must review and accept the changed documents before continuing.</p>
 
-<h2>Contact Us</h2>
+<h2 id="contact-us">Contact Us</h2>
 <p>SimplyDose LLC<br/>
 Email: <a href="mailto:support@simplydose.app">support@simplydose.app</a></p>
 
