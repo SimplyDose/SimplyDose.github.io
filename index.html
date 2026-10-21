@@ -96,8 +96,9 @@
   .trio{--c:300px;--s:260px;--top:64px;display:flex;justify-content:center;align-items:flex-start;gap:40px;margin:56px 0 0;padding-top:var(--top);height:calc(var(--c) * 1.65 + var(--top));}
   .trio .iphone{--w:var(--s);margin-top:56px;}
   .trio .iphone--main{--w:var(--c);margin-top:0;}
-  .meds{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:4px 28px;margin-top:32px;color:var(--muted);}
-  .meds__list{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 20px;margin:0;padding:0;list-style:none;}
+  /* A quiet left-aligned line, not a logo strip. */
+  .meds{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 28px;margin-top:28px;color:var(--muted);}
+  .meds__list{display:flex;flex-wrap:wrap;gap:4px 20px;margin:0;padding:0;list-style:none;}
 
   /* Sections */
   .section{padding:var(--section) 0;}
@@ -188,6 +189,8 @@
   }
   @media (max-width:640px){
     :root{--section:64px;--nav-h:60px;--radius:24px;}
+    /* Keep focused items clear of the sticky download bar. */
+    html{scroll-padding-bottom:88px;}
     .shell{width:min(var(--shell),100% - 40px);}
     .brand{font-size:19px;gap:8px;}
     .brand img{width:28px;height:28px;}
@@ -201,8 +204,6 @@
     .trio{--c:min(224px,60vw);--s:min(192px,52vw);--top:36px;gap:14px;margin-top:40px;}
     .trio .iphone{margin-top:40px;}
     .trio .iphone--main{margin-top:0;}
-    .meds{justify-content:flex-start;}
-    .meds__list{justify-content:flex-start;}
     .features .section__head{justify-items:start;text-align:left;margin-bottom:32px;}
     .feature{padding:28px 24px;}
     .stage{padding:40px 24px 0;}
@@ -305,21 +306,21 @@
           <h3>Find a dose you logged</h3>
           <p>Look back at the date, amount and injection site you recorded, without searching through separate notes.</p>
         </figcaption>
-        <img src="assets/screens/day-record-detail.jpg" width="760" height="607" loading="lazy" alt="Calendar record for Monday, October 19: dose Semaglutide 0.5 mg at Left Thigh Outer, weight 170.0 pounds, side effects nausea, fatigue and headache, and check-in Okay."/>
+        <img src="assets/screens/day-record-detail.jpg" width="1248" height="998" loading="lazy" alt="Calendar record for Monday, October 19: dose Semaglutide 0.5 mg at Left Thigh Outer, weight 170.0 pounds, side effects nausea, fatigue and headache, and check-in Okay."/>
       </figure>
       <figure class="scene feature">
         <figcaption>
           <h3>Rate side effects from 0 to 10</h3>
           <p>Record how you felt each day, so you can look back at what you noticed and when.</p>
         </figcaption>
-        <img src="assets/screens/side-effects-detail.jpg" width="760" height="607" loading="lazy" alt="Side effects recorded October 19, 2026, rating Nausea 4 out of 10, Fatigue 3 out of 10 and Headache 2 out of 10."/>
+        <img src="assets/screens/side-effects-detail.jpg" width="1248" height="998" loading="lazy" alt="Side effects recorded October 19, 2026, rating Nausea 4 out of 10, Fatigue 3 out of 10 and Headache 2 out of 10."/>
       </figure>
       <figure class="scene feature">
         <figcaption>
           <h3>See your weight entries over time</h3>
           <p>Record your weight and how you feel, then review your dated entries and weight trends.</p>
         </figcaption>
-        <img src="assets/screens/weight-detail.jpg" width="760" height="607" loading="lazy" alt="Weight chart for the last 30 days with entries between 168 and 171 pounds, marked personal tracking only, not a clinical assessment."/>
+        <img src="assets/screens/weight-detail.jpg" width="1248" height="998" loading="lazy" alt="Weight chart for the last 30 days with entries between 168 and 171 pounds, marked personal tracking only, not a clinical assessment."/>
       </figure>
     </div>
   </div>
