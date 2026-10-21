@@ -73,8 +73,8 @@
 
   /* Real app screens, shown plain (no device bezel). A tall screen sits in a tinted
      frame that clips it at the bottom; pixels are untouched, only the view is cropped. */
-  .tile{background:var(--tint);border-radius:14px;padding:20px;}
-  .tile img{border-radius:10px;width:100%;box-shadow:0 1px 2px rgb(0 0 0 / .05),0 12px 24px -16px rgb(0 0 0 / .3);}
+  /* Image sits directly at the top of the card, as in the reference (no inner well). */
+  .tile img{width:100%;border:1px solid var(--hair);border-radius:12px;}
   .skip{position:absolute;left:16px;top:-80px;z-index:100;}
   .skip:focus{top:10px;}
 
@@ -108,7 +108,7 @@
   .section__head--center{justify-items:center;text-align:center;margin-inline:auto;}
   /* Feature cards: image on top, title and text inside the card (reference "Product features"). */
   .features__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start;}
-  .feature{display:grid;align-content:start;gap:10px;margin:0;padding:16px 16px 28px;}
+  .feature{display:grid;align-content:start;gap:10px;margin:0;padding:12px 12px 28px;}
   .feature .tile{margin-bottom:12px;}
   .feature h3,.feature p{padding:0 8px;}
   .feature p{color:var(--muted);}
@@ -196,7 +196,6 @@
     .nav .btn__arrow{display:none;}
     .lead{font-size:18px;line-height:28px;}
     .hero__actions{justify-items:stretch;}
-    .tile{padding:14px;}
     .promise__card{padding:32px 24px;}
     .faq details{padding:0 18px;}
     .steps li{padding:20px 22px;}
