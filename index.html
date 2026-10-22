@@ -184,11 +184,13 @@
     .stage{padding:56px 40px 0;}
     .stage__copy{padding-bottom:0;}
     .stage figure{--w:min(260px,64vw);}
-    .feature--wide{grid-template-columns:minmax(0,1fr);}
-    .feature--wide img{margin-top:22px;}
+    /* The wide capture stays beside its caption until the bento stacks, so it is never stretched past its pixels. */
+    .feature--wide{column-gap:40px;}
   }
   @media (max-width:760px){
     .bento{grid-template-columns:minmax(0,1fr);gap:20px;}
+    .feature--wide{grid-template-columns:minmax(0,1fr);}
+    .feature--wide img{margin-top:22px;}
   }
   @media (max-width:640px){
     :root{--section:64px;--nav-h:60px;--radius:24px;}
