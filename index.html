@@ -20,61 +20,54 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600&display=swap" rel="stylesheet"/>
 <link rel="preload" as="image" href="assets/screens/home.jpg"/>
 <style>
-  /* Monochrome, matching the app: one tinted ground, one ink, no accent hue.
-     The product sits in a few rounded scenes; everything else is type on the ground. */
+  /* Monochrome, matching the app. One typeface, one open ground, no panels:
+     the real app screens carry the page. */
   :root{
-    --font-display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
-    --font-body:"Inter",-apple-system,"Helvetica Neue",Arial,sans-serif;
-    --ground:#F5F5F2;
-    --ink:#141414;
-    --muted:color-mix(in srgb,var(--ink) 70%,var(--ground));
-    --hair:color-mix(in srgb,var(--ink) 12%,transparent);
-    --scene:#FFFFFF;
-    --stage:#121312;
-    --on-stage:#F5F5F2;
-    --on-stage-muted:color-mix(in srgb,#F5F5F2 74%,#121312);
-    --radius:28px;
-    --shell:1240px;
-    --section:112px;
+    --font:"Host Grotesk",-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --ground:#FAFAF8;
+    --ink:#111213;
+    --muted:color-mix(in srgb,var(--ink) 66%,var(--ground));
+    --rule:color-mix(in srgb,var(--ink) 10%,transparent);
+    --stage:#111213;
+    --on-stage:#FAFAF8;
+    --on-stage-muted:color-mix(in srgb,#FAFAF8 72%,#111213);
+    --radius:10px;
+    --shell:1200px;
+    --section:120px;
     --nav-h:64px;
   }
   *,*::before,*::after{box-sizing:border-box;}
   html{font-size:16px;scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 16px);}
-  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;}
   img{display:block;max-width:100%;height:auto;}
   a{color:inherit;}
-  :focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:4px;}
+  :focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px;}
   p{margin:0;text-wrap:pretty;}
-  h1,h2,h3{margin:0;text-wrap:balance;}
-  h1,h2{font-family:var(--font-display);font-weight:500;}
-  h1{font-size:clamp(44px,5.4vw,76px);line-height:1.02;letter-spacing:-0.035em;}
-  h2{font-size:clamp(32px,3vw,42px);line-height:1.08;letter-spacing:-0.025em;}
-  h3{font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em;}
+  h1,h2,h3{margin:0;font-weight:400;text-wrap:balance;}
+  h1{font-size:clamp(44px,5.6vw,80px);line-height:1.02;letter-spacing:-0.04em;}
+  h2{font-size:clamp(32px,3.2vw,44px);line-height:1.08;letter-spacing:-0.03em;}
+  h3{font-size:20px;line-height:28px;font-weight:500;letter-spacing:-0.01em;}
   .shell{width:min(var(--shell),100% - 48px);margin-inline:auto;}
   .lead{font-size:20px;line-height:31px;color:var(--muted);max-width:34em;text-wrap:balance;}
   .note{font-size:16px;line-height:24px;color:var(--muted);}
   .nowrap{white-space:nowrap;}
-  /* One rounded surface for every product scene. */
-  .scene{background:var(--scene);border-radius:var(--radius);overflow:hidden;}
 
-  /* Buttons: one pill shape, 48px tall for comfortable tapping. */
-  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:999px;background:var(--ink);color:var(--ground);font:600 16px/1.3 var(--font-body);text-decoration:none;text-align:center;transition:background .15s ease;}
-  .btn:hover{background:color-mix(in srgb,var(--ink) 86%,var(--ground));}
-  .btn--sm{min-height:44px;padding:0 20px;font-size:15px;}
-  .btn__arrow{width:20px;height:20px;margin-left:10px;margin-right:-6px;flex:none;}
+  /* Buttons: one shape, a softened rectangle, 48px tall for comfortable tapping. */
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:var(--radius);background:var(--ink);color:var(--ground);font:500 16px/1.3 var(--font);text-decoration:none;text-align:center;transition:background .15s ease;}
+  .btn:hover{background:color-mix(in srgb,var(--ink) 84%,var(--ground));}
+  .btn--sm{min-height:44px;padding:0 18px;font-size:15px;}
   .on-stage .btn{background:var(--on-stage);color:var(--stage);}
-  .on-stage .btn:hover{background:color-mix(in srgb,var(--on-stage) 86%,var(--stage));}
   .skip{position:absolute;left:16px;top:-80px;z-index:100;}
   .skip:focus{top:10px;}
 
   /* Nav */
-  .nav{position:sticky;top:0;z-index:50;height:var(--nav-h);background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--hair);}
+  .nav{position:sticky;top:0;z-index:50;height:var(--nav-h);background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);}
   .nav .shell{height:100%;display:flex;align-items:center;gap:32px;}
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--font-display);font-weight:500;font-size:20px;line-height:1.3;letter-spacing:-0.02em;}
-  .brand img{width:30px;height:30px;border-radius:8px;}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:19px;line-height:1.3;letter-spacing:-0.02em;}
+  .brand img{width:28px;height:28px;border-radius:7px;}
   .nav__links{display:flex;gap:28px;margin-left:auto;font-size:16px;}
   .nav__links a{color:var(--muted);text-decoration:none;}
   .nav__links a:hover{color:var(--ink);}
@@ -82,84 +75,79 @@
 
   /* iPhone drawn in CSS around the unedited screenshot, with the App Store set's
      proportions: 3.3% bezel, 15% outer radius, thin rim, Dynamic Island. */
-  .iphone{--w:300px;flex:none;position:relative;width:var(--w);padding:calc(var(--w) * .033);border-radius:calc(var(--w) * .15);background:#17171A;box-shadow:0 2px 6px rgb(0 0 0 / .12),0 40px 80px -30px rgb(0 0 0 / .45);}
+  .iphone{--w:290px;position:relative;width:var(--w);padding:calc(var(--w) * .033);border-radius:calc(var(--w) * .15);background:#17171A;box-shadow:0 2px 6px rgb(0 0 0 / .1),0 40px 80px -36px rgb(0 0 0 / .4);}
   .iphone::after{content:"";position:absolute;inset:calc(var(--w) * .007);border-radius:calc(var(--w) * .143);border:calc(var(--w) * .0045) solid #4A4A4E;pointer-events:none;}
   .iphone img{width:100%;border-radius:calc(var(--w) * .117);}
   .iphone__island{position:absolute;left:50%;top:calc(var(--w) * .057);width:calc(var(--w) * .262);height:calc(var(--w) * .078);border-radius:999px;background:#000;transform:translateX(-50%);}
 
-  /* Hero: centered copy, then three real screens in one scene, cut off by its bottom edge. */
-  .hero{padding:72px 0 0;}
-  .hero__copy{display:grid;justify-items:center;gap:24px;text-align:center;max-width:860px;margin-inline:auto;}
-  .hero__copy .lead{max-width:680px;}
-  .hero__actions{display:grid;justify-items:center;gap:16px;margin-top:16px;}
-  .hero__actions .note{max-width:600px;}
-  .trio{--c:300px;--s:260px;--top:64px;display:flex;justify-content:center;align-items:flex-start;gap:40px;margin:56px 0 0;padding-top:var(--top);height:calc(var(--c) * 1.65 + var(--top));}
-  .trio .iphone{--w:var(--s);margin-top:56px;}
-  .trio .iphone--main{--w:var(--c);margin-top:0;}
-  /* A quiet left-aligned line, not a logo strip. */
-  .meds{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 28px;margin-top:28px;color:var(--muted);}
+  /* Hero: copy on the left; two real screens on the right, one set back behind the other. */
+  .hero{padding:72px 0 var(--section);overflow:clip;}
+  .hero .shell{display:grid;grid-template-columns:minmax(0,1fr) 480px;gap:80px;align-items:center;}
+  .hero__copy{display:grid;gap:24px;justify-items:start;}
+  .hero__actions{display:grid;gap:16px;justify-items:start;margin-top:12px;}
+  .hero__actions .note{max-width:34em;}
+  .meds{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 24px;margin-top:20px;padding-top:20px;border-top:1px solid var(--rule);font-size:16px;color:var(--muted);}
   .meds > p{color:var(--ink);font-weight:500;}
-  .meds__list{display:flex;flex-wrap:wrap;gap:4px 20px;margin:0;padding:0;list-style:none;}
+  .meds__list{display:flex;flex-wrap:wrap;gap:4px 18px;margin:0;padding:0;list-style:none;}
+  .pair{--front:290px;--back:250px;position:relative;width:480px;height:calc(var(--front) * 2.095 + 56px);}
+  .pair .iphone{position:absolute;}
+  .pair .iphone--front{--w:var(--front);left:0;bottom:0;z-index:1;}
+  .pair .iphone--back{--w:var(--back);right:0;top:0;box-shadow:0 2px 6px rgb(0 0 0 / .08),0 30px 60px -36px rgb(0 0 0 / .3);}
 
   /* Sections */
   .section{padding:var(--section) 0;}
   .section__head{display:grid;gap:20px;align-content:start;max-width:680px;}
-  .split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:start;}
+  .split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:80px;align-items:start;}
 
-  /* Steps: plain rows with hairlines, no cards or numerals. */
+  /* Steps: plain rows with rules. */
   .steps{margin:0;padding:0;list-style:none;}
-  .steps li{display:grid;gap:8px;padding:28px 0;border-top:1px solid var(--hair);}
+  .steps li{display:grid;gap:8px;padding:28px 0;border-top:1px solid var(--rule);}
   .steps li:first-child{border-top:0;padding-top:4px;}
   .steps p,.feature p{color:var(--muted);}
   .steps p{max-width:34em;}
 
-  /* Features: one wide scene and two halves, each led by a real capture. */
-  .features .section__head{margin-bottom:48px;}
-  .bento{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;}
-  .feature{display:grid;align-content:start;gap:10px;margin:0;padding:40px;}
-  /* A white inset inside the frame keeps the screen content off the hairline. */
-  .feature img{width:100%;margin-top:22px;padding:12px;background:var(--scene);border:1px solid var(--hair);border-radius:14px;}
-  .feature--wide{grid-column:1 / -1;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:64px;align-items:center;}
-  .feature--wide figcaption{gap:16px;max-width:420px;}
-  /* The primary feature gets display-size type so the wide scene reads as the lead. */
-  .feature.feature--wide h3{font-size:clamp(26px,2.4vw,32px);line-height:1.15;letter-spacing:-0.02em;}
-  .feature.feature--wide p{font-size:18px;line-height:28px;}
-  .feature--wide img{margin-top:0;}
-  .feature figcaption{display:grid;gap:10px;}
-  .feature h3{font-family:var(--font-display);font-weight:500;font-size:24px;line-height:1.2;letter-spacing:-0.015em;}
+  /* Features: open rows that alternate sides. Each capture is a complete card from the
+     app; multiply lets its white background take on the page ground, so no frame is needed. */
+  .features .section__head{margin-bottom:24px;}
+  .feature{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:80px;align-items:center;margin:0;padding:56px 0;}
+  .feature figcaption{display:grid;gap:12px;max-width:400px;}
+  .feature h3{font-size:clamp(24px,2.2vw,30px);line-height:1.15;font-weight:400;letter-spacing:-0.02em;}
+  .feature img{width:100%;max-width:600px;justify-self:end;mix-blend-mode:multiply;}
+  .feature--flip{grid-template-columns:minmax(0,7fr) minmax(0,5fr);}
+  .feature--flip figcaption{grid-column:2;grid-row:1;justify-self:start;}
+  .feature--flip img{grid-column:1;grid-row:1;justify-self:start;}
 
-  /* Visit Summary: the one dark scene, with the iPhone cut off by its bottom edge. */
-  .stage{background:var(--stage);color:var(--on-stage);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:64px;padding:80px 72px 0;}
+  /* Visit Summary: the one dark band, edge to edge, with the iPhone cut off by its bottom edge. */
+  .stage{background:var(--stage);color:var(--on-stage);padding:var(--section) 0 0;overflow:hidden;}
+  .stage .shell{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:80px;}
   .stage .lead,.stage .note{color:var(--on-stage-muted);}
-  .stage__copy{display:grid;gap:20px;align-content:start;max-width:540px;padding-bottom:80px;}
+  .stage__copy{display:grid;gap:20px;align-content:start;max-width:540px;padding-bottom:var(--section);}
   .stage figure{--w:300px;margin:0;align-self:end;justify-self:center;overflow:hidden;height:calc(var(--w) * 1.33);}
   .stage .iphone{--w:inherit;box-shadow:0 0 0 1px rgb(255 255 255 / .08),0 40px 80px -30px rgb(0 0 0 / .6);}
 
   /* Promise */
-  .promise__text{font-family:var(--font-display);font-weight:500;font-size:clamp(22px,2.3vw,28px);line-height:1.4;letter-spacing:-0.015em;}
+  .promise__text{font-size:clamp(22px,2.3vw,28px);line-height:1.4;letter-spacing:-0.015em;}
 
   /* FAQ: native disclosures, no form or tracking. */
-  .faq-list{border-bottom:1px solid var(--hair);}
-  .faq details{border-top:1px solid var(--hair);}
+  .faq-list{border-bottom:1px solid var(--rule);}
+  .faq details{border-top:1px solid var(--rule);}
   /* The question row extends 20px past the column so its focus ring clears the text. */
-  .faq summary{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-inline:-20px;padding:22px 20px;border-radius:12px;min-height:48px;font-size:18px;line-height:26px;font-weight:600;cursor:pointer;list-style:none;}
+  .faq summary{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-inline:-20px;padding:22px 20px;border-radius:var(--radius);min-height:48px;font-size:18px;line-height:26px;font-weight:500;cursor:pointer;list-style:none;}
   .faq summary::-webkit-details-marker{display:none;}
-  .faq summary:focus-visible{outline-offset:-3px;}
-  .faq__icon{flex:none;position:relative;width:28px;height:28px;border:1.5px solid var(--ink);border-radius:50%;}
-  .faq__icon::after{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);transform:translate(-50%,-70%) rotate(45deg);transition:transform .2s ease;}
-  .faq details[open] .faq__icon::after{transform:translate(-50%,-30%) rotate(-135deg);}
+  .faq summary:focus-visible{outline-offset:-2px;}
+  .faq__icon{flex:none;position:relative;width:16px;height:16px;}
+  .faq__icon::before,.faq__icon::after{content:"";position:absolute;left:0;top:50%;width:16px;height:1.5px;background:var(--ink);transform:translateY(-50%);transition:transform .2s ease;}
+  .faq__icon::after{transform:translateY(-50%) rotate(90deg);}
+  .faq details[open] .faq__icon::after{transform:translateY(-50%) rotate(0deg);}
   .faq details p{padding:0 44px 24px 0;color:var(--muted);max-width:40em;}
 
-  /* Final CTA */
-  /* Final call to action sits on the ground, closing the page without another panel. */
-  .final{padding:16px 0 var(--section);}
-  .final__panel{display:grid;justify-items:center;text-align:center;gap:20px;}
-  .final__panel img{width:72px;height:72px;border-radius:16px;margin-bottom:8px;}
-  .final__panel p{max-width:560px;}
-  .final__panel .btn{margin-top:12px;}
+  /* Final call to action */
+  .final{padding:0 0 var(--section);}
+  .final__panel{display:grid;justify-items:start;gap:20px;padding-top:var(--section);border-top:1px solid var(--rule);}
+  .final__panel .btn{margin-top:8px;}
 
   /* Footer */
-  footer{border-top:1px solid var(--hair);padding:48px 0 64px;}
+  footer{border-top:1px solid var(--rule);padding:48px 0 64px;}
   .footer__row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
   .footer__links{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:16px;}
   .footer__links a{display:inline-block;padding:10px 0;color:var(--muted);text-decoration:none;}
@@ -167,63 +155,50 @@
   .footer__legal{margin-top:28px;font-size:16px;line-height:24px;color:var(--muted);max-width:36em;}
 
   /* Mobile sticky download bar, hidden (and out of the tab order) until shown. */
-  .mcta{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;visibility:hidden;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--ground) 94%,transparent);border-top:1px solid var(--hair);transform:translateY(105%);transition:transform .3s cubic-bezier(.2,.7,.3,1),visibility 0s .3s;}
+  .mcta{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;visibility:hidden;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--ground) 94%,transparent);border-top:1px solid var(--rule);transform:translateY(105%);transition:transform .3s cubic-bezier(.2,.7,.3,1),visibility 0s .3s;}
   .mcta.show{transform:none;visibility:visible;transition:transform .3s cubic-bezier(.2,.7,.3,1);}
   .mcta .btn{width:100%;}
 
   @media (max-width:1100px){
-    .stage{padding:64px 48px 0;gap:40px;}
+    .hero .shell{grid-template-columns:minmax(0,1fr) 420px;gap:56px;}
+    .pair{--front:254px;--back:218px;width:420px;}
   }
   @media (max-width:980px){
-    :root{--section:80px;}
+    :root{--section:88px;}
     .nav__links{display:none;}
     .nav .btn{margin-left:auto;}
     .hero{padding-top:56px;}
-    .trio{--c:250px;--s:216px;--top:48px;gap:24px;margin-top:56px;}
-    .split,.stage{grid-template-columns:minmax(0,1fr);gap:40px;}
-    .stage{padding:56px 40px 0;}
+    .hero .shell,.split,.stage .shell{grid-template-columns:minmax(0,1fr);gap:48px;}
+    .pair{justify-self:center;}
     .stage__copy{padding-bottom:0;}
     .stage figure{--w:min(260px,64vw);}
-    /* The wide capture stays beside its caption until the bento stacks, so it is never stretched past its pixels. */
-    .feature--wide{column-gap:40px;}
+    .feature{gap:48px;}
   }
   @media (max-width:760px){
-    .bento{grid-template-columns:minmax(0,1fr);gap:20px;}
-    .feature--wide{grid-template-columns:minmax(0,1fr);}
-    .feature--wide img{margin-top:22px;}
+    .feature,.feature--flip{grid-template-columns:minmax(0,1fr);gap:28px;padding:40px 0;}
+    .feature--flip figcaption,.feature--flip img{grid-column:auto;grid-row:auto;}
+    .feature img{justify-self:start;}
   }
   @media (max-width:640px){
-    :root{--section:64px;--nav-h:60px;--radius:24px;}
+    :root{--section:64px;--nav-h:60px;}
     /* Keep focused items clear of the sticky download bar. */
     html{scroll-padding-bottom:88px;}
     .shell{width:min(var(--shell),100% - 40px);}
-    .brand{font-size:19px;gap:8px;}
-    .brand img{width:28px;height:28px;}
-    .nav .btn{padding:0 20px;font-size:15px;}
+    .brand{font-size:18px;gap:8px;}
+    .nav .btn{padding:0 18px;font-size:15px;}
     .wide-only{display:none;}
-    .nav .btn__arrow{display:none;}
     .lead{font-size:18px;line-height:28px;}
-    /* Left-aligned copy reads more easily on a phone. */
     .hero{padding-top:40px;}
-    .hero__copy,.hero__actions{justify-items:stretch;text-align:left;}
-    .trio{--c:min(224px,60vw);--s:min(192px,52vw);--top:36px;gap:14px;margin-top:40px;}
-    .trio .iphone{margin-top:40px;}
-    .trio .iphone--main{margin-top:0;}
-    .features .section__head{margin-bottom:32px;}
-    .feature{padding:28px 24px;}
-    .stage{padding:40px 24px 0;}
+    .hero__actions{justify-items:stretch;width:100%;}
+    .pair{--front:min(232px,60vw);--back:min(196px,50vw);width:min(100%,360px);height:calc(var(--front) * 2.095 + 40px);}
     .faq details p{padding-right:0;}
     .final__panel .btn{width:100%;}
     .mcta{display:block;}
     footer{padding-bottom:130px;}
   }
-  /* At the narrowest widths the final button keeps its label on one line. */
-  @media (max-width:360px){
-    .final__panel .btn__arrow{display:none;}
-  }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
-    .mcta,.mcta.show,.btn,.faq__icon::after{transition:none;}
+    .mcta,.mcta.show,.btn,.faq__icon::before,.faq__icon::after{transition:none;}
   }
 </style>
 </head>
@@ -233,7 +208,7 @@
 <header class="nav">
   <div class="shell">
     <a class="brand" href="/" aria-label="SimplyDose home">
-      <img src="assets/app-icon.png" alt="" width="30" height="30"/>
+      <img src="assets/app-icon.png" alt="" width="28" height="28"/>
       <span>SimplyDose</span>
     </a>
     <nav class="nav__links" aria-label="Page sections">
@@ -241,7 +216,7 @@
       <a href="#visit-summary">Visit Summary</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a class="btn btn--sm" href="https://apps.apple.com/app/id6767441916" data-appstore aria-label="View on the App Store"><span class="wide-only">View on the&nbsp;</span>App Store<svg class="btn__arrow" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8.5 6.75 11.75 10 8.5 13.25" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a class="btn btn--sm" href="https://apps.apple.com/app/id6767441916" data-appstore aria-label="View on the App Store"><span class="wide-only">View on the&nbsp;</span>App Store</a>
   </div>
 </header>
 
@@ -253,34 +228,29 @@
       <p class="lead">Record dose dates, amounts and sites, weight and side effects. Prepare a Visit Summary from what you log. Tracking requires SimplyDose Premium.</p>
       <!-- Give visitors the store action and terms before the image. -->
       <div class="hero__actions">
-        <a class="btn" href="https://apps.apple.com/app/id6767441916" data-appstore>View on the App Store<svg class="btn__arrow" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8.5 6.75 11.75 10 8.5 13.25" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn" href="https://apps.apple.com/app/id6767441916" data-appstore>View on the App Store</a>
         <p class="note">Eligible new subscribers can try it free for 14 days. Then $9.99/month or $79.99/year in the United States. Auto-renews until canceled in Apple Subscriptions. Apple confirms eligibility and localized pricing before purchase.</p>
       </div>
+      <div class="meds">
+        <p>Made for your medication</p>
+        <ul class="meds__list">
+          <li>Ozempic®</li>
+          <li>Wegovy®</li>
+          <li>Mounjaro®</li>
+          <li>Zepbound®</li>
+          <li>Saxenda®</li>
+        </ul>
+      </div>
     </div>
-    <!-- Side phones may run past the scene's edges on small screens; the scene clips them. -->
-    <div class="scene trio">
-      <div class="iphone">
-        <img src="assets/screens/log-dose.jpg" width="660" height="1434" alt="Log Dose screen on iPhone, shown with sample data: today, October 20, at 12:51 PM, Semaglutide 0.5 mg at Left Thigh Outer, with pain level 2 of 5, mild."/>
-        <span class="iphone__island" aria-hidden="true"></span>
-      </div>
-      <div class="iphone iphone--main">
-        <img src="assets/screens/home.jpg" width="660" height="1434" alt="SimplyDose Home screen on iPhone, shown with sample data: the next scheduled dose in 5 days 20 hours, on Monday, October 26 at 9:00 AM, with today's weight and side effects not yet logged and both last logged yesterday." fetchpriority="high"/>
-        <span class="iphone__island" aria-hidden="true"></span>
-      </div>
-      <div class="iphone">
+    <div class="pair">
+      <div class="iphone iphone--back">
         <img src="assets/screens/progress.jpg" width="660" height="1434" alt="Progress screen on iPhone, shown with sample data: total change 0.0 pounds, 1 week logged, 10.0 pounds to goal, and a 30-day weight chart with entries between 168 and 171 pounds."/>
         <span class="iphone__island" aria-hidden="true"></span>
       </div>
-    </div>
-    <div class="meds">
-      <p>Made for your medication</p>
-      <ul class="meds__list">
-        <li>Ozempic®</li>
-        <li>Wegovy®</li>
-        <li>Mounjaro®</li>
-        <li>Zepbound®</li>
-        <li>Saxenda®</li>
-      </ul>
+      <div class="iphone iphone--front">
+        <img src="assets/screens/home.jpg" width="660" height="1434" alt="SimplyDose Home screen on iPhone, shown with sample data: the next scheduled dose in 5 days 20 hours, on Monday, October 26 at 9:00 AM, with today's weight and side effects not yet logged and both last logged yesterday." fetchpriority="high"/>
+        <span class="iphone__island" aria-hidden="true"></span>
+      </div>
     </div>
   </div>
 </section>
@@ -305,48 +275,44 @@
       <h2 id="features-heading">Your records, ready to look back on.</h2>
       <p class="lead">Keep the details you log in one place, from a recorded dose to your next appointment.</p>
     </div>
-    <div class="bento">
-      <figure class="scene feature feature--wide">
-        <figcaption>
-          <h3>Find a dose you logged</h3>
-          <p>Look back at the date, amount and injection site you recorded, without searching through separate notes.</p>
-        </figcaption>
-        <img src="assets/screens/day-record-detail.jpg" width="1248" height="998" loading="lazy" alt="Calendar record for Monday, October 19: dose Semaglutide 0.5 mg at Left Thigh Outer, weight 170.0 pounds, side effects nausea, fatigue and headache, and check-in Okay."/>
-      </figure>
-      <figure class="scene feature">
-        <figcaption>
-          <h3>Rate side effects from 0 to 10</h3>
-          <p>Record how you felt each day, so you can look back at what you noticed and when.</p>
-        </figcaption>
-        <img src="assets/screens/side-effects-detail.jpg" width="1248" height="998" loading="lazy" alt="Side effects recorded October 19, 2026, rating Nausea 4 out of 10, Fatigue 3 out of 10 and Headache 2 out of 10."/>
-      </figure>
-      <figure class="scene feature">
-        <figcaption>
-          <h3>See your weight entries over time</h3>
-          <p>Record your weight and how you feel, then review your dated entries and weight trends.</p>
-        </figcaption>
-        <img src="assets/screens/weight-detail.jpg" width="1248" height="998" loading="lazy" alt="Weight chart for the last 30 days with entries between 168 and 171 pounds, marked personal tracking only, not a clinical assessment."/>
-      </figure>
-    </div>
+    <figure class="feature">
+      <figcaption>
+        <h3>Find a dose you logged</h3>
+        <p>Look back at the date, amount and injection site you recorded, without searching through separate notes.</p>
+      </figcaption>
+      <img src="assets/screens/day-record-detail.jpg" width="1320" height="1000" loading="lazy" alt="Calendar record for Monday, October 19: dose Semaglutide 0.5 mg at Left Thigh Outer, weight 170.0 pounds, side effects nausea, fatigue and headache, and check-in Okay."/>
+    </figure>
+    <figure class="feature feature--flip">
+      <figcaption>
+        <h3>Rate side effects from 0 to 10</h3>
+        <p>Record how you felt each day, so you can look back at what you noticed and when.</p>
+      </figcaption>
+      <img src="assets/screens/side-effects-detail.jpg" width="1320" height="1010" loading="lazy" alt="Side effects recorded October 19, 2026, rating Nausea 4 out of 10, Fatigue 3 out of 10 and Headache 2 out of 10."/>
+    </figure>
+    <figure class="feature">
+      <figcaption>
+        <h3>See your weight entries over time</h3>
+        <p>Record your weight and how you feel, then review your dated entries and weight trends.</p>
+      </figcaption>
+      <img src="assets/screens/weight-detail.jpg" width="1320" height="1200" loading="lazy" alt="Weight chart for the last 30 days with entries between 168 and 171 pounds, marked personal tracking only, not a clinical assessment."/>
+    </figure>
   </div>
 </section>
 
-<section class="visit" id="visit-summary" aria-labelledby="visit-heading">
+<section class="stage on-stage" id="visit-summary" aria-labelledby="visit-heading">
   <div class="shell">
-    <div class="scene stage on-stage">
-      <div class="stage__copy">
-        <h2 id="visit-heading">Bring a summary to your next visit.</h2>
-        <p class="lead">Bring your logged records together for an appointment. The summary reflects what you entered, not medical advice.</p>
-        <p class="note">Choose the last 30, 60 or 90 days. Medications and doses, weight, side effects and how you have been feeling appear in one place.</p>
-        <p class="note">App screens show sample data.</p>
-      </div>
-      <figure>
-        <div class="iphone">
-          <img src="assets/screens/visit-summary.jpg" width="660" height="1434" loading="lazy" alt="Top of the Visit Summary screen on iPhone for the last 30 days, shown with sample data: medication Semaglutide, current dose 0.5 mg, doses logged and adherence, followed by weight progress."/>
-          <span class="iphone__island" aria-hidden="true"></span>
-        </div>
-      </figure>
+    <div class="stage__copy">
+      <h2 id="visit-heading">Bring a summary to your next visit.</h2>
+      <p class="lead">Bring your logged records together for an appointment. The summary reflects what you entered, not medical advice.</p>
+      <p class="note">Choose the last 30, 60 or 90 days. Medications and doses, weight, side effects and how you have been feeling appear in one place.</p>
+      <p class="note">App screens show sample data.</p>
     </div>
+    <figure>
+      <div class="iphone">
+        <img src="assets/screens/visit-summary.jpg" width="660" height="1434" loading="lazy" alt="Top of the Visit Summary screen on iPhone for the last 30 days, shown with sample data: medication Semaglutide, current dose 0.5 mg, doses logged and adherence, followed by weight progress."/>
+        <span class="iphone__island" aria-hidden="true"></span>
+      </div>
+    </figure>
   </div>
 </section>
 
@@ -387,10 +353,9 @@
 <section class="final" aria-labelledby="final-heading">
   <div class="shell">
     <div class="final__panel">
-      <img src="assets/app-icon.png" alt="" width="72" height="72" loading="lazy"/>
       <h2 id="final-heading">Start today. Make it your routine.</h2>
       <p class="lead">An account and active SimplyDose Premium subscription are required for tracking features.</p>
-      <a class="btn" href="https://apps.apple.com/app/id6767441916" data-appstore>View on the App Store<svg class="btn__arrow" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8.5 6.75 11.75 10 8.5 13.25" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="btn" href="https://apps.apple.com/app/id6767441916" data-appstore>View on the App Store</a>
       <p class="note">iPhone and iPad · iOS 17+ · Eligible new subscribers: 14 days free, then $9.99/month or $79.99/year in the United States.</p>
     </div>
   </div>
@@ -417,7 +382,7 @@
 
 <!-- Mobile sticky download bar -->
 <aside class="mcta" id="mcta" aria-label="App Store link">
-  <a class="btn" href="https://apps.apple.com/app/id6767441916" data-appstore>View on the App Store<svg class="btn__arrow" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8.5 6.75 11.75 10 8.5 13.25" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a class="btn" href="https://apps.apple.com/app/id6767441916" data-appstore>View on the App Store</a>
 </aside>
 
 <script>
