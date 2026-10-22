@@ -80,7 +80,8 @@
   .iphone img{width:100%;border-radius:calc(var(--w) * .117);}
   .iphone__island{position:absolute;left:50%;top:calc(var(--w) * .057);width:calc(var(--w) * .262);height:calc(var(--w) * .078);border-radius:999px;background:#000;transform:translateX(-50%);}
 
-  /* Hero: copy on the left; two real screens on the right, one set back behind the other. */
+  /* Hero: copy on the left; two real screens on the right. Home is in front (and first in reading
+     order); Progress sits behind on the left, so its title stays visible. */
   .hero{padding:72px 0 var(--section);overflow:clip;}
   .hero .shell{display:grid;grid-template-columns:minmax(0,1fr) 480px;gap:80px;align-items:center;}
   .hero__copy{display:grid;gap:24px;justify-items:start;}
@@ -91,8 +92,8 @@
   .meds__list{display:flex;flex-wrap:wrap;gap:4px 18px;margin:0;padding:0;list-style:none;}
   .pair{--front:290px;--back:250px;position:relative;width:480px;height:calc(var(--front) * 2.095 + 56px);}
   .pair .iphone{position:absolute;}
-  .pair .iphone--front{--w:var(--front);left:0;bottom:0;z-index:1;}
-  .pair .iphone--back{--w:var(--back);right:0;top:0;box-shadow:0 2px 6px rgb(0 0 0 / .08),0 30px 60px -36px rgb(0 0 0 / .3);}
+  .pair .iphone--front{--w:var(--front);right:0;bottom:0;z-index:1;}
+  .pair .iphone--back{--w:var(--back);left:0;top:0;box-shadow:0 2px 6px rgb(0 0 0 / .08),0 30px 60px -36px rgb(0 0 0 / .3);}
 
   /* Sections */
   .section{padding:var(--section) 0;}
@@ -245,12 +246,12 @@
       </div>
     </div>
     <div class="pair">
-      <div class="iphone iphone--back">
-        <img src="assets/screens/progress.jpg" width="990" height="2151" alt="Progress screen on iPhone, shown with sample data: total change 0.0 pounds, 1 week logged, 10.0 pounds to goal, and a 30-day weight chart with entries between 168 and 171 pounds."/>
-        <span class="iphone__island" aria-hidden="true"></span>
-      </div>
       <div class="iphone iphone--front">
         <img src="assets/screens/home.jpg" width="990" height="2151" alt="SimplyDose Home screen on iPhone, shown with sample data: the next scheduled dose in 5 days 20 hours, on Monday, October 26 at 9:00 AM, with today's weight and side effects not yet logged and both last logged yesterday." fetchpriority="high"/>
+        <span class="iphone__island" aria-hidden="true"></span>
+      </div>
+      <div class="iphone iphone--back">
+        <img src="assets/screens/progress.jpg" width="990" height="2151" alt="Progress screen on iPhone, shown with sample data: total change 0.0 pounds, 1 week logged, 10.0 pounds to goal, and a 30-day weight chart with entries between 168 and 171 pounds."/>
         <span class="iphone__island" aria-hidden="true"></span>
       </div>
     </div>
