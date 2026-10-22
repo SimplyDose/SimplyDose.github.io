@@ -54,7 +54,7 @@
   h2{font-size:clamp(32px,3vw,42px);line-height:1.08;letter-spacing:-0.025em;}
   h3{font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em;}
   .shell{width:min(var(--shell),100% - 48px);margin-inline:auto;}
-  .lead{font-size:20px;line-height:31px;color:var(--muted);max-width:34em;}
+  .lead{font-size:20px;line-height:31px;color:var(--muted);max-width:34em;text-wrap:balance;}
   .note{font-size:16px;line-height:24px;color:var(--muted);}
   .nowrap{white-space:nowrap;}
   /* One rounded surface for every product scene. */
@@ -98,6 +98,7 @@
   .trio .iphone--main{--w:var(--c);margin-top:0;}
   /* A quiet left-aligned line, not a logo strip. */
   .meds{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 28px;margin-top:28px;color:var(--muted);}
+  .meds > p{color:var(--ink);font-weight:500;}
   .meds__list{display:flex;flex-wrap:wrap;gap:4px 20px;margin:0;padding:0;list-style:none;}
 
   /* Sections */
@@ -110,12 +111,14 @@
   .steps li{display:grid;gap:8px;padding:28px 0;border-top:1px solid var(--hair);}
   .steps li:first-child{border-top:0;padding-top:4px;}
   .steps p,.feature p{color:var(--muted);}
+  .steps p{max-width:34em;}
 
   /* Features: one wide scene and two halves, each led by a real capture. */
-  .features .section__head{margin:0 auto 48px;justify-items:center;text-align:center;}
+  .features .section__head{margin-bottom:48px;}
   .bento{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;}
   .feature{display:grid;align-content:start;gap:10px;margin:0;padding:40px;}
-  .feature img{width:100%;margin-top:22px;border:1px solid var(--hair);border-radius:14px;}
+  /* A white inset inside the frame keeps the screen content off the hairline. */
+  .feature img{width:100%;margin-top:22px;padding:12px;background:var(--scene);border:1px solid var(--hair);border-radius:14px;}
   .feature--wide{grid-column:1 / -1;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:64px;align-items:center;}
   .feature--wide figcaption{gap:16px;max-width:420px;}
   /* The primary feature gets display-size type so the wide scene reads as the lead. */
@@ -204,7 +207,7 @@
     .trio{--c:min(224px,60vw);--s:min(192px,52vw);--top:36px;gap:14px;margin-top:40px;}
     .trio .iphone{margin-top:40px;}
     .trio .iphone--main{margin-top:0;}
-    .features .section__head{justify-items:start;text-align:left;margin-bottom:32px;}
+    .features .section__head{margin-bottom:32px;}
     .feature{padding:28px 24px;}
     .stage{padding:40px 24px 0;}
     .faq details p{padding-right:0;}
