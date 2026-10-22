@@ -173,6 +173,8 @@
     .stage__copy{padding-bottom:0;}
     .stage figure{--w:min(260px,64vw);}
     .feature{gap:48px;}
+    /* Narrower columns on tablets and phones in landscape keep captures at or under their pixels. */
+    .feature img{max-width:440px;}
   }
   @media (max-width:760px){
     .feature,.feature--flip{grid-template-columns:minmax(0,1fr);gap:28px;padding:40px 0;}
@@ -244,11 +246,11 @@
     </div>
     <div class="pair">
       <div class="iphone iphone--back">
-        <img src="assets/screens/progress.jpg" width="660" height="1434" alt="Progress screen on iPhone, shown with sample data: total change 0.0 pounds, 1 week logged, 10.0 pounds to goal, and a 30-day weight chart with entries between 168 and 171 pounds."/>
+        <img src="assets/screens/progress.jpg" width="990" height="2151" alt="Progress screen on iPhone, shown with sample data: total change 0.0 pounds, 1 week logged, 10.0 pounds to goal, and a 30-day weight chart with entries between 168 and 171 pounds."/>
         <span class="iphone__island" aria-hidden="true"></span>
       </div>
       <div class="iphone iphone--front">
-        <img src="assets/screens/home.jpg" width="660" height="1434" alt="SimplyDose Home screen on iPhone, shown with sample data: the next scheduled dose in 5 days 20 hours, on Monday, October 26 at 9:00 AM, with today's weight and side effects not yet logged and both last logged yesterday." fetchpriority="high"/>
+        <img src="assets/screens/home.jpg" width="990" height="2151" alt="SimplyDose Home screen on iPhone, shown with sample data: the next scheduled dose in 5 days 20 hours, on Monday, October 26 at 9:00 AM, with today's weight and side effects not yet logged and both last logged yesterday." fetchpriority="high"/>
         <span class="iphone__island" aria-hidden="true"></span>
       </div>
     </div>
@@ -309,7 +311,7 @@
     </div>
     <figure>
       <div class="iphone">
-        <img src="assets/screens/visit-summary.jpg" width="660" height="1434" loading="lazy" alt="Top of the Visit Summary screen on iPhone for the last 30 days, shown with sample data: medication Semaglutide, current dose 0.5 mg, doses logged and adherence, followed by weight progress."/>
+        <img src="assets/screens/visit-summary.jpg" width="990" height="2151" loading="lazy" alt="Top of the Visit Summary screen on iPhone for the last 30 days, shown with sample data: medication Semaglutide, current dose 0.5 mg, doses logged and adherence, followed by weight progress."/>
         <span class="iphone__island" aria-hidden="true"></span>
       </div>
     </figure>
