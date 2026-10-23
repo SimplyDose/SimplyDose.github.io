@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GLP-1 appointment records and Visit Summary | SimplyDose</title>
+<meta name="description" content="Review your logged GLP-1 doses, weight and side effects for an appointment. See how SimplyDose Visit Summary works. Tracking requires SimplyDose Premium."/>
+<link rel="canonical" href="https://simplydose.app/glp-1-appointment-records.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://simplydose.app/glp-1-appointment-records.html"/>
+<meta property="og:title" content="Your GLP-1 records, ready for your next visit | SimplyDose"/>
+<meta property="og:description" content="Bring together the records you log with SimplyDose Visit Summary. An account and active SimplyDose Premium subscription are required for tracking features."/>
+<meta property="og:image" content="https://simplydose.app/assets/share-icon.png"/>
+<meta property="og:image:width" content="512"/>
+<meta property="og:image:height" content="512"/>
+<meta property="og:image:alt" content="SimplyDose app icon"/>
+<meta name="twitter:card" content="summary"/>
+<link rel="icon" href="/favicon.ico" sizes="32x32"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="preload" as="image" href="assets/screens/visit-summary.jpg"/>
+<style>
+  /* Reuse the approved homepage's type, ground and complete-phone treatment. */
+  :root{--font:"Host Grotesk",-apple-system,"Helvetica Neue",Arial,sans-serif;--ground:#FAFAF8;--ink:#111213;--muted:color-mix(in srgb,var(--ink) 66%,var(--ground));--rule:color-mix(in srgb,var(--ink) 10%,transparent);--radius:10px;--shell:1200px;--section:112px;--nav-h:64px;}
+  *,*::before,*::after{box-sizing:border-box;}
+  html{font-size:16px;scroll-padding-top:calc(var(--nav-h) + 16px);}
+  body{margin:0;background:var(--ground);color:var(--ink);font:400 16px/24px var(--font);-webkit-font-smoothing:antialiased;}
+  img{display:block;max-width:100%;height:auto;}
+  a{color:inherit;text-underline-offset:4px;}
+  :focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:4px;}
+  p,h1,h2,h3{margin:0;}
+  h1,h2,h3{font-weight:400;text-wrap:balance;}
+  h1{font-size:64px;line-height:1.05;letter-spacing:-.04em;}
+  h2{font-size:40px;line-height:1.08;letter-spacing:-.03em;}
+  h3{font-size:22px;line-height:28px;font-weight:500;letter-spacing:-.01em;}
+  .shell{width:min(var(--shell),100% - 48px);margin-inline:auto;}
+  .lead{font-size:20px;line-height:30px;color:var(--muted);max-width:680px;}
+  .note{font-size:16px;line-height:24px;color:var(--muted);}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 24px;border-radius:var(--radius);background:var(--ink);color:var(--ground);font:500 16px/24px var(--font);text-decoration:none;text-align:center;}
+  .btn:hover{background:color-mix(in srgb,var(--ink) 84%,var(--ground));}
+  .btn--sm{min-height:44px;padding:10px 18px;font-size:15px;white-space:nowrap;}
+  .skip{position:absolute;left:16px;top:-80px;z-index:100;}
+  .skip:focus{top:10px;}
+  .nav{height:var(--nav-h);position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);}
+  .nav .shell{height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:19px;line-height:26px;font-weight:600;letter-spacing:-.02em;}
+  .brand img{width:28px;height:28px;border-radius:7px;}
+  .hero{padding:72px 0 var(--section);}
+  .hero .shell{display:grid;grid-template-columns:minmax(0,1fr) 384px;gap:80px;align-items:center;}
+  .hero__copy,.actions{display:grid;gap:24px;justify-items:start;}
+  .actions{gap:16px;}
+  .hero figure{margin:0;display:grid;gap:20px;justify-items:center;}
+  .hero figcaption{max-width:360px;}
+  .iphone{--w:360px;position:relative;width:var(--w);padding:calc(var(--w) * .033);border-radius:calc(var(--w) * .15);background:#17171A;box-shadow:0 2px 6px rgb(0 0 0 / .1),0 40px 80px -36px rgb(0 0 0 / .4);}
+  .iphone::after{content:"";position:absolute;inset:calc(var(--w) * .007);border-radius:calc(var(--w) * .143);border:calc(var(--w) * .0045) solid #4A4A4E;pointer-events:none;}
+  .iphone img{width:100%;border-radius:calc(var(--w) * .117);}
+  .iphone__island{position:absolute;left:50%;top:calc(var(--w) * .057);width:calc(var(--w) * .262);height:calc(var(--w) * .078);border-radius:999px;background:#000;transform:translateX(-50%);}
+  .section{padding:var(--section) 0;}
+  .split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:80px;align-items:start;}
+  .section__head{display:grid;gap:20px;}
+  .record-list{margin:0;padding-left:24px;display:grid;gap:24px;}
+  .record-list li{padding-left:4px;}
+  .record-list p{margin-top:8px;color:var(--muted);max-width:42em;}
+  .review{padding-top:0;}
+  .review__body{display:grid;gap:24px;max-width:680px;}
+  .review__body p{color:var(--muted);}
+  .final{padding:0 0 var(--section);}
+  .final__body{display:grid;gap:24px;justify-items:start;padding-top:var(--section);border-top:1px solid var(--rule);}
+  footer{padding:48px 0 64px;border-top:1px solid var(--rule);}
+  .footer__row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer__links{display:flex;flex-wrap:wrap;gap:12px 28px;}
+  .footer__links a{display:inline-block;padding:10px 0;}
+  .footer__legal{margin-top:28px;max-width:680px;}
+  @media(max-width:980px){
+    .hero .shell,.split{grid-template-columns:minmax(0,1fr);gap:48px;}
+    .hero figure{justify-self:center;}
+    .hero__copy{max-width:720px;}
+    h1{font-size:56px;}
+  }
+  @media(max-width:640px){
+    :root{--section:64px;--nav-h:60px;}
+    .shell{width:calc(100% - 40px);}
+    .brand{font-size:18px;gap:8px;}
+    .wide-only{display:none;}
+    .hero{padding-top:40px;}
+    h1{font-size:44px;}
+    h2{font-size:32px;}
+    .lead{font-size:18px;line-height:28px;}
+    .actions{justify-items:stretch;}
+    .iphone{--w:min(300px,calc(100vw - 64px));}
+    .final .btn{width:100%;}
+  }
+</style>
+</head>
+<body>
+<a class="btn skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="shell">
+    <a class="brand" href="/" aria-label="SimplyDose home"><img src="assets/app-icon.png" alt="" width="28" height="28"/><span>SimplyDose</span></a>
+    <a class="btn btn--sm" href="https://apps.apple.com/app/apple-store/id6767441916?pt=128866241&amp;ct=org26q4_website&amp;mt=8" data-appstore aria-label="View on the App Store"><span class="wide-only">View on the&nbsp;</span>App Store</a>
+  </div>
+</header>
+<main id="main">
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="shell">
+      <div class="hero__copy">
+        <h1 id="hero-heading">Your GLP-1 records, ready for your next visit.</h1>
+        <p class="lead">Bring together the dose, weight and side-effect records you log. SimplyDose Visit Summary helps you look back before an appointment. Tracking requires SimplyDose Premium.</p>
+        <div class="actions">
+          <a class="btn" href="https://apps.apple.com/app/apple-store/id6767441916?pt=128866241&amp;ct=org26q4_website&amp;mt=8" data-appstore>View on the App Store</a>
+          <p class="note">An account and active SimplyDose Premium subscription are required for tracking features. Eligible new subscribers can try it free for 14 days. Then $9.99/month or $79.99/year in the United States. Auto-renews until canceled in Apple Subscriptions. Apple confirms eligibility and localized pricing before purchase.</p>
+        </div>
+      </div>
+      <figure>
+        <div class="iphone">
+          <img src="assets/screens/visit-summary.jpg" width="990" height="2151" alt="Visit Summary screen for the last 30 days, shown with sample data: medication Semaglutide, current dose 0.5 mg, doses logged and adherence, followed by weight progress." fetchpriority="high"/>
+          <span class="iphone__island" aria-hidden="true"></span>
+        </div>
+        <figcaption class="note">The real Visit Summary screen, shown with sample data. Your summary reflects what you enter.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="records-heading">
+    <div class="shell split">
+      <div class="section__head">
+        <h2 id="records-heading">Start with the records you already log.</h2>
+        <p class="lead">Keep your entries together instead of searching through separate notes.</p>
+      </div>
+      <ul class="record-list">
+        <li><h3>Dose dates, amounts and sites</h3><p>Look back at the medication and dose details you recorded. A logged entry is your record, not confirmation that a medication was taken.</p></li>
+        <li><h3>Weight entries over time</h3><p>Review your dated weight entries and weight trends. These are personal tracking records, not a clinical assessment.</p></li>
+        <li><h3>Side effects and how you felt</h3><p>Review what you recorded and when. SimplyDose does not determine the cause of a side effect.</p></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section review" aria-labelledby="review-heading">
+    <div class="shell split">
+      <div class="section__head">
+        <h2 id="review-heading">Review a summary before your appointment.</h2>
+        <p class="lead">Visit Summary brings together your logged records for the date range you choose.</p>
+      </div>
+      <div class="review__body">
+        <p>Open Visit Summary in SimplyDose and choose the last 30, 60 or 90 days. Review the dates and entries in that range before using the summary for an appointment.</p>
+        <p>The summary reflects the information you entered. It does not replace your healthcare provider's advice or make medication decisions for you.</p>
+        <p>SimplyDose is a personal tracking tool and does not provide medical advice, diagnosis, or treatment. Always consult your healthcare provider about your medication.</p>
+        <a href="/#features">See all SimplyDose tracking features</a>
+      </div>
+    </div>
+  </section>
+  <section class="final" aria-labelledby="start-heading">
+    <div class="shell final__body">
+      <h2 id="start-heading">Keep your next record in one place.</h2>
+      <p class="lead">Download SimplyDose for iPhone and iPad, complete setup and sign in, then review Apple's subscription terms. With Premium active, start by recording a dose, your weight or a side effect.</p>
+      <a class="btn" href="https://apps.apple.com/app/apple-store/id6767441916?pt=128866241&amp;ct=org26q4_website&amp;mt=8" data-appstore>View on the App Store</a>
+      <p class="note">iOS 17+ · Tracking requires an account and active SimplyDose Premium subscription.</p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="shell">
+    <div class="footer__row">
+      <a class="brand" href="/" aria-label="SimplyDose home"><img src="assets/app-icon.png" alt="" width="28" height="28"/><span>SimplyDose</span></a>
+      <nav class="footer__links" aria-label="Footer"><a href="/">All features</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+    </div>
+    <p class="note footer__legal">SimplyDose is a personal tracking tool and does not provide medical advice, diagnosis, or treatment. Always consult your healthcare provider about your medication. © 2026 SimplyDose.</p>
+  </div>
+</footer>
+</body>
+</html>
