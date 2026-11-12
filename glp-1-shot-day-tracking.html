@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>What should I track on GLP-1 shot day? | SimplyDose</title>
+<meta name="description" content="A simple GLP-1 shot-day checklist for recording your dose, injection site, side effects and weight in SimplyDose."/>
+<link rel="canonical" href="https://simplydose.app/glp-1-shot-day-tracking.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://simplydose.app/glp-1-shot-day-tracking.html"/>
+<meta property="og:title" content="What should I track on GLP-1 shot day? | SimplyDose"/>
+<meta property="og:description" content="Keep a record of your GLP-1 doses, injection sites, side effects and weight in SimplyDose."/>
+<meta property="og:image" content="https://simplydose.app/assets/share-icon.png"/>
+<meta property="og:image:width" content="512"/>
+<meta property="og:image:height" content="512"/>
+<meta property="og:image:alt" content="SimplyDose app icon"/>
+<meta name="twitter:card" content="summary"/>
+<link rel="icon" href="/favicon.ico" sizes="32x32"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="preload" as="image" href="assets/screens/log-dose.jpg"/>
+<style>
+  /* Reuse the approved homepage's type, ground and complete-phone treatment. */
+  :root{--font:"Host Grotesk",-apple-system,"Helvetica Neue",Arial,sans-serif;--ground:#FAFAF8;--ink:#111213;--muted:color-mix(in srgb,var(--ink) 66%,var(--ground));--rule:color-mix(in srgb,var(--ink) 10%,transparent);--radius:10px;--shell:1200px;--section:112px;--nav-h:64px;}
+  *,*::before,*::after{box-sizing:border-box;}
+  html{font-size:16px;scroll-padding-top:calc(var(--nav-h) + 16px);}
+  body{margin:0;background:var(--ground);color:var(--ink);font:400 16px/24px var(--font);-webkit-font-smoothing:antialiased;}
+  img{display:block;max-width:100%;height:auto;}
+  a{color:inherit;text-underline-offset:4px;}
+  :focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:4px;}
+  p,h1,h2,h3{margin:0;}
+  h1,h2,h3{font-weight:400;text-wrap:balance;}
+  h1{font-size:64px;line-height:1.05;letter-spacing:-.04em;}
+  h2{font-size:40px;line-height:1.08;letter-spacing:-.03em;}
+  .nowrap{white-space:nowrap;}
+  h3{font-size:22px;line-height:28px;font-weight:500;letter-spacing:-.01em;}
+  .shell{width:min(var(--shell),100% - 48px);margin-inline:auto;}
+  .lead{font-size:20px;line-height:30px;color:var(--muted);max-width:680px;}
+  .note{font-size:16px;line-height:24px;color:var(--muted);}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 24px;border-radius:var(--radius);background:var(--ink);color:var(--ground);font:500 16px/24px var(--font);text-decoration:none;text-align:center;}
+  .btn:hover{background:color-mix(in srgb,var(--ink) 84%,var(--ground));}
+  .btn--sm{min-height:44px;padding:10px 18px;font-size:15px;white-space:nowrap;}
+  .skip{position:absolute;left:16px;top:-80px;z-index:100;}
+  .skip:focus{top:10px;}
+  .nav{height:var(--nav-h);position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);}
+  .nav .shell{height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:19px;line-height:26px;font-weight:600;letter-spacing:-.02em;}
+  .brand img{width:28px;height:28px;border-radius:7px;}
+  .hero{padding:72px 0 var(--section);}
+  .hero .shell{display:grid;grid-template-columns:minmax(0,1fr) 384px;gap:80px;align-items:center;}
+  .hero__copy{display:grid;gap:24px;justify-items:start;}
+  .hero figure{margin:0;display:grid;gap:20px;justify-items:center;}
+  .hero figcaption{max-width:360px;}
+  .iphone{--w:360px;position:relative;width:var(--w);padding:calc(var(--w) * .033);border-radius:calc(var(--w) * .15);background:#17171A;box-shadow:0 2px 6px rgb(0 0 0 / .1),0 40px 80px -36px rgb(0 0 0 / .4);}
+  .iphone::after{content:"";position:absolute;inset:calc(var(--w) * .007);border-radius:calc(var(--w) * .143);border:calc(var(--w) * .0045) solid #4A4A4E;pointer-events:none;}
+  .iphone img{width:100%;border-radius:calc(var(--w) * .117);}
+  .iphone__island{position:absolute;left:50%;top:calc(var(--w) * .057);width:calc(var(--w) * .262);height:calc(var(--w) * .078);border-radius:999px;background:#000;transform:translateX(-50%);}
+  .section{padding:var(--section) 0;}
+  .split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:80px;align-items:start;}
+  .section__head{display:grid;gap:20px;}
+  .record-list{margin:0;padding-left:24px;display:grid;gap:24px;}
+  .record-list li{padding-left:4px;}
+  .record-list p{margin-top:8px;color:var(--muted);max-width:42em;}
+  .review{padding-top:0;}
+  .review__body{display:grid;gap:24px;max-width:680px;}
+  .review__body p{color:var(--muted);}
+  .final{padding:0 0 var(--section);}
+  .final__body{display:grid;gap:24px;justify-items:start;padding-top:var(--section);border-top:1px solid var(--rule);}
+  footer{padding:48px 0 64px;border-top:1px solid var(--rule);}
+  .footer__row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer__links{display:flex;flex-wrap:wrap;gap:12px 28px;}
+  .footer__links a{display:inline-block;padding:10px 0;}
+  .footer__legal{margin-top:28px;max-width:680px;}
+  @media(max-width:980px){
+    .hero .shell,.split{grid-template-columns:minmax(0,1fr);gap:48px;}
+    .hero figure{justify-self:center;}
+    .hero__copy{max-width:720px;}
+    h1{font-size:56px;}
+  }
+  @media(max-width:640px){
+    :root{--section:64px;--nav-h:60px;}
+    .shell{width:calc(100% - 40px);}
+    .brand{font-size:18px;gap:8px;}
+    .wide-only{display:none;}
+    .hero{padding-top:40px;}
+    h1{font-size:44px;}
+    h2{font-size:32px;}
+    .lead{font-size:18px;line-height:28px;}
+    .iphone{--w:min(300px,calc(100vw - 64px));}
+    .final .btn{width:100%;}
+  }
+</style>
+</head>
+<body>
+<a class="btn skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="shell">
+    <a class="brand" href="/" aria-label="SimplyDose home"><img src="assets/app-icon.png" alt="" width="28" height="28"/><span>SimplyDose</span></a>
+    <a class="btn btn--sm" href="https://apps.apple.com/app/apple-store/id6767441916?pt=128866241&amp;ct=org26q4_website&amp;mt=8" data-appstore aria-label="View on the App Store"><span class="wide-only">View on the&nbsp;</span>App Store</a>
+  </div>
+</header>
+<main id="main">
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="shell">
+      <div class="hero__copy">
+        <h1 id="hero-heading">What should I track on <span class="nowrap">GLP-1</span> shot day?</h1>
+        <p class="lead">Record the date and time you took your dose, the medication and amount you took, and the injection site you used. If you notice a side effect later, note what you felt and when.</p>
+        <a href="#checklist-heading">See the shot-day checklist</a>
+      </div>
+      <figure>
+        <div class="iphone">
+          <img src="assets/screens/log-dose.jpg" width="660" height="1434" alt="SimplyDose Log Dose screen showing fields for date, time, medication, amount and injection site." fetchpriority="high"/>
+          <span class="iphone__island" aria-hidden="true"></span>
+        </div>
+        <figcaption class="note">The SimplyDose Log Dose screen, shown with sample data.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="checklist-heading">
+    <div class="shell split">
+      <div class="section__head">
+        <h2 id="checklist-heading">A checklist for shot day</h2>
+      </div>
+      <ul class="record-list">
+        <li><h3>Dose date and time</h3><p>In Log Dose, enter when you actually took the medication. Save the entry so you can check it later.</p></li>
+        <li><h3>Medication and amount</h3><p>Record the medication and amount you took.</p></li>
+        <li><h3>Injection site</h3><p>Record where you gave the injection. Your dose history gives you a place to check what you used last time.</p></li>
+        <li><h3>Side effects and weight</h3><p>Log any side effects you notice on the day you experience them. If you choose to track weight, save dated entries so you can review the trend over time.</p></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section review" aria-labelledby="review-heading">
+    <div class="shell split">
+      <div class="section__head">
+        <h2 id="review-heading">How can I use my records at my next appointment?</h2>
+      </div>
+      <div class="review__body">
+        <p>Look back at your dose dates, side-effect entries and weight history. Note anything you want to ask about. SimplyDose Visit Summary brings together the records you logged for the date range you choose.</p>
+        <a href="glp-1-appointment-records.html">See how Visit Summary works</a>
+      </div>
+    </div>
+  </section>
+  <section class="final" aria-labelledby="start-heading">
+    <div class="shell final__body">
+      <h2 id="start-heading">Keep your records in SimplyDose.</h2>
+      <p class="lead">An account and active SimplyDose Premium subscription are required for tracking features.</p>
+      <a class="btn" href="https://apps.apple.com/app/apple-store/id6767441916?pt=128866241&amp;ct=org26q4_website&amp;mt=8" data-appstore>View on the App Store</a>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="shell">
+    <div class="footer__row">
+      <a class="brand" href="/" aria-label="SimplyDose home"><img src="assets/app-icon.png" alt="" width="28" height="28"/><span>SimplyDose</span></a>
+      <nav class="footer__links" aria-label="Footer"><a href="/">All features</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+    </div>
+    <p class="note footer__legal">SimplyDose is a personal tracking tool and does not provide medical advice, diagnosis, or treatment. Always consult your healthcare provider about your medication. © 2026 SimplyDose.</p>
+  </div>
+</footer>
+</body>
+</html>
