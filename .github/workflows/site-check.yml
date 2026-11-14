@@ -1,0 +1,25 @@
+name: site-check
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  site-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: No notes or agent files (everything on main is published)
+        run: |
+          bad=$(git ls-files | grep -Ei '(\.md$|^notes/|\.env|\.mcp\.json)' || true)
+          [ -z "$bad" ] || { echo "Would be published: $bad"; exit 1; }
+      - name: Local links resolve
+        run: |
+          fail=0
+          for f in $(git ls-files '*.html'); do
+            d=$(dirname "$f")
+            for l in $(grep -oE '(href|src)="[^"#?]+' "$f" | sed -E 's/^(href|src)="//' | grep -vE '^(https?:|mailto:|tel:|data:|//)'); do
+              case "$l" in /*) t=".$l" ;; *) t="$d/$l" ;; esac
+              [ -e "$t" ] || { echo "$f: broken link $l"; fail=1; }
+            done
+          done
+          exit $fail
