@@ -10,16 +10,19 @@ jobs:
       - uses: actions/checkout@v4
       - name: No notes or agent files (everything on main is published)
         run: |
-          bad=$(git ls-files | grep -Ei '(\.md$|^notes/|\.env|\.mcp\.json)' || true)
+          bad=$(git -c core.quotepath=off ls-files | grep -Ei '(\.md$|(^|/)notes/|\.env|\.mcp\.json)' || true)
           [ -z "$bad" ] || { echo "Would be published: $bad"; exit 1; }
       - name: Local links resolve
+        shell: bash
         run: |
+          # Checks double-quoted href/src only; srcset and unquoted attributes are not covered.
           fail=0
-          for f in $(git ls-files '*.html'); do
+          while IFS= read -r f; do
             d=$(dirname "$f")
-            for l in $(grep -oE '(href|src)="[^"#?]+' "$f" | sed -E 's/^(href|src)="//' | grep -vE '^(https?:|mailto:|tel:|data:|//)'); do
+            while IFS= read -r l; do
+              l=$(printf '%s' "$l" | sed 's/%20/ /g')
               case "$l" in /*) t=".$l" ;; *) t="$d/$l" ;; esac
               [ -e "$t" ] || { echo "$f: broken link $l"; fail=1; }
-            done
-          done
+            done < <(grep -oE '(href|src)="[^"#?]+' "$f" | sed -E 's/^(href|src)="//' | grep -vE '^(https?:|mailto:|tel:|data:|javascript:|//)')
+          done < <(git -c core.quotepath=off ls-files '*.html')
           exit $fail
